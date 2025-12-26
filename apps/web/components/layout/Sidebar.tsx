@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useSupabaseClient, useSessionContext } from '@supabase/auth-helpers-react';
+import { useSupabaseClient, useSession } from '@/lib/supabase/provider';
 
 const NAV_ITEMS = [
   { label: 'Painel', href: '/painel' },
@@ -15,9 +15,7 @@ const NAV_ITEMS = [
 export default function Sidebar() {
   const router = useRouter();
   const supabaseClient = useSupabaseClient();
-  const {
-    data: { session }
-  } = useSessionContext();
+  const session = useSession();
 
   const handleSignOut = async () => {
     await supabaseClient.auth.signOut();

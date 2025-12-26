@@ -2,14 +2,12 @@
 
 import { FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react';
+import { useSession, useSupabaseClient } from '@/lib/supabase/provider';
 
 export default function LoginPage() {
   const router = useRouter();
   const supabaseClient = useSupabaseClient();
-  const {
-    data: { session }
-  } = useSessionContext();
+  const session = useSession();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
