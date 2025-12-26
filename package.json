@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev:web": "pnpm --filter apps/web dev",
+    "dev:web": "pnpm --filter apps-web dev",
     "lint": "pnpm --recursive lint",
     "test": "pnpm --recursive test"
   },

@@ -21,7 +21,7 @@ export default function Sidebar() {
 
   const handleSignOut = async () => {
     await supabaseClient.auth.signOut();
-    router.push('/(auth)/login');
+    router.push('/login');
   };
 
   const email = session?.user?.email;
