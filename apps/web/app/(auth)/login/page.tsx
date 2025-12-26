@@ -1,6 +1,6 @@
 'use client';
 
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession, useSupabaseClient } from '@/lib/supabase/provider';
 
@@ -14,6 +14,9 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const devShortcutAvailable = useMemo(() => {
+    return Boolean(process.env.NEXT_PUBLIC_E2E_EMAIL && process.env.NEXT_PUBLIC_E2E_PASSWORD);
+  }, []);
 
   useEffect(() => {
     if (session) {
@@ -121,6 +124,22 @@ export default function LoginPage() {
         <button type="button" className="google" onClick={handleGoogleSignIn} disabled={isSubmitting}>
           Continuar com Google
         </button>
+        {devShortcutAvailable && (
+          <button
+            type="button"
+            className="secondary"
+            onClick={async () => {
+              setIsSubmitting(true);
+              await supabaseClient.auth.signInWithPassword({
+                email: process.env.NEXT_PUBLIC_E2E_EMAIL ?? '',
+                password: process.env.NEXT_PUBLIC_E2E_PASSWORD ?? ''
+              });
+              setIsSubmitting(false);
+            }}
+          >
+            Autologin (dev)
+          </button>
+        )}
         {error && <p className="text-error">{error}</p>}
         {message && <p className="text-success">{message}</p>}
       </div>
