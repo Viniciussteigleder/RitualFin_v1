@@ -15,7 +15,9 @@ export default function LoginPage() {
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const devShortcutAvailable = useMemo(() => {
-    return Boolean(process.env.NEXT_PUBLIC_E2E_EMAIL && process.env.NEXT_PUBLIC_E2E_PASSWORD);
+    return (
+      process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_ENABLE_DEV_LOGIN === 'true'
+    );
   }, []);
 
   useEffect(() => {
@@ -125,18 +127,7 @@ export default function LoginPage() {
           Continuar com Google
         </button>
         {devShortcutAvailable && (
-          <button
-            type="button"
-            className="secondary"
-            onClick={async () => {
-              setIsSubmitting(true);
-              await supabaseClient.auth.signInWithPassword({
-                email: process.env.NEXT_PUBLIC_E2E_EMAIL ?? '',
-                password: process.env.NEXT_PUBLIC_E2E_PASSWORD ?? ''
-              });
-              setIsSubmitting(false);
-            }}
-          >
+          <button type="button" className="secondary" onClick={() => (window.location.href = '/dev/autologin')}>
             Autologin (dev)
           </button>
         )}

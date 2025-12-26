@@ -12,7 +12,20 @@ MVP full-stack com Next.js + Supabase para importar CSVs Miles & More, aplicar r
 ## Setup
 1. `pnpm install` (usa `pnpm` como gerenciador de pacotes).
 2. Copie `.env.example` para `.env` e configure `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` etc.
-3. Crie `apps/web/.env.local` com `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY`, `NEXT_PUBLIC_E2E_EMAIL`, e `NEXT_PUBLIC_E2E_PASSWORD` para utilizar o atalho de login dev.
+3. Crie `apps/web/.env.local` com:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL
+   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
+   NEXT_PUBLIC_ENABLE_DEV_LOGIN=true
+   ```
+   e, apenas for local/E2E, set:
+   ```
+   ENABLE_DEV_AUTOLOGIN=true
+   E2E_EMAIL=<dev user email>
+   E2E_PASSWORD=<dev password>
+   E2E_MODE=true
+   ```
+   This enables the `/dev/autologin` route and dev button (never enable in prod).
 3. Use `pnpm dev:web` ou `./scripts/dev.sh` para iniciar o app Next.
 
 ## Supabase
@@ -35,7 +48,13 @@ MVP full-stack com Next.js + Supabase para importar CSVs Miles & More, aplicar r
 - Futuramente esses testes cobrirão login, upload e painel.
  
 ### E2E (Playwright)
-- Defina `E2E_EMAIL` e `E2E_PASSWORD` e rode `pnpm --filter apps-web test:e2e`.
+- Configure the same server envs shown above (ENABLE_DEV_AUTOLOGIN/E2E_*).  
+- Run the dev server (`pnpm dev:web`) and execute `pnpm --filter apps-web test:e2e`.
+- The suite now calls `/dev/autologin` (dev-only). Set `E2E_RUN_INVALID=true` if you want the invalid-login test.
+
+### Dev Auto-Login Cleanup
+- Remove `apps/web/app/dev/autologin/route.ts` and the `ENABLE_DEV_AUTOLOGIN`/`E2E_*` vars when hardening for production.
+- Confirm `NEXT_PUBLIC_ENABLE_DEV_LOGIN` is unset before deploying.
 
 ## Design & processo
 - Referências em `design/prototypes/*` e tokens em `design/tokens`.
