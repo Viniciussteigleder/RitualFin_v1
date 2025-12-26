@@ -11,7 +11,8 @@ MVP full-stack com Next.js + Supabase para importar CSVs Miles & More, aplicar r
 
 ## Setup
 1. `pnpm install` (usa `pnpm` como gerenciador de pacotes).
-2. Copie `.env.example` para `.env` e configure `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` etc.
+2. Copie `.env.example` para `.env` e configure `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` etc.
+3. Crie `apps/web/.env.local` com `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` (ou `NEXT_PUBLIC_SUPABASE_ANON_KEY`).
 3. Use `pnpm dev:web` ou `./scripts/dev.sh` para iniciar o app Next.
 
 ## Supabase
@@ -27,6 +28,7 @@ MVP full-stack com Next.js + Supabase para importar CSVs Miles & More, aplicar r
 - `pnpm dev:web` – starta o Next.js app.
 - `scripts/dev.sh` / `scripts/dev.ps1` – atalhos para o mesmo comando.
 - `pnpm lint`, `pnpm test` – executam scripts recursivos.
+- `pnpm typecheck` – executa `tsc` em todos os workspaces.
 
 ## Testes
 - Unitários (parser + regras) e e2e smoke estão em `apps/web/tests` e usam `vitest`.

@@ -6,6 +6,7 @@
   "scripts": {
     "dev:web": "pnpm --filter apps-web dev",
     "lint": "pnpm --recursive lint",
+    "typecheck": "pnpm --recursive typecheck",
     "test": "pnpm --recursive test"
   },
   "workspaces": [

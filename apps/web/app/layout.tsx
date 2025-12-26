@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
-import { cookies } from 'next/headers';
-import { createServerClient } from '@supabase/ssr';
 import { SupabaseProvider } from '@/lib/supabase/provider';
+import { createSupabaseServerClient } from '@/lib/supabase/serverClient';
 import '../styles/globals.css';
 
 export const metadata = {
@@ -10,24 +9,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  const cookieStore = cookies();
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ?? '',
-    {
-      cookies: {
-        get(name) {
-          return cookieStore.get(name)?.value;
-        },
-        set(name, value, options) {
-          cookieStore.set({ name, value, ...options });
-        },
-        remove(name, options) {
-          cookieStore.set({ name, value: '', ...options });
-        }
-      }
-    }
-  );
+  const supabase = createSupabaseServerClient();
   const {
     data: { session }
   } = await supabase.auth.getSession();
