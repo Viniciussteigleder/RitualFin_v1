@@ -279,10 +279,13 @@ export default function PainelPage() {
       </div>
 
       <div className="dashboard-grid">
-        <div className="dashboard-panel">
-          <h2>Gastos por categoria</h2>
-          <div className="category-list">
-            {orderedCategories.map((entry) => (
+      <div className="dashboard-panel">
+        <h2>Gastos por categoria</h2>
+        <div className="category-list">
+            {orderedCategories.length === 0 ? (
+              <p className="muted">Nenhuma despesa categorizada no período.</p>
+            ) : (
+              orderedCategories.map((entry) => (
               <button
                 key={entry.category}
                 type="button"
@@ -293,9 +296,10 @@ export default function PainelPage() {
                 <span>{formatCurrency(entry.spent)}</span>
                 <span className="bar" style={{ width: `${Math.min(100, entry.spent / spent * 100)}%` }} />
               </button>
-            ))}
-          </div>
+              ))
+            )}
         </div>
+      </div>
 
         <div className="dashboard-panel">
           <h2>Orçamentos</h2>

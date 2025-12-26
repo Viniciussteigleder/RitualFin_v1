@@ -31,6 +31,9 @@ MVP full-stack com Next.js + Supabase para importar CSVs Miles & More, aplicar r
 ## Testes
 - Unitários (parser + regras) e e2e smoke estão em `apps/web/tests` e usam `vitest`.
 - Futuramente esses testes cobrirão login, upload e painel.
+ 
+### E2E (Playwright)
+- Defina `E2E_EMAIL` e `E2E_PASSWORD` e rode `pnpm --filter apps-web test:e2e`.
 
 ## Design & processo
 - Referências em `design/prototypes/*` e tokens em `design/tokens`.
