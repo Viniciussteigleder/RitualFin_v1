@@ -341,6 +341,9 @@ serve(async (request) => {
       internal_transfer: isInternal,
       exclude_from_budget: isInternal,
       needs_review: ruleResult.needsReview || dupes,
+      rule_miss: ruleResult.needsReview && !ruleResult.conflict,
+      rule_conflict: ruleResult.conflict,
+      duplicate_suspect: dupes,
       rule_id_applied: appliedRule?.id ?? null,
       status: row.status
     };

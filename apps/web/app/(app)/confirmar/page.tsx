@@ -16,6 +16,9 @@ type TransactionRecord = {
   category_2: string | null;
   exclude_from_budget: boolean;
   needs_review: boolean;
+  rule_miss: boolean;
+  rule_conflict: boolean;
+  duplicate_suspect: boolean;
   status: string | null;
 };
 
@@ -75,6 +78,9 @@ export default function ConfirmarPage() {
     }
     payload.manual_override = true;
     payload.needs_review = false;
+    payload.rule_miss = false;
+    payload.rule_conflict = false;
+    payload.duplicate_suspect = false;
     return payload;
   };
 
@@ -83,7 +89,7 @@ export default function ConfirmarPage() {
     const query = supabaseClient
       .from('transactions')
       .select(
-        'id, payment_date, desc_raw, amount, amount_display, currency, type, fix_var, category_1, category_2, exclude_from_budget, needs_review, status'
+        'id, payment_date, desc_raw, amount, amount_display, currency, type, fix_var, category_1, category_2, exclude_from_budget, needs_review, rule_miss, rule_conflict, duplicate_suspect, status'
       )
       .eq('needs_review', true)
       .order('payment_date', { ascending: false });
@@ -238,10 +244,13 @@ export default function ConfirmarPage() {
   const getTags = (tx: TransactionRecord) => {
     const tags: string[] = [];
     if (tx.needs_review) {
-      if (!tx.category_1 && !tx.type) {
+      if (tx.rule_miss) {
         tags.push('Sem match');
       }
-      if (tx.category_1 && tx.type) {
+      if (tx.rule_conflict) {
+        tags.push('Conflito');
+      }
+      if (tx.duplicate_suspect) {
         tags.push('Suspeita duplicata');
       }
     }
