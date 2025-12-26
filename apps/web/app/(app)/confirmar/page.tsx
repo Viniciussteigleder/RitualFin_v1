@@ -1,8 +1,476 @@
+'use client';
+
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useSupabaseClient } from '@supabase/auth-helpers-react';
+
+type TransactionRecord = {
+  id: string;
+  payment_date: string;
+  desc_raw: string;
+  amount: number;
+  amount_display: string | null;
+  currency: string;
+  type: string | null;
+  fix_var: string | null;
+  category_1: string | null;
+  category_2: string | null;
+  exclude_from_budget: boolean;
+  needs_review: boolean;
+  status: string | null;
+};
+
+type EditState = {
+  type: string;
+  fixVar: string;
+  category1: string;
+  category2: string;
+  excludeFromBudget: boolean;
+};
+
+const CATEGORY_OPTIONS = [
+  'Receitas',
+  'Moradia',
+  'Mercado',
+  'Compras Online',
+  'Transporte',
+  'Saúde',
+  'Lazer',
+  'Outros',
+  'Interno'
+];
+
+const TYPE_OPTIONS = ['Despesa', 'Receita'];
+const FIXVAR_OPTIONS = ['Fixo', 'Variável'];
+
 export default function ConfirmarPage() {
+  const supabaseClient = useSupabaseClient();
+  const [transactions, setTransactions] = useState<TransactionRecord[]>([]);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [editState, setEditState] = useState<Record<string, EditState>>({});
+  const [month, setMonth] = useState('');
+  const [statusFilter, setStatusFilter] = useState('Processed');
+  const [batchType, setBatchType] = useState('');
+  const [batchFixVar, setBatchFixVar] = useState('');
+  const [batchCategory1, setBatchCategory1] = useState('');
+  const [batchCategory2, setBatchCategory2] = useState('');
+  const [batchExclude, setBatchExclude] = useState(false);
+  const [createRule, setCreateRule] = useState(true);
+  const [ruleKeywords, setRuleKeywords] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+
+  const buildUpdatePayload = (state: Partial<EditState>) => {
+    const payload: Record<string, string | boolean | null> = {};
+    if (state.type) payload.type = state.type;
+    if (state.fixVar) payload.fix_var = state.fixVar;
+    if (state.category1) payload.category_1 = state.category1;
+    if (state.category2 !== undefined) payload.category_2 = state.category2 || null;
+    if (typeof state.excludeFromBudget === 'boolean') {
+      payload.exclude_from_budget = state.excludeFromBudget;
+    }
+    if (state.category1 === 'Interno') {
+      payload.internal_transfer = true;
+      payload.exclude_from_budget = true;
+    }
+    payload.manual_override = true;
+    payload.needs_review = false;
+    return payload;
+  };
+
+  const loadTransactions = useCallback(async () => {
+    setError('');
+    const query = supabaseClient
+      .from('transactions')
+      .select(
+        'id, payment_date, desc_raw, amount, amount_display, currency, type, fix_var, category_1, category_2, exclude_from_budget, needs_review, status'
+      )
+      .eq('needs_review', true)
+      .order('payment_date', { ascending: false });
+
+    if (month) {
+      const [year, monthValue] = month.split('-');
+      if (year && monthValue) {
+        const start = `${year}-${monthValue}-01`;
+        const endDate = new Date(Number(year), Number(monthValue), 0);
+        const end = `${year}-${monthValue}-${String(endDate.getDate()).padStart(2, '0')}`;
+        query.gte('payment_date', start).lte('payment_date', end);
+      }
+    }
+
+    if (statusFilter) {
+      query.eq('status', statusFilter);
+    }
+
+    const { data, error } = await query;
+    if (error) {
+      setError(error.message);
+      return;
+    }
+
+    const rows = (data ?? []) as TransactionRecord[];
+    setTransactions(rows);
+    const nextEditState: Record<string, EditState> = {};
+    rows.forEach((row) => {
+      nextEditState[row.id] = {
+        type: row.type ?? '',
+        fixVar: row.fix_var ?? '',
+        category1: row.category_1 ?? '',
+        category2: row.category_2 ?? '',
+        excludeFromBudget: row.exclude_from_budget ?? false
+      };
+    });
+    setEditState(nextEditState);
+  }, [month, statusFilter, supabaseClient]);
+
+  useEffect(() => {
+    loadTransactions();
+  }, [loadTransactions]);
+
+  const handleSelect = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
+  const handleUpdateRow = async (id: string) => {
+    setIsSaving(true);
+    setMessage('');
+    setError('');
+    const state = editState[id];
+    const payload = buildUpdatePayload(state);
+    const { error } = await supabaseClient.from('transactions').update(payload).eq('id', id);
+    if (error) {
+      setError(error.message);
+    } else {
+      const user = await supabaseClient.auth.getUser();
+      if (user.data.user) {
+        await supabaseClient.from('audit_log').insert({
+          profile_id: user.data.user.id,
+          actor: user.data.user.email ?? 'user',
+          action: 'confirm_single',
+          payload: { transaction_id: id, payload }
+        });
+      }
+      setMessage('Linha atualizada.');
+      await loadTransactions();
+    }
+    setIsSaving(false);
+  };
+
+  const handleBatchApply = async () => {
+    if (selectedIds.size === 0) return;
+    setIsSaving(true);
+    setMessage('');
+    setError('');
+
+    let ruleId: string | null = null;
+    if (createRule && ruleKeywords.trim()) {
+      const { data, error } = await supabaseClient
+        .from('rules')
+        .insert({
+          type: batchType || 'Despesa',
+          fix_var: batchFixVar || 'Variável',
+          category_1: batchCategory1 || 'Outros',
+          category_2: batchCategory2.trim() ? batchCategory2.trim() : null,
+          keywords: ruleKeywords.trim()
+        })
+        .select()
+        .single();
+      if (error) {
+        setError(error.message);
+        setIsSaving(false);
+        return;
+      }
+      ruleId = data?.id ?? null;
+      const user = await supabaseClient.auth.getUser();
+      if (user.data.user && ruleId) {
+        await supabaseClient.from('audit_log').insert({
+          profile_id: user.data.user.id,
+          actor: user.data.user.email ?? 'user',
+          action: 'rule_created',
+          payload: { rule_id: ruleId, keywords: ruleKeywords.trim() }
+        });
+      }
+    }
+
+    const payload = buildUpdatePayload({
+      type: batchType,
+      fixVar: batchFixVar,
+      category1: batchCategory1,
+      category2: batchCategory2,
+      excludeFromBudget: batchExclude
+    });
+    if (ruleId) {
+      payload.rule_id_applied = ruleId;
+    }
+
+    const { error } = await supabaseClient
+      .from('transactions')
+      .update(payload)
+      .in('id', Array.from(selectedIds));
+    if (error) {
+      setError(error.message);
+    } else {
+      const user = await supabaseClient.auth.getUser();
+      if (user.data.user) {
+        await supabaseClient.from('audit_log').insert({
+          profile_id: user.data.user.id,
+          actor: user.data.user.email ?? 'user',
+          action: 'confirm_batch',
+          payload: { ids: Array.from(selectedIds), payload }
+        });
+      }
+      setMessage('Itens confirmados em lote.');
+      setSelectedIds(new Set());
+      await loadTransactions();
+    }
+    setIsSaving(false);
+  };
+
+  const selectedCount = selectedIds.size;
+  const getTags = (tx: TransactionRecord) => {
+    const tags: string[] = [];
+    if (tx.needs_review) {
+      if (!tx.category_1 && !tx.type) {
+        tags.push('Sem match');
+      }
+      if (tx.category_1 && tx.type) {
+        tags.push('Suspeita duplicata');
+      }
+    }
+    return tags;
+  };
+
   return (
-    <section className="page-placeholder">
-      <h1>Confirmar</h1>
-      <p>Falta implementar fila de exceções e batch.</p>
+    <section className="confirm-page">
+      <header className="confirm-header">
+        <div>
+          <h1>Confirmar</h1>
+          <p>Revise exceções, conflitos e duplicatas suspeitas.</p>
+        </div>
+        <div className="confirm-filters">
+          <label>
+            Mês
+            <input type="month" value={month} onChange={(event) => setMonth(event.target.value)} />
+          </label>
+          <label>
+            Status
+            <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
+              <option value="Processed">Processed</option>
+              <option value="">Todos</option>
+              <option value="Pending">Pending</option>
+              <option value="Declined">Declined</option>
+            </select>
+          </label>
+        </div>
+      </header>
+      <div className="confirm-batch">
+        <h2>Aplicar em lote</h2>
+        <div className="confirm-grid">
+          <label>
+            Tipo
+            <select value={batchType} onChange={(event) => setBatchType(event.target.value)}>
+              <option value="">Manter</option>
+              {TYPE_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Fixo/Var
+            <select value={batchFixVar} onChange={(event) => setBatchFixVar(event.target.value)}>
+              <option value="">Manter</option>
+              {FIXVAR_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Categoria I
+            <select value={batchCategory1} onChange={(event) => setBatchCategory1(event.target.value)}>
+              <option value="">Manter</option>
+              {CATEGORY_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Categoria II
+            <input value={batchCategory2} onChange={(event) => setBatchCategory2(event.target.value)} />
+          </label>
+          <label className="confirm-toggle">
+            <input
+              type="checkbox"
+              checked={batchExclude}
+              onChange={(event) => setBatchExclude(event.target.checked)}
+            />
+            Excluir do orçamento
+          </label>
+        </div>
+        <div className="confirm-rule">
+          <label className="confirm-toggle">
+            <input type="checkbox" checked={createRule} onChange={(event) => setCreateRule(event.target.checked)} />
+            Criar/atualizar regra automática
+          </label>
+          <input
+            placeholder="Keyword para regra (ex: AMAZON; AMZN)"
+            value={ruleKeywords}
+            onChange={(event) => setRuleKeywords(event.target.value)}
+          />
+        </div>
+        <button type="button" onClick={handleBatchApply} disabled={selectedCount === 0 || isSaving}>
+          {isSaving ? 'Salvando...' : `Confirmar ${selectedCount} itens`}
+        </button>
+        {error && <p className="text-error">{error}</p>}
+        {message && <p className="text-success">{message}</p>}
+      </div>
+      <div className="confirm-table">
+        <table>
+          <thead>
+            <tr>
+              <th />
+              <th>Descrição</th>
+              <th>Data</th>
+              <th>Valor</th>
+              <th>Tipo</th>
+              <th>Fixo/Var</th>
+              <th>Cat I</th>
+              <th>Cat II</th>
+              <th>Excluir</th>
+              <th>Tags</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.length === 0 ? (
+              <tr>
+                <td colSpan={11}>Nenhuma exceção encontrada.</td>
+              </tr>
+            ) : (
+              transactions.map((transaction) => {
+                const state = editState[transaction.id];
+                const tags = getTags(transaction);
+                return (
+                  <tr key={transaction.id}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.has(transaction.id)}
+                        onChange={() => handleSelect(transaction.id)}
+                      />
+                    </td>
+                    <td>{transaction.desc_raw}</td>
+                    <td>{new Date(transaction.payment_date).toLocaleDateString('pt-BR')}</td>
+                    <td>
+                      {transaction.amount_display ?? transaction.amount} {transaction.currency}
+                    </td>
+                    <td>
+                      <select
+                        value={state?.type ?? ''}
+                        onChange={(event) =>
+                          setEditState((prev) => ({
+                            ...prev,
+                            [transaction.id]: { ...prev[transaction.id], type: event.target.value }
+                          }))
+                        }
+                      >
+                        <option value="">-</option>
+                        {TYPE_OPTIONS.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    <td>
+                      <select
+                        value={state?.fixVar ?? ''}
+                        onChange={(event) =>
+                          setEditState((prev) => ({
+                            ...prev,
+                            [transaction.id]: { ...prev[transaction.id], fixVar: event.target.value }
+                          }))
+                        }
+                      >
+                        <option value="">-</option>
+                        {FIXVAR_OPTIONS.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    <td>
+                      <select
+                        value={state?.category1 ?? ''}
+                        onChange={(event) =>
+                          setEditState((prev) => ({
+                            ...prev,
+                            [transaction.id]: { ...prev[transaction.id], category1: event.target.value }
+                          }))
+                        }
+                      >
+                        <option value="">-</option>
+                        {CATEGORY_OPTIONS.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                    <td>
+                      <input
+                        value={state?.category2 ?? ''}
+                        onChange={(event) =>
+                          setEditState((prev) => ({
+                            ...prev,
+                            [transaction.id]: { ...prev[transaction.id], category2: event.target.value }
+                          }))
+                        }
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        checked={state?.excludeFromBudget ?? false}
+                        onChange={(event) =>
+                          setEditState((prev) => ({
+                            ...prev,
+                            [transaction.id]: { ...prev[transaction.id], excludeFromBudget: event.target.checked }
+                          }))
+                        }
+                      />
+                    </td>
+                    <td>
+                      <div className="tag-list">
+                        {tags.length === 0 ? '-' : tags.map((tag) => <span key={tag}>{tag}</span>)}
+                      </div>
+                    </td>
+                    <td>
+                      <button type="button" onClick={() => handleUpdateRow(transaction.id)} disabled={isSaving}>
+                        Salvar
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 }

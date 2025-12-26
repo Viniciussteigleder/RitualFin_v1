@@ -16,8 +16,12 @@ MVP full-stack com Next.js + Supabase para importar CSVs Miles & More, aplicar r
 
 ## Supabase
 - Migrations estão em `supabase/migrations/000_init.sql`.
-- Funções edge: `supabase/functions/mm-import` e `rules-export-md` (stubs por enquanto).
+- Funções edge: `supabase/functions/mm-import` e `rules-export-md`.
 - Tipos compartilhados em `supabase/types/database.ts`.
+ 
+### Storage (Uploads)
+- Crie o bucket `uploads` (privado) e aplique as policies para `storage.objects`.
+- A UI faz upload em `user/{userId}/uploads/{uploadId}.csv`.
 
 ## Scripts úteis
 - `pnpm dev:web` – starta o Next.js app.

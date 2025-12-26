@@ -8,6 +8,31 @@ create table if not exists profiles (
   photo_url text
 );
 
+create or replace function public.handle_new_user()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  insert into public.profiles (id, locale, currency, name, photo_url)
+  values (
+    new.id,
+    coalesce(new.raw_user_meta_data ->> 'locale', 'pt-BR'),
+    coalesce(new.raw_user_meta_data ->> 'currency', 'EUR'),
+    new.raw_user_meta_data ->> 'name',
+    new.raw_user_meta_data ->> 'avatar_url'
+  )
+  on conflict (id) do nothing;
+  return new;
+end;
+$$;
+
+drop trigger if exists on_auth_user_created on auth.users;
+create trigger on_auth_user_created
+after insert on auth.users
+for each row execute procedure public.handle_new_user();
+
 create table if not exists accounts (
   id uuid primary key default gen_random_uuid(),
   profile_id uuid not null references profiles(id) on delete cascade,
@@ -107,3 +132,55 @@ create table if not exists audit_log (
   payload jsonb,
   created_at timestamptz not null default now()
 );
+
+alter table profiles enable row level security;
+alter table accounts enable row level security;
+alter table uploads enable row level security;
+alter table raw_mm_transactions enable row level security;
+alter table transactions enable row level security;
+alter table rules enable row level security;
+alter table budgets enable row level security;
+alter table audit_log enable row level security;
+
+create policy "Profiles are viewable by owner"
+on profiles for select
+using (id = auth.uid());
+
+create policy "Profiles are updatable by owner"
+on profiles for update
+using (id = auth.uid());
+
+create policy "Accounts are scoped to owner"
+on accounts for all
+using (profile_id = auth.uid())
+with check (profile_id = auth.uid());
+
+create policy "Uploads are scoped to owner"
+on uploads for all
+using (profile_id = auth.uid())
+with check (profile_id = auth.uid());
+
+create policy "Raw transactions are scoped to owner"
+on raw_mm_transactions for all
+using (profile_id = auth.uid())
+with check (profile_id = auth.uid());
+
+create policy "Transactions are scoped to owner"
+on transactions for all
+using (profile_id = auth.uid())
+with check (profile_id = auth.uid());
+
+create policy "Rules are scoped to owner"
+on rules for all
+using (profile_id = auth.uid())
+with check (profile_id = auth.uid());
+
+create policy "Budgets are scoped to owner"
+on budgets for all
+using (profile_id = auth.uid())
+with check (profile_id = auth.uid());
+
+create policy "Audit log is scoped to owner"
+on audit_log for all
+using (profile_id = auth.uid())
+with check (profile_id = auth.uid());
