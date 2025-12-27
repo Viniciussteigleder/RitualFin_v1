@@ -3,6 +3,8 @@
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession, useSupabaseClient } from '@/lib/supabase/provider';
+import Button from '@/components/ui/Button';
+import Input from '@/components/ui/Input';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -92,12 +94,16 @@ export default function LoginPage() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <h1>Entrar no RitualFin</h1>
-        <p className="muted">Use Google ou email + senha (Supabase Auth).</p>
+        <div className="rf-logo">R</div>
+        <div>
+          <p className="rf-sidebar-title">RitualFin</p>
+          <h1>Acesse sua conta</h1>
+          <p className="muted">Gerencie suas finanças com clareza.</p>
+        </div>
         <form onSubmit={handleSignIn} className="login-form">
           <label>
             Email
-            <input
+            <Input
               type="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
@@ -106,8 +112,13 @@ export default function LoginPage() {
             />
           </label>
           <label>
-            Senha
-            <input
+            <div className="login-password-header">
+              <span>Senha</span>
+              <a href="#" className="muted" onClick={(event) => event.preventDefault()}>
+                Esqueceu?
+              </a>
+            </div>
+            <Input
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
@@ -115,21 +126,21 @@ export default function LoginPage() {
               autoComplete="current-password"
             />
           </label>
-          <button type="submit" disabled={isSubmitting}>
+          <Button type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Processando...' : 'Entrar'}
-          </button>
+          </Button>
         </form>
-        <button type="button" className="secondary" onClick={handleSignUp} disabled={isSubmitting}>
-          Criar conta com este email
-        </button>
-        <div className="divider">ou</div>
-        <button type="button" className="google" onClick={handleGoogleSignIn} disabled={isSubmitting}>
+        <Button variant="secondary" onClick={handleGoogleSignIn} disabled={isSubmitting}>
           Continuar com Google
-        </button>
+        </Button>
+        <div className="login-divider">ou</div>
+        <Button variant="ghost" onClick={handleSignUp} disabled={isSubmitting}>
+          Cadastre-se
+        </Button>
         {devShortcutAvailable && (
-          <button type="button" className="secondary" onClick={() => (window.location.href = '/dev/autologin')}>
+          <Button variant="secondary" onClick={() => (window.location.href = '/dev/autologin')}>
             Autologin (dev)
-          </button>
+          </Button>
         )}
         {error && <p className="text-error">{error}</p>}
         {message && <p className="text-success">{message}</p>}

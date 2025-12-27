@@ -3,6 +3,14 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSupabaseClient } from '@/lib/supabase/provider';
 import { formatCurrency } from '@/lib/format/money';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
+import Input from '@/components/ui/Input';
+import Select from '@/components/ui/Select';
+import { Table, TableContainer } from '@/components/ui/Table';
+import EmptyState from '@/components/ui/EmptyState';
+import Tag from '@/components/ui/Tag';
+import NavTabs from '@/components/ui/NavTabs';
 
 type TransactionRecord = {
   id: string;
@@ -228,165 +236,204 @@ export default function PainelPage() {
     await loadDashboard();
   };
 
+  const totalSpent = orderedCategories.reduce((sum, entry) => sum + entry.spent, 0);
+  const donutStyle = {
+    background: totalSpent
+      ? `conic-gradient(#22c55e 0deg ${Math.min(360, (orderedCategories[0]?.spent ?? 0) / totalSpent * 360)}deg, #bbf7d0 0deg 240deg, #dcfce7 0deg 300deg, #e5e7eb 0deg)`
+      : undefined
+  };
+
   return (
     <section className="dashboard-page">
       <header className="dashboard-header">
         <div>
-          <h1>Painel mensal</h1>
-          <p>Resumo do mês selecionado, com projeção e drill-down.</p>
+          <h1>Painel Financeiro</h1>
+          <p className="muted">Visão geral das suas finanças este mês.</p>
+          <NavTabs
+            tabs={[
+              { label: 'Painel', href: '/painel', active: true },
+              { label: 'Transações', href: '/confirmar' },
+              { label: 'Orçamento', href: '/regras' }
+            ]}
+          />
         </div>
-        <div className="dashboard-filters">
-          <label>
-            Mês
-            <input type="month" value={month} onChange={(event) => setMonth(event.target.value)} />
-          </label>
-          <label>
-            Status
-            <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
+        <div className="dashboard-actions">
+          <Button variant="primary" onClick={() => (window.location.href = '/uploads')}>
+            Upload CSV
+          </Button>
+          <div className="dashboard-filters">
+            <Input type="month" value={month} onChange={(event) => setMonth(event.target.value)} />
+            <Select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
               <option value="Processed">Processed</option>
               <option value="">Todos</option>
               <option value="Pending">Pending</option>
               <option value="Declined">Declined</option>
-            </select>
-          </label>
+            </Select>
+          </div>
         </div>
       </header>
 
-      <div className="dashboard-cards">
-        <div className="dashboard-card">
-          <h3>Spent</h3>
-          <p>{formatCurrency(spent)}</p>
-        </div>
-        <div className="dashboard-card">
-          <h3>Receitas</h3>
-          <p>{formatCurrency(receitas)}</p>
-        </div>
-        <div className="dashboard-card">
-          <h3>Orçamento</h3>
-          <p>{formatCurrency(totalBudget)}</p>
-          <span className={remaining >= 0 ? 'positive' : 'negative'}>
-            Remaining {formatCurrency(remaining)}
-          </span>
-        </div>
-        <div className="dashboard-card">
-          <h3>Projeção</h3>
-          <p>{formatCurrency(projection.projection)}</p>
-          <small>
-            {formatCurrency(projection.spentSoFar)} + {formatCurrency(projection.fixedRemaining)} +{' '}
-            {formatCurrency(projection.variableRunRate)} x {projection.daysRemaining} dias
-          </small>
-        </div>
-      </div>
-
-      <div className="dashboard-grid">
-      <div className="dashboard-panel">
-        <h2>Gastos por categoria</h2>
-        <div className="category-list">
-            {orderedCategories.length === 0 ? (
-              <p className="muted">Nenhuma despesa categorizada no período.</p>
-            ) : (
-              orderedCategories.map((entry) => (
-              <button
-                key={entry.category}
-                type="button"
-                className={entry.category === selectedCategory ? 'active' : ''}
-                onClick={() => setSelectedCategory(entry.category)}
-              >
-                <span>{entry.category}</span>
-                <span>{formatCurrency(entry.spent)}</span>
-                <span className="bar" style={{ width: `${Math.min(100, entry.spent / spent * 100)}%` }} />
-              </button>
-              ))
-            )}
-        </div>
-      </div>
-
-        <div className="dashboard-panel">
-          <h2>Orçamentos</h2>
-          <div className="budget-form">
-            <select value={budgetCategory} onChange={(event) => setBudgetCategory(event.target.value)}>
-              {CATEGORY_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-            <input
-              placeholder="Valor"
-              value={budgetAmount}
-              onChange={(event) => setBudgetAmount(event.target.value)}
-            />
-            <button type="button" onClick={handleAddBudget}>
-              Adicionar
-            </button>
-          </div>
-          <ul className="budget-list">
-            {budgets.map((budget) => (
-              <li key={budget.id}>
-                <span>{budget.category_1 ?? 'Total'}</span>
-                <span>{formatCurrency(budget.amount)}</span>
-                <button type="button" onClick={() => handleDeleteBudget(budget.id)}>
-                  Remover
-                </button>
-              </li>
-            ))}
-            {budgets.length === 0 && <li>Nenhum orçamento definido.</li>}
-          </ul>
-        </div>
-      </div>
-
-      <div className="dashboard-panel">
-        <h2>Drill-down: {selectedCategory}</h2>
-        <input
-          className="search-input"
-          placeholder="Buscar descrição"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
+      {transactions.length === 0 ? (
+        <EmptyState
+          title="Vamos começar o seu ritual financeiro"
+          description="Este painel está vazio porque ainda não temos dados. Envie o extrato Miles & More para começar."
+          ctaLabel="Enviar extrato agora"
+          onCtaClick={() => (window.location.href = '/uploads')}
         />
-        <table className="dashboard-table">
-          <thead>
-            <tr>
-              <th>Descrição</th>
-              <th>Data</th>
-              <th>Valor</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {drilldownTransactions.length === 0 ? (
-              <tr>
-                <td colSpan={4}>Nenhuma transação encontrada.</td>
-              </tr>
-            ) : (
-              drilldownTransactions.map((tx) => (
-                <tr key={tx.id}>
-                  <td>{tx.desc_raw}</td>
-                  <td>{new Date(tx.payment_date).toLocaleDateString('pt-BR')}</td>
-                  <td>{formatCurrency(tx.amount)}</td>
-                  <td>{tx.status ?? '-'}</td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+      ) : (
+        <>
+          <div className="dashboard-cards">
+            <Card variant="kpi">
+              <span className="muted">Gasto até agora</span>
+              <span className="dashboard-kpi-value">{formatCurrency(spent)}</span>
+              <Tag tone="green">+12% vs mês anterior</Tag>
+            </Card>
+            <Card variant="kpi">
+              <span className="muted">Receitas do mês</span>
+              <span className="dashboard-kpi-value">{formatCurrency(receitas)}</span>
+              <Tag tone="green">+5% vs mês anterior</Tag>
+            </Card>
+            <Card variant="kpi">
+              <span className="muted">Orçamento</span>
+              <span className="dashboard-kpi-value">{formatCurrency(totalBudget)}</span>
+              <Tag tone="blue">Remaining {formatCurrency(remaining)}</Tag>
+            </Card>
+            <Card variant="kpi">
+              <span className="muted">Projeção do mês</span>
+              <span className="dashboard-kpi-value">{formatCurrency(projection.projection)}</span>
+              <span className="muted">
+                {formatCurrency(projection.spentSoFar)} + {formatCurrency(projection.fixedRemaining)} +{' '}
+                {formatCurrency(projection.variableRunRate)} x {projection.daysRemaining} dias
+              </span>
+            </Card>
+          </div>
 
-      <div className="dashboard-panel">
-        <h2>Recentes</h2>
-        <ul className="recent-list">
-          {recentTransactions.length === 0 ? (
-            <li>Nenhuma transação recente.</li>
-          ) : (
-            recentTransactions.map((tx) => (
-              <li key={tx.id}>
-                <span>{tx.desc_raw}</span>
-                <span>{new Date(tx.payment_date).toLocaleDateString('pt-BR')}</span>
-                <span>{formatCurrency(tx.amount)}</span>
-              </li>
-            ))
-          )}
-        </ul>
-      </div>
+          <div className="dashboard-grid">
+            <Card className="rf-card-default">
+              <h2>Gastos por Categoria</h2>
+              <div className="donut" style={donutStyle}>
+                <div className="donut-center">Total {formatCurrency(totalSpent)}</div>
+              </div>
+              <div className="category-list">
+                {orderedCategories.length === 0 ? (
+                  <p className="muted">Nenhuma despesa categorizada no período.</p>
+                ) : (
+                  orderedCategories.map((entry) => (
+                    <button
+                      key={entry.category}
+                      type="button"
+                      className={entry.category === selectedCategory ? 'active' : ''}
+                      onClick={() => setSelectedCategory(entry.category)}
+                    >
+                      <span>{entry.category}</span>
+                      <span>{formatCurrency(entry.spent)}</span>
+                    </button>
+                  ))
+                )}
+              </div>
+            </Card>
+
+            <Card className="rf-card-default">
+              <h2>Transações Recentes</h2>
+              <TableContainer>
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>Data</th>
+                      <th>Descrição</th>
+                      <th>Categoria</th>
+                      <th>Valor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {recentTransactions.map((tx) => (
+                      <tr key={tx.id}>
+                        <td>{new Date(tx.payment_date).toLocaleDateString('pt-BR')}</td>
+                        <td>{tx.desc_raw}</td>
+                        <td>
+                          <Tag tone="green">{tx.category_1 ?? 'Outros'}</Tag>
+                        </td>
+                        <td>{formatCurrency(tx.amount)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </TableContainer>
+            </Card>
+          </div>
+
+          <div className="dashboard-grid">
+            <Card className="rf-card-default">
+              <h2>Drill-down</h2>
+              <Input
+                variant="search"
+                placeholder="Buscar descrição"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+              />
+              <TableContainer>
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>Descrição</th>
+                      <th>Data</th>
+                      <th>Valor</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {drilldownTransactions.length === 0 ? (
+                      <tr>
+                        <td colSpan={4}>Nenhuma transação encontrada.</td>
+                      </tr>
+                    ) : (
+                      drilldownTransactions.map((tx) => (
+                        <tr key={tx.id}>
+                          <td>{tx.desc_raw}</td>
+                          <td>{new Date(tx.payment_date).toLocaleDateString('pt-BR')}</td>
+                          <td>{formatCurrency(tx.amount)}</td>
+                          <td>{tx.status ?? '-'}</td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </Table>
+              </TableContainer>
+            </Card>
+
+            <Card className="rf-card-default">
+              <h2>Orçamentos</h2>
+              <div className="budget-form">
+                <Select value={budgetCategory} onChange={(event) => setBudgetCategory(event.target.value)}>
+                  {CATEGORY_OPTIONS.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </Select>
+                <Input
+                  placeholder="Valor"
+                  value={budgetAmount}
+                  onChange={(event) => setBudgetAmount(event.target.value)}
+                />
+                <Button onClick={handleAddBudget}>Adicionar</Button>
+              </div>
+              <ul className="budget-list">
+                {budgets.map((budget) => (
+                  <li key={budget.id}>
+                    <span>{budget.category_1 ?? 'Total'}</span>
+                    <span>{formatCurrency(budget.amount)}</span>
+                    <Button variant="ghost" size="sm" onClick={() => handleDeleteBudget(budget.id)}>
+                      Remover
+                    </Button>
+                  </li>
+                ))}
+                {budgets.length === 0 && <li>Nenhum orçamento definido.</li>}
+              </ul>
+            </Card>
+          </div>
+        </>
+      )}
 
       {error && <p className="text-error">{error}</p>}
       {message && <p className="text-success">{message}</p>}

@@ -2,6 +2,13 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSupabaseClient } from '@/lib/supabase/provider';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
+import Badge from '@/components/ui/Badge';
+import Input from '@/components/ui/Input';
+import Select from '@/components/ui/Select';
+import Tag from '@/components/ui/Tag';
+import { Table, TableContainer } from '@/components/ui/Table';
 
 type TransactionRecord = {
   id: string;
@@ -59,6 +66,7 @@ export default function ConfirmarPage() {
   const [batchExclude, setBatchExclude] = useState(false);
   const [createRule, setCreateRule] = useState(true);
   const [ruleKeywords, setRuleKeywords] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
@@ -241,17 +249,22 @@ export default function ConfirmarPage() {
   };
 
   const selectedCount = selectedIds.size;
+  const filteredTransactions = useMemo(() => {
+    if (!searchTerm.trim()) return transactions;
+    const term = searchTerm.toLowerCase();
+    return transactions.filter((tx) => tx.desc_raw.toLowerCase().includes(term));
+  }, [transactions, searchTerm]);
   const getTags = (tx: TransactionRecord) => {
-    const tags: string[] = [];
+    const tags: Array<{ label: string; tone: 'amber' | 'red' | 'blue' }> = [];
     if (tx.needs_review) {
       if (tx.rule_miss) {
-        tags.push('Sem match');
+        tags.push({ label: 'Sem match', tone: 'amber' });
       }
       if (tx.rule_conflict) {
-        tags.push('Conflito');
+        tags.push({ label: 'Conflito', tone: 'red' });
       }
       if (tx.duplicate_suspect) {
-        tags.push('Suspeita duplicata');
+        tags.push({ label: 'Duplicado?', tone: 'blue' });
       }
     }
     return tags;
@@ -261,65 +274,69 @@ export default function ConfirmarPage() {
     <section className="confirm-page">
       <header className="confirm-header">
         <div>
-          <h1>Confirmar</h1>
-          <p>Revise exceções, conflitos e duplicatas suspeitas.</p>
+          <h1>Pedidos de Confirmação</h1>
+          <p className="muted">Analise os itens ambíguos para garantir a precisão do orçamento mensal.</p>
         </div>
         <div className="confirm-filters">
-          <label>
-            Mês
-            <input type="month" value={month} onChange={(event) => setMonth(event.target.value)} />
-          </label>
-          <label>
-            Status
-            <select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
-              <option value="Processed">Processed</option>
-              <option value="">Todos</option>
-              <option value="Pending">Pending</option>
-              <option value="Declined">Declined</option>
-            </select>
-          </label>
+          <Input
+            variant="search"
+            placeholder="Buscar transações, categorias..."
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+          />
+          <Input type="month" value={month} onChange={(event) => setMonth(event.target.value)} />
+          <Select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}>
+            <option value="Processed">Processed</option>
+            <option value="">Todos</option>
+            <option value="Pending">Pending</option>
+            <option value="Declined">Declined</option>
+          </Select>
         </div>
       </header>
-      <div className="confirm-batch">
+
+      <div className="dashboard-cards">
+        <Card variant="kpi">
+          <span className="muted">Total pendente</span>
+          <span className="dashboard-kpi-value">{transactions.length}</span>
+        </Card>
+        <Card variant="kpi">
+          <span className="muted">Sem categoria</span>
+          <span className="dashboard-kpi-value">{transactions.filter((t) => t.rule_miss).length}</span>
+        </Card>
+        <Card variant="kpi">
+          <span className="muted">Conflitos</span>
+          <span className="dashboard-kpi-value">{transactions.filter((t) => t.rule_conflict).length}</span>
+        </Card>
+      </div>
+
+      <Card className="rf-card-default">
         <h2>Aplicar em lote</h2>
         <div className="confirm-grid">
-          <label>
-            Tipo
-            <select value={batchType} onChange={(event) => setBatchType(event.target.value)}>
-              <option value="">Manter</option>
-              {TYPE_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Fixo/Var
-            <select value={batchFixVar} onChange={(event) => setBatchFixVar(event.target.value)}>
-              <option value="">Manter</option>
-              {FIXVAR_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Categoria I
-            <select value={batchCategory1} onChange={(event) => setBatchCategory1(event.target.value)}>
-              <option value="">Manter</option>
-              {CATEGORY_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Categoria II
-            <input value={batchCategory2} onChange={(event) => setBatchCategory2(event.target.value)} />
-          </label>
+          <Select value={batchType} onChange={(event) => setBatchType(event.target.value)}>
+            <option value="">Tipo</option>
+            {TYPE_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </Select>
+          <Select value={batchFixVar} onChange={(event) => setBatchFixVar(event.target.value)}>
+            <option value="">Fixo/Var</option>
+            {FIXVAR_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </Select>
+          <Select value={batchCategory1} onChange={(event) => setBatchCategory1(event.target.value)}>
+            <option value="">Categoria</option>
+            {CATEGORY_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </Select>
+          <Input placeholder="Categoria II" value={batchCategory2} onChange={(event) => setBatchCategory2(event.target.value)} />
           <label className="confirm-toggle">
             <input
               type="checkbox"
@@ -334,152 +351,107 @@ export default function ConfirmarPage() {
             <input type="checkbox" checked={createRule} onChange={(event) => setCreateRule(event.target.checked)} />
             Criar/atualizar regra automática
           </label>
-          <input
+          <Input
             placeholder="Keyword para regra (ex: AMAZON; AMZN)"
             value={ruleKeywords}
             onChange={(event) => setRuleKeywords(event.target.value)}
           />
         </div>
-        <button type="button" onClick={handleBatchApply} disabled={selectedCount === 0 || isSaving}>
+        <Button onClick={handleBatchApply} disabled={selectedCount === 0 || isSaving}>
           {isSaving ? 'Salvando...' : `Confirmar ${selectedCount} itens`}
-        </button>
+        </Button>
         {error && <p className="text-error">{error}</p>}
         {message && <p className="text-success">{message}</p>}
-      </div>
-      <div className="confirm-table">
-        <table>
-          <thead>
-            <tr>
-              <th />
-              <th>Descrição</th>
-              <th>Data</th>
-              <th>Valor</th>
-              <th>Tipo</th>
-              <th>Fixo/Var</th>
-              <th>Cat I</th>
-              <th>Cat II</th>
-              <th>Excluir</th>
-              <th>Tags</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {transactions.length === 0 ? (
+      </Card>
+
+      <Card className="rf-card-default">
+        <TableContainer>
+          <Table>
+            <thead>
               <tr>
-                <td colSpan={11}>Nenhuma exceção encontrada.</td>
+                <th />
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th>Categoria</th>
+                <th>Tags</th>
+                <th>Confirmar</th>
               </tr>
-            ) : (
-              transactions.map((transaction) => {
-                const state = editState[transaction.id];
-                const tags = getTags(transaction);
-                return (
-                  <tr key={transaction.id}>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={selectedIds.has(transaction.id)}
-                        onChange={() => handleSelect(transaction.id)}
-                      />
-                    </td>
-                    <td>{transaction.desc_raw}</td>
-                    <td>{new Date(transaction.payment_date).toLocaleDateString('pt-BR')}</td>
-                    <td>
-                      {transaction.amount_display ?? transaction.amount} {transaction.currency}
-                    </td>
-                    <td>
-                      <select
-                        value={state?.type ?? ''}
-                        onChange={(event) =>
-                          setEditState((prev) => ({
-                            ...prev,
-                            [transaction.id]: { ...prev[transaction.id], type: event.target.value }
-                          }))
-                        }
-                      >
-                        <option value="">-</option>
-                        {TYPE_OPTIONS.map((option) => (
-                          <option key={option} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                    </td>
-                    <td>
-                      <select
-                        value={state?.fixVar ?? ''}
-                        onChange={(event) =>
-                          setEditState((prev) => ({
-                            ...prev,
-                            [transaction.id]: { ...prev[transaction.id], fixVar: event.target.value }
-                          }))
-                        }
-                      >
-                        <option value="">-</option>
-                        {FIXVAR_OPTIONS.map((option) => (
-                          <option key={option} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                    </td>
-                    <td>
-                      <select
-                        value={state?.category1 ?? ''}
-                        onChange={(event) =>
-                          setEditState((prev) => ({
-                            ...prev,
-                            [transaction.id]: { ...prev[transaction.id], category1: event.target.value }
-                          }))
-                        }
-                      >
-                        <option value="">-</option>
-                        {CATEGORY_OPTIONS.map((option) => (
-                          <option key={option} value={option}>
-                            {option}
-                          </option>
-                        ))}
-                      </select>
-                    </td>
-                    <td>
-                      <input
-                        value={state?.category2 ?? ''}
-                        onChange={(event) =>
-                          setEditState((prev) => ({
-                            ...prev,
-                            [transaction.id]: { ...prev[transaction.id], category2: event.target.value }
-                          }))
-                        }
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        checked={state?.excludeFromBudget ?? false}
-                        onChange={(event) =>
-                          setEditState((prev) => ({
-                            ...prev,
-                            [transaction.id]: { ...prev[transaction.id], excludeFromBudget: event.target.checked }
-                          }))
-                        }
-                      />
-                    </td>
-                    <td>
-                      <div className="tag-list">
-                        {tags.length === 0 ? '-' : tags.map((tag) => <span key={tag}>{tag}</span>)}
-                      </div>
-                    </td>
-                    <td>
-                      <button type="button" onClick={() => handleUpdateRow(transaction.id)} disabled={isSaving}>
-                        Salvar
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })
-            )}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {filteredTransactions.length === 0 ? (
+                <tr>
+                  <td colSpan={8}>Nenhuma exceção encontrada.</td>
+                </tr>
+              ) : (
+                filteredTransactions.map((transaction) => {
+                  const state = editState[transaction.id];
+                  const tags = getTags(transaction);
+                  return (
+                    <tr key={transaction.id}>
+                      <td>
+                        <input
+                          type="checkbox"
+                          aria-label={`Selecionar ${transaction.desc_raw}`}
+                          checked={selectedIds.has(transaction.id)}
+                          onChange={() => handleSelect(transaction.id)}
+                        />
+                      </td>
+                      <td>{new Date(transaction.payment_date).toLocaleDateString('pt-BR')}</td>
+                      <td>{transaction.desc_raw}</td>
+                      <td>
+                        {transaction.amount_display ?? transaction.amount} {transaction.currency}
+                      </td>
+                      <td>
+                        {transaction.rule_conflict ? (
+                          <Badge tone="warning">Conflito</Badge>
+                        ) : transaction.rule_miss ? (
+                          <Badge tone="info">Sem categoria</Badge>
+                        ) : (
+                          <Badge tone="neutral">Sugestão</Badge>
+                        )}
+                      </td>
+                      <td>
+                        <Select
+                          value={state?.category1 ?? ''}
+                          onChange={(event) =>
+                            setEditState((prev) => ({
+                              ...prev,
+                              [transaction.id]: { ...prev[transaction.id], category1: event.target.value }
+                            }))
+                          }
+                        >
+                          <option value="">Selecionar</option>
+                          {CATEGORY_OPTIONS.map((option) => (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
+                          ))}
+                        </Select>
+                      </td>
+                      <td>
+                        {tags.length === 0
+                          ? '-'
+                          : tags.map((tag) => (
+                              <Tag key={tag.label} tone={tag.tone}>
+                                {tag.label}
+                              </Tag>
+                            ))}
+                      </td>
+                      <td>
+                        <Button size="sm" onClick={() => handleUpdateRow(transaction.id)} disabled={isSaving}>
+                          Salvar
+                        </Button>
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+          </Table>
+        </TableContainer>
+      </Card>
     </section>
   );
 }

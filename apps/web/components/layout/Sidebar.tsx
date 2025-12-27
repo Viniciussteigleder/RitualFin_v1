@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import clsx from 'clsx';
 import { useSupabaseClient, useSession } from '@/lib/supabase/provider';
 
 const NAV_ITEMS = [
@@ -14,6 +15,7 @@ const NAV_ITEMS = [
 
 export default function Sidebar() {
   const router = useRouter();
+  const pathname = usePathname();
   const supabaseClient = useSupabaseClient();
   const session = useSession();
 
@@ -25,21 +27,37 @@ export default function Sidebar() {
   const email = session?.user?.email;
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar-header">
-        <p className="sidebar-title">RitualFin</p>
-        <p className="sidebar-subtitle">Bem-vindo{email ? `, ${email}` : ''}</p>
+    <aside className="rf-sidebar">
+      <div className="rf-sidebar-brand">
+        <div className="rf-logo">R</div>
+        <div>
+          <div className="rf-sidebar-title">RitualFin</div>
+          <div className="muted">{email || 'Gestão financeira'}</div>
+        </div>
       </div>
-      <nav className="sidebar-nav">
+      <nav className="rf-sidebar-nav">
         {NAV_ITEMS.map((item) => (
-          <Link key={item.href} href={item.href} className="sidebar-link">
-            {item.label}
+          <Link
+            key={item.href}
+            href={item.href}
+            className={clsx('rf-sidebar-link', pathname.startsWith(item.href) && 'is-active')}
+          >
+            <span>{item.label}</span>
           </Link>
         ))}
       </nav>
-      <button type="button" className="sidebar-logout" onClick={handleSignOut}>
-        Logout
-      </button>
+      <div className="rf-sidebar-footer">
+        <div className="rf-sidebar-brand">
+          <div className="rf-avatar">{email ? email[0].toUpperCase() : 'R'}</div>
+          <div>
+            <div className="rf-sidebar-title">{email || 'Usuário'}</div>
+            <div className="muted">Plano MVP</div>
+          </div>
+        </div>
+        <button type="button" className="rf-button rf-button-secondary rf-button-sm" onClick={handleSignOut}>
+          Logout
+        </button>
+      </div>
     </aside>
   );
 }

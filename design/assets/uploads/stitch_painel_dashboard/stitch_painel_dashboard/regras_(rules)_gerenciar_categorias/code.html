@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RitualFin - Gerenciar Regras</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25f46a",
+                        "primary-dark": "#20d85c",
+                        "background-light": "#f5f8f6",
+                        "background-dark": "#102216",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a3322",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="w-64 flex-col hidden lg:flex border-r border-slate-200 dark:border-slate-800 bg-surface-light dark:bg-surface-dark h-full">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="font-black text-xl text-black">R</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-base font-bold leading-none text-slate-900 dark:text-white">RitualFin</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Gestão Financeira</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 gap-2 flex flex-col">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">pie_chart</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">payments</span>
+<span class="text-sm font-medium">Transações</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/15 text-slate-900 dark:text-white" href="#">
+<span class="material-symbols-outlined icon-fill text-slate-900 dark:text-primary">tune</span>
+<span class="text-sm font-bold">Regras</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white">calculate</span>
+<span class="text-sm font-medium">Orçamento</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-slate-200 dark:bg-slate-700 bg-cover bg-center" data-alt="User profile avatar showing a smiling person" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD2qdwGlTSz6H4pheaMYWeklIXQa1450lNC3NyDM5NJlvdYljoL6tMgObz_ct32jwh4pY3jkPCwvvjm5s6ZYoPcS6jV_0PqpEs4uVJfVhxdfwIC5GRR5umnlCK463kEYYXTOpQ_QrcabxsJ00yBZ-0ThtzT9xMNJhp-lXDNNEUo2G8CONleyalixmPZ68iZNpSR1QsIANICQOrqbHRxyJGMBiqLtF8OMbjNlUZMmM5misgxyAdGJiy_v88n6JMRRe5zT25FcVNtM94');"></div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-slate-900 dark:text-white">João Silva</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">joao@example.com</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden bg-background-light dark:bg-background-dark relative">
+<div class="flex-none p-6 pb-0 lg:p-10 lg:pb-0 max-w-[1400px] w-full mx-auto">
+<div class="flex items-center gap-2 mb-4 text-sm">
+<span class="text-slate-500 dark:text-slate-400 font-medium">RitualFin</span>
+<span class="text-slate-400 dark:text-slate-600">/</span>
+<span class="text-slate-500 dark:text-slate-400 font-medium">Configurações</span>
+<span class="text-slate-400 dark:text-slate-600">/</span>
+<span class="text-green-700 dark:text-primary font-semibold">Regras</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h1 class="text-3xl md:text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-2">
+                        Gerenciar Regras
+                    </h1>
+<p class="text-slate-600 dark:text-slate-400 max-w-xl text-base">
+                        Defina como o RitualFin organiza suas importações automaticamente. Ajuste categorias e palavras-chave.
+                    </p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark transition-all text-black font-bold h-11 px-6 rounded-lg shadow-sm shadow-primary/30 active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                    Nova Regra
+                </button>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-1 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center gap-2 mb-6">
+<div class="relative flex-1 w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full h-12 pl-11 pr-4 bg-transparent border-none rounded-lg focus:ring-2 focus:ring-primary/50 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600" placeholder="Buscar por palavra-chave ou categoria..." type="text"/>
+</div>
+<div class="flex items-center gap-2 w-full md:w-auto p-2 md:p-0 md:pr-2">
+<div class="h-6 w-px bg-slate-200 dark:bg-slate-700 hidden md:block mx-1"></div>
+<button class="flex items-center justify-between gap-2 h-9 px-3 rounded-lg bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium transition-colors border border-slate-200 dark:border-slate-700">
+<span>Tipo: Todos</span>
+<span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center justify-between gap-2 h-9 px-3 rounded-lg bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium transition-colors border border-slate-200 dark:border-slate-700">
+<span>Fixo/Var: Todos</span>
+<span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-auto px-6 pb-6 lg:px-10 lg:pb-10 w-full max-w-[1400px] mx-auto">
+<div class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden min-w-[800px]">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="py-4 pl-6 pr-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-[30%]">
+                            Palavras-Chave (Keywords)
+                        </th>
+<th class="py-4 px-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-[25%]">
+                            Categoria Aplicada
+                        </th>
+<th class="py-4 px-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-[15%]">
+                            Tipo
+                        </th>
+<th class="py-4 px-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-[15%]">
+                            Recorrência
+                        </th>
+<th class="py-4 pl-4 pr-6 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-right w-[15%]">
+                            Ações
+                        </th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 pl-6 pr-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">NETFLIX, SPOTIFY, APPLE TV</span>
+<span class="text-xs text-slate-400 font-normal mt-0.5">Contém qualquer um dos termos</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-purple-500"></div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Assinaturas</span>
+<span class="material-symbols-outlined text-[12px] text-slate-400">arrow_forward_ios</span>
+<span class="text-sm text-slate-500 dark:text-slate-400">Streaming</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-100 dark:border-red-800/30">
+                                        Despesa
+                                    </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-[14px]">push_pin</span>
+                                        Fixo
+                                    </span>
+</td>
+<td class="py-4 pl-4 pr-6 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-primary/10 text-slate-500 hover:text-green-600 dark:text-slate-400 dark:hover:text-primary transition-colors" title="Editar">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-400 hover:text-red-600 dark:text-slate-500 dark:hover:text-red-400 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 pl-6 pr-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">STARBUCKS, PADARIA, IFOOD</span>
+<span class="text-xs text-slate-400 font-normal mt-0.5">Contém qualquer um dos termos</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-orange-400"></div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Alimentação</span>
+<span class="material-symbols-outlined text-[12px] text-slate-400">arrow_forward_ios</span>
+<span class="text-sm text-slate-500 dark:text-slate-400">Café/Lanches</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-100 dark:border-red-800/30">
+                                        Despesa
+                                    </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-transparent text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 border-dashed">
+<span class="material-symbols-outlined text-[14px]">show_chart</span>
+                                        Variável
+                                    </span>
+</td>
+<td class="py-4 pl-4 pr-6 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-primary/10 text-slate-500 hover:text-green-600 dark:text-slate-400 dark:hover:text-primary transition-colors" title="Editar">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-400 hover:text-red-600 dark:text-slate-500 dark:hover:text-red-400 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 pl-6 pr-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">UBER, 99APP, LIME</span>
+<span class="text-xs text-slate-400 font-normal mt-0.5">Contém qualquer um dos termos</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-blue-500"></div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Transporte</span>
+<span class="material-symbols-outlined text-[12px] text-slate-400">arrow_forward_ios</span>
+<span class="text-sm text-slate-500 dark:text-slate-400">Táxi/Apps</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-100 dark:border-red-800/30">
+                                        Despesa
+                                    </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-white dark:bg-transparent text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 border-dashed">
+<span class="material-symbols-outlined text-[14px]">show_chart</span>
+                                        Variável
+                                    </span>
+</td>
+<td class="py-4 pl-4 pr-6 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-primary/10 text-slate-500 hover:text-green-600 dark:text-slate-400 dark:hover:text-primary transition-colors" title="Editar">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-400 hover:text-red-600 dark:text-slate-500 dark:hover:text-red-400 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 pl-6 pr-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">PAGAMENTO SALARIO, TED RECEBIDA</span>
+<span class="text-xs text-slate-400 font-normal mt-0.5">Começa com termos exatos</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Receita</span>
+<span class="material-symbols-outlined text-[12px] text-slate-400">arrow_forward_ios</span>
+<span class="text-sm text-slate-500 dark:text-slate-400">Salário</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-100 dark:border-green-800/30">
+                                        Receita
+                                    </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-[14px]">push_pin</span>
+                                        Fixo
+                                    </span>
+</td>
+<td class="py-4 pl-4 pr-6 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-primary/10 text-slate-500 hover:text-green-600 dark:text-slate-400 dark:hover:text-primary transition-colors" title="Editar">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-400 hover:text-red-600 dark:text-slate-500 dark:hover:text-red-400 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="group hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="py-4 pl-6 pr-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">AWS, GOOGLE CLOUD</span>
+<span class="text-xs text-slate-400 font-normal mt-0.5">Contém qualquer um dos termos</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-slate-400"></div>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-300">Infraestrutura</span>
+<span class="material-symbols-outlined text-[12px] text-slate-400">arrow_forward_ios</span>
+<span class="text-sm text-slate-500 dark:text-slate-400">Servidores</span>
+</div>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-100 dark:border-red-800/30">
+                                        Despesa
+                                    </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-[14px]">push_pin</span>
+                                        Fixo
+                                    </span>
+</td>
+<td class="py-4 pl-4 pr-6 text-right">
+<div class="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg hover:bg-primary/10 text-slate-500 hover:text-green-600 dark:text-slate-400 dark:hover:text-primary transition-colors" title="Editar">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/30 text-slate-400 hover:text-red-600 dark:text-slate-500 dark:hover:text-red-400 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-4 flex items-center justify-between text-sm text-slate-500 dark:text-slate-400 px-2">
+<p>Mostrando 5 de 12 regras</p>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-50">Anterior</button>
+<button class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800">Próxima</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

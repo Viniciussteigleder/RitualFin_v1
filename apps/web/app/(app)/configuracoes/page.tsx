@@ -2,6 +2,10 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { useSupabaseClient } from '@/lib/supabase/provider';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
+import Input from '@/components/ui/Input';
+import Select from '@/components/ui/Select';
 
 type ProfileRecord = {
   id: string;
@@ -98,38 +102,44 @@ export default function ConfiguracoesPage() {
   return (
     <section className="settings-page">
       <header className="settings-header">
-        <h1>Configurações</h1>
-        <p>Perfil e exportação de dados.</p>
+        <h1>Preferências da Conta</h1>
+        <p className="muted">Gerencie sua conta, segurança e personalização do RitualFin.</p>
       </header>
-      <div className="settings-card">
-        <h2>Perfil</h2>
+      <Card className="rf-card-default">
+        <h2>Informações Pessoais</h2>
         <div className="settings-grid">
           <div>
-            <span>Email</span>
+            <span className="muted">E-mail</span>
             <strong>{email || 'Usuário'}</strong>
           </div>
           <div>
-            <span>Locale</span>
+            <span className="muted">Locale</span>
             <strong>{profile?.locale ?? 'pt-BR'}</strong>
           </div>
           <div>
-            <span>Moeda</span>
+            <span className="muted">Moeda</span>
             <strong>{profile?.currency ?? 'EUR'}</strong>
           </div>
         </div>
-      </div>
-      <div className="settings-card">
+      </Card>
+      <Card className="rf-card-default">
         <h2>Exportar CSV</h2>
         <div className="settings-export">
-          <label>
-            Mês
-            <input type="month" value={month} onChange={(event) => setMonth(event.target.value)} />
-          </label>
-          <button type="button" onClick={handleExport}>
-            Exportar Ledger
-          </button>
+          <Input type="month" value={month} onChange={(event) => setMonth(event.target.value)} />
+          <Button onClick={handleExport}>Exportar Ledger</Button>
         </div>
-      </div>
+      </Card>
+      <Card className="rf-card-default">
+        <h2>Preferências Regionais</h2>
+        <div className="settings-grid">
+          <Select defaultValue="pt-BR">
+            <option value="pt-BR">Português (Brasil)</option>
+          </Select>
+          <Select defaultValue="EUR">
+            <option value="EUR">Euro (EUR)</option>
+          </Select>
+        </div>
+      </Card>
       {error && <p className="text-error">{error}</p>}
       {message && <p className="text-success">{message}</p>}
     </section>

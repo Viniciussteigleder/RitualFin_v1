@@ -2,6 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSupabaseClient } from '@/lib/supabase/provider';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
+import Input from '@/components/ui/Input';
+import Select from '@/components/ui/Select';
+import { Table, TableContainer } from '@/components/ui/Table';
+import Tag from '@/components/ui/Tag';
 
 type RuleRecord = {
   id: string;
@@ -112,85 +118,93 @@ export default function RegrasPage() {
     <section className="rules-page">
       <header className="rules-header">
         <div>
-          <h1>Regras</h1>
-          <p>Gerencie keywords e exporte um Markdown atualizado.</p>
+          <h1>Gerenciar Regras</h1>
+          <p className="muted">Defina como o RitualFin organiza suas importações automaticamente.</p>
         </div>
-        <button type="button" onClick={handleExport} className="secondary">
-          Exportar Markdown
-        </button>
+        <div className="rules-actions">
+          <Button variant="secondary" onClick={handleExport}>
+            Exportar Markdown
+          </Button>
+          <Button onClick={handleSubmit} disabled={!canSubmit || isSubmitting}>
+            Nova Regra
+          </Button>
+        </div>
       </header>
-      <div className="rules-form">
+      <Card className="rf-card-default">
         <div className="rules-grid">
-          <label>
-            Tipo
-            <select value={type} onChange={(event) => setType(event.target.value)}>
-              <option value="Despesa">Despesa</option>
-              <option value="Receita">Receita</option>
-            </select>
-          </label>
-          <label>
-            Fixo/Var
-            <select value={fixVar} onChange={(event) => setFixVar(event.target.value)}>
-              <option value="Fixo">Fixo</option>
-              <option value="Variável">Variável</option>
-            </select>
-          </label>
-          <label>
-            Categoria I
-            <select value={category1} onChange={(event) => setCategory1(event.target.value)}>
-              {CATEGORY_OPTIONS.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Categoria II (opcional)
-            <input value={category2} onChange={(event) => setCategory2(event.target.value)} />
-          </label>
+          <Select value={type} onChange={(event) => setType(event.target.value)}>
+            <option value="Despesa">Despesa</option>
+            <option value="Receita">Receita</option>
+          </Select>
+          <Select value={fixVar} onChange={(event) => setFixVar(event.target.value)}>
+            <option value="Fixo">Fixo</option>
+            <option value="Variável">Variável</option>
+          </Select>
+          <Select value={category1} onChange={(event) => setCategory1(event.target.value)}>
+            {CATEGORY_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </Select>
+          <Input value={category2} onChange={(event) => setCategory2(event.target.value)} placeholder="Categoria II" />
         </div>
-        <label>
-          Keywords (separadas por ;)
-          <textarea value={keywords} onChange={(event) => setKeywords(event.target.value)} rows={3} />
-        </label>
-        <button type="button" onClick={handleSubmit} disabled={!canSubmit || isSubmitting}>
+        <Input
+          value={keywords}
+          onChange={(event) => setKeywords(event.target.value)}
+          placeholder="Keywords (separadas por ;)"
+        />
+        <Button onClick={handleSubmit} disabled={!canSubmit || isSubmitting}>
           {isSubmitting ? 'Salvando...' : 'Adicionar regra'}
-        </button>
+        </Button>
         {error && <p className="text-error">{error}</p>}
         {message && <p className="text-success">{message}</p>}
-      </div>
-      <div className="rules-table">
-        <h2>Regras cadastradas</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Tipo</th>
-              <th>Fixo/Var</th>
-              <th>Categoria I</th>
-              <th>Categoria II</th>
-              <th>Keywords</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rules.length === 0 ? (
+      </Card>
+      <Card className="rf-card-default">
+        <div className="rules-header">
+          <h2>Regras cadastradas</h2>
+          <div className="rf-filter-bar">
+            <Input variant="search" placeholder="Buscar por palavra-chave ou categoria..." />
+            <Select variant="pill">
+              <option>Tipo: Todos</option>
+            </Select>
+            <Select variant="pill">
+              <option>Fixo/Var: Todos</option>
+            </Select>
+          </div>
+        </div>
+        <TableContainer>
+          <Table>
+            <thead>
               <tr>
-                <td colSpan={5}>Nenhuma regra cadastrada.</td>
+                <th>Keywords</th>
+                <th>Categoria aplicada</th>
+                <th>Tipo</th>
+                <th>Recorrência</th>
               </tr>
-            ) : (
-              rules.map((rule) => (
-                <tr key={rule.id}>
-                  <td>{rule.type}</td>
-                  <td>{rule.fix_var}</td>
-                  <td>{rule.category_1}</td>
-                  <td>{rule.category_2 ?? '-'}</td>
-                  <td>{rule.keywords}</td>
+            </thead>
+            <tbody>
+              {rules.length === 0 ? (
+                <tr>
+                  <td colSpan={4}>Nenhuma regra cadastrada.</td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+              ) : (
+                rules.map((rule) => (
+                  <tr key={rule.id}>
+                    <td>{rule.keywords}</td>
+                    <td>
+                      <Tag tone="green">{rule.category_1}</Tag>
+                      {rule.category_2 && <span className="muted"> · {rule.category_2}</span>}
+                    </td>
+                    <td>{rule.type}</td>
+                    <td>{rule.fix_var}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </Table>
+        </TableContainer>
+      </Card>
     </section>
   );
 }

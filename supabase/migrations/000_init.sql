@@ -1,4 +1,6 @@
 -- initial schema for RitualFin MVP v1
+create extension if not exists pgcrypto;
+
 create table if not exists profiles (
   id uuid primary key references auth.users(id) on delete cascade,
   created_at timestamptz not null default now(),
@@ -52,26 +54,16 @@ create table if not exists uploads (
   finished_at timestamptz
 );
 
-create table if not exists raw_mm_transactions (
+create table if not exists rules (
   id uuid primary key default gen_random_uuid(),
-  upload_id uuid not null references uploads(id) on delete cascade,
   profile_id uuid not null references profiles(id) on delete cascade,
-  authorised_on date not null,
-  processed_on date,
-  amount text not null,
-  currency text not null,
-  description text not null,
-  payment_type text not null,
-  status text not null,
-  foreign_amount text,
-  foreign_currency text,
-  exchange_rate numeric,
-  fonte text,
-  key_mm_desc text,
-  key_mm text,
-  desc_raw text,
-  desc_norm text,
-  created_at timestamptz not null default now()
+  type text not null,
+  fix_var text not null,
+  category_1 text not null,
+  category_2 text,
+  keywords text not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
 );
 
 create table if not exists transactions (
@@ -103,16 +95,26 @@ create table if not exists transactions (
   created_at timestamptz not null default now()
 );
 
-create table if not exists rules (
+create table if not exists raw_mm_transactions (
   id uuid primary key default gen_random_uuid(),
+  upload_id uuid not null references uploads(id) on delete cascade,
   profile_id uuid not null references profiles(id) on delete cascade,
-  type text not null,
-  fix_var text not null,
-  category_1 text not null,
-  category_2 text,
-  keywords text not null,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  authorised_on date not null,
+  processed_on date,
+  amount text not null,
+  currency text not null,
+  description text not null,
+  payment_type text not null,
+  status text not null,
+  foreign_amount text,
+  foreign_currency text,
+  exchange_rate numeric,
+  fonte text,
+  key_mm_desc text,
+  key_mm text,
+  desc_raw text,
+  desc_norm text,
+  created_at timestamptz not null default now()
 );
 
 create table if not exists budgets (

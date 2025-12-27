@@ -1,7 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState, type ChangeEvent } from 'react';
 import { useSupabaseClient } from '@/lib/supabase/provider';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
+import Badge from '@/components/ui/Badge';
+import { Table, TableContainer } from '@/components/ui/Table';
 
 type UploadRecord = {
   id: string;
@@ -45,7 +49,7 @@ export default function UploadsPage() {
     loadUploads();
   }, [loadUploads]);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selected = event.target.files?.[0] ?? null;
     setFile(selected);
     setError('');
@@ -71,12 +75,6 @@ export default function UploadsPage() {
         throw new Error(error.message);
       }
 
-      const uploadId = data?.uploadId;
-      if (uploadId) {
-        const path = `user/${(await supabaseClient.auth.getUser()).data.user?.id}/uploads/${uploadId}.csv`;
-        await supabaseClient.storage.from('uploads').upload(path, file, { upsert: true });
-      }
-
       setMessage('Upload enviado e processado. Confira o histórico.');
       setFile(null);
       await loadUploads();
@@ -92,54 +90,85 @@ export default function UploadsPage() {
     <section className="uploads-page">
       <header className="uploads-header">
         <div>
-          <h1>Uploads</h1>
-          <p>Envie 1 CSV Miles & More por vez. O sistema processa e atualiza o histórico.</p>
+          <h1>Upload de CSV | Miles & More</h1>
+          <p className="muted">Gerencie seus extratos e importe novas transações para o orçamento mensal.</p>
         </div>
       </header>
-      <div className="upload-card">
-        <label className="upload-drop">
+      <Card className="rf-card-default">
+        <label className="upload-dropzone">
           <input type="file" accept=".csv,text/csv" onChange={handleFileChange} />
-          <span>{fileLabel}</span>
+          <div className="rf-logo">⬆</div>
+          <strong>Arraste seu arquivo CSV aqui</strong>
+          <span className="muted">Ou clique para selecionar do seu computador.</span>
+          <Button variant="secondary" disabled={!file}>
+            {file ? fileLabel : 'Selecionar Arquivo'}
+          </Button>
+          <span className="muted">Suporta apenas arquivos CSV do Miles & More. Limite de 10MB.</span>
         </label>
-        <button type="button" onClick={handleSubmit} disabled={!file || isUploading}>
+        <Button onClick={handleSubmit} disabled={!file || isUploading}>
           {isUploading ? 'Processando...' : 'Enviar CSV'}
-        </button>
+        </Button>
         {error && <p className="text-error">{error}</p>}
         {message && <p className="text-success">{message}</p>}
-      </div>
-      <div className="uploads-table">
-        <h2>Histórico</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Arquivo</th>
-              <th>Status</th>
-              <th>Linhas</th>
-              <th>Início</th>
-              <th>Fim</th>
-            </tr>
-          </thead>
-          <tbody>
-            {uploads.length === 0 ? (
+      </Card>
+      <Card className="rf-card-default">
+        <div className="uploads-header">
+          <h2>Histórico de Importações</h2>
+          <Button variant="ghost">Filtrar</Button>
+        </div>
+        <TableContainer>
+          <Table>
+            <thead>
               <tr>
-                <td colSpan={5}>Nenhum upload ainda.</td>
+                <th>Status</th>
+                <th>Arquivo</th>
+                <th>Data do upload</th>
+                <th>Mês ref.</th>
+                <th>Linhas</th>
               </tr>
-            ) : (
-              uploads.map((upload) => (
-                <tr key={upload.id}>
-                  <td>{upload.filename}</td>
-                  <td>{upload.status}</td>
-                  <td>
-                    {upload.rows_imported}/{upload.rows_total}
-                  </td>
-                  <td>{new Date(upload.started_at).toLocaleString('pt-BR')}</td>
-                  <td>{upload.finished_at ? new Date(upload.finished_at).toLocaleString('pt-BR') : '-'}</td>
+            </thead>
+            <tbody>
+              {uploads.length === 0 ? (
+                <tr>
+                  <td colSpan={5}>Nenhum upload ainda.</td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+              ) : (
+                uploads.map((upload) => (
+                  <tr key={upload.id}>
+                    <td>
+                      <Badge
+                        tone={
+                          upload.status === 'ready'
+                            ? 'success'
+                            : upload.status === 'processing'
+                            ? 'info'
+                            : upload.status === 'error'
+                            ? 'error'
+                            : 'warning'
+                        }
+                      >
+                        {upload.status === 'ready'
+                          ? 'Pronto'
+                          : upload.status === 'processing'
+                          ? 'Processando'
+                          : upload.status === 'error'
+                          ? 'Erro'
+                          : 'Duplicado'}
+                      </Badge>
+                    </td>
+                    <td>{upload.filename}</td>
+                    <td>{new Date(upload.started_at).toLocaleString('pt-BR')}</td>
+                    <td>{upload.finished_at ? new Date(upload.finished_at).toLocaleDateString('pt-BR') : '-'}</td>
+                    <td>
+                      {upload.rows_imported}/{upload.rows_total}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </Table>
+        </TableContainer>
+      </Card>
     </section>
   );
 }

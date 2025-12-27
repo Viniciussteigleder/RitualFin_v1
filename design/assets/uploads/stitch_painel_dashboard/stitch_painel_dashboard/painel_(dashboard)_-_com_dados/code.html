@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RitualFin - Painel Financeiro</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#25f46a",
+              "background-light": "#f5f8f6",
+              "background-dark": "#102216",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1c2e22",
+              "text-primary-light": "#111813",
+              "text-primary-dark": "#f5f8f6",
+              "text-secondary-light": "#608a6e",
+              "text-secondary-dark": "#a0b8a9",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark min-h-screen flex flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#dbe6df] dark:border-[#2a4032] bg-surface-light dark:bg-surface-dark px-6 py-4 lg:px-10 sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-background-dark font-bold text-xl">
+                R
+            </div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] hidden sm:block">RitualFin</h2>
+</div>
+<div class="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+<a class="text-sm font-semibold leading-normal border-b-2 border-primary pb-0.5" href="#">Painel</a>
+<a class="text-sm font-medium leading-normal text-text-secondary-light dark:text-text-secondary-dark hover:text-primary transition-colors" href="#">Transações</a>
+<a class="text-sm font-medium leading-normal text-text-secondary-light dark:text-text-secondary-dark hover:text-primary transition-colors" href="#">Orçamento</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center gap-2 cursor-pointer overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-opacity-90 transition-all text-[#111813] text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-[20px]">upload_file</span>
+<span class="truncate hidden sm:inline">Upload CSV</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-[#dbe6df] dark:border-[#2a4032]" data-alt="User profile avatar placeholder showing a generic silhouette or abstract pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAiV8M0iX6KQaQE_Fvmh2GgT56h-i3oNwGwFQtRdDAi8wsABt569E3PY5i2cmK85D8qJi0LwEpK6OHumw9cjOVNwPD3pGgd5lk8ZMrvdmCuPIgiSr7qokxgp3_oPGXYZoI3fSfCcPzcz0VC-tEHMvjNuK2ZnSIQcn-UH-8-51z09yvyNV_osa9soKNPQnO34xaR7ovGGIf4GxHZWCtf4IoiABVENVz-r1F46VA1Jt3Ii_wqUnXx3SFczGyfEiOSxwHJBQA3pBOGKQk");'></div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-10 py-8 space-y-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="text-3xl font-bold tracking-tight mb-1">Painel Financeiro</h1>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm">Visão geral das suas finanças este mês.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-light dark:bg-surface-dark p-1 rounded-lg border border-primary/30 dark:border-primary/30 shadow-sm shadow-primary/5">
+<button class="p-2 hover:bg-primary/10 rounded text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-2 px-2">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<span class="text-sm font-semibold min-w-[100px] text-center">Outubro 2023</span>
+</div>
+<button class="p-2 hover:bg-primary/10 rounded text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-xl border border-[#dbe6df] dark:border-[#2a4032] shadow-sm flex flex-col gap-3 hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-2 text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined text-[20px] text-primary">payments</span>
+<p class="text-xs font-bold uppercase tracking-wider">Gasto até agora</p>
+</div>
+<div>
+<p class="text-2xl font-bold tracking-tight">€ 1.250,00</p>
+<p class="text-xs font-medium text-text-secondary-light dark:text-text-secondary-dark mt-1">
+<span class="text-red-500 font-bold">↑ 12%</span> vs mês anterior
+                    </p>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-xl border border-[#dbe6df] dark:border-[#2a4032] shadow-sm flex flex-col gap-3 hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-2 text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined text-[20px] text-primary">account_balance_wallet</span>
+<p class="text-xs font-bold uppercase tracking-wider">Receitas do mês</p>
+</div>
+<div>
+<p class="text-2xl font-bold tracking-tight">€ 3.200,00</p>
+<p class="text-xs font-medium text-text-secondary-light dark:text-text-secondary-dark mt-1">
+<span class="text-[#078829] font-bold">↑ 5%</span> vs mês anterior
+                    </p>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-xl border border-[#dbe6df] dark:border-[#2a4032] shadow-sm flex flex-col gap-3 group relative overflow-hidden hover:border-primary/30 transition-colors">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-bl-full -mr-4 -mt-4"></div>
+<div class="flex items-center justify-between text-text-secondary-light dark:text-text-secondary-dark z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">savings</span>
+<p class="text-xs font-bold uppercase tracking-wider">Orçamento</p>
+</div>
+<span class="text-xs font-bold text-primary">62%</span>
+</div>
+<div class="flex flex-col gap-2 z-10">
+<p class="text-2xl font-bold tracking-tight text-primary">€ 750,00</p>
+<div class="w-full bg-[#dbe6df] dark:bg-[#2a4032] rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 62%"></div>
+</div>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark">Restante de € 2.000</p>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-xl border border-[#dbe6df] dark:border-[#2a4032] shadow-sm flex flex-col gap-3 hover:border-primary/30 transition-colors">
+<div class="flex items-center gap-2 text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined text-[20px] text-primary">trending_up</span>
+<p class="text-xs font-bold uppercase tracking-wider">Projeção do mês</p>
+</div>
+<div>
+<p class="text-2xl font-bold tracking-tight">€ 1.950,00</p>
+<p class="text-xs font-medium text-text-secondary-light dark:text-text-secondary-dark mt-1">
+<span class="text-[#078829] font-bold">Dentro da meta</span> estimativa
+                    </p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl border border-[#dbe6df] dark:border-[#2a4032] shadow-sm p-6 flex flex-col h-full">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-base font-bold text-[#111813] dark:text-white">Gastos por Categoria</h3>
+<button class="text-primary hover:bg-primary/10 p-1.5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center relative min-h-[240px]">
+<div class="relative size-48 rounded-full border-[16px] border-[#f0f5f1] dark:border-[#2a4032]" style="background: conic-gradient(#25f46a 0% 35%, #10b981 35% 60%, #059669 60% 80%, #dbe6df 80% 100%); border-width: 0;">
+<div class="absolute inset-4 bg-surface-light dark:bg-surface-dark rounded-full flex flex-col items-center justify-center z-10">
+<span class="text-sm text-text-secondary-light dark:text-text-secondary-dark font-medium">Total</span>
+<span class="text-xl font-bold text-[#111813] dark:text-white">€ 1.250</span>
+</div>
+</div>
+</div>
+<div class="mt-6 space-y-3">
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#25f46a]"></span>
+<span class="text-text-primary-light dark:text-text-primary-dark">Moradia</span>
+</div>
+<span class="font-semibold">35%</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#10b981]"></span>
+<span class="text-text-primary-light dark:text-text-primary-dark">Alimentação</span>
+</div>
+<span class="font-semibold">25%</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#059669]"></span>
+<span class="text-text-primary-light dark:text-text-primary-dark">Transporte</span>
+</div>
+<span class="font-semibold">20%</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#dbe6df]"></span>
+<span class="text-text-primary-light dark:text-text-primary-dark">Outros</span>
+</div>
+<span class="font-semibold">20%</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 bg-surface-light dark:bg-surface-dark rounded-xl border border-[#dbe6df] dark:border-[#2a4032] shadow-sm flex flex-col overflow-hidden">
+<div class="p-6 border-b border-[#dbe6df] dark:border-[#2a4032] flex items-center justify-between">
+<h3 class="text-base font-bold text-[#111813] dark:text-white">Transações Recentes</h3>
+<a class="text-sm font-semibold text-primary hover:text-primary/80 flex items-center gap-1" href="#">
+                        Ver todas
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#f9fafb] dark:bg-[#1a2e24] text-xs uppercase tracking-wider text-text-secondary-light dark:text-text-secondary-dark font-semibold">
+<th class="px-6 py-4">Data</th>
+<th class="px-6 py-4">Descrição</th>
+<th class="px-6 py-4">Categoria</th>
+<th class="px-6 py-4 text-right">Valor</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#dbe6df] dark:divide-[#2a4032]">
+<tr class="hover:bg-background-light dark:hover:bg-[#15281d] transition-colors group">
+<td class="px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark whitespace-nowrap">
+                                    02/10
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-[#147a35] dark:text-primary">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+</div>
+<span class="text-sm font-medium text-[#111813] dark:text-white group-hover:text-primary transition-colors">Supermercado Continente</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#10b981]/10 text-[#10b981]">
+                                        Alimentação
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right whitespace-nowrap">
+<span class="text-sm font-bold text-[#111813] dark:text-white tabular-nums">- € 45,20</span>
+</td>
+</tr>
+<tr class="hover:bg-background-light dark:hover:bg-[#15281d] transition-colors group">
+<td class="px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark whitespace-nowrap">
+                                    01/10
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-[#147a35] dark:text-primary">
+<span class="material-symbols-outlined text-[18px]">directions_car</span>
+</div>
+<span class="text-sm font-medium text-[#111813] dark:text-white group-hover:text-primary transition-colors">Uber</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#059669]/10 text-[#059669]">
+                                        Transporte
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right whitespace-nowrap">
+<span class="text-sm font-bold text-[#111813] dark:text-white tabular-nums">- € 8,50</span>
+</td>
+</tr>
+<tr class="hover:bg-background-light dark:hover:bg-[#15281d] transition-colors group">
+<td class="px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark whitespace-nowrap">
+                                    30/09
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-[#147a35] dark:text-primary">
+<span class="material-symbols-outlined text-[18px]">home</span>
+</div>
+<span class="text-sm font-medium text-[#111813] dark:text-white group-hover:text-primary transition-colors">Aluguel Outubro</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#25f46a]/20 text-[#147a35] dark:text-[#25f46a]">
+                                        Moradia
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right whitespace-nowrap">
+<span class="text-sm font-bold text-[#111813] dark:text-white tabular-nums">- € 850,00</span>
+</td>
+</tr>
+<tr class="hover:bg-background-light dark:hover:bg-[#15281d] transition-colors group">
+<td class="px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark whitespace-nowrap">
+                                    28/09
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-[#147a35] dark:text-primary">
+<span class="material-symbols-outlined text-[18px]">coffee</span>
+</div>
+<span class="text-sm font-medium text-[#111813] dark:text-white group-hover:text-primary transition-colors">Café da Manhã</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#10b981]/10 text-[#10b981]">
+                                        Alimentação
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right whitespace-nowrap">
+<span class="text-sm font-bold text-[#111813] dark:text-white tabular-nums">- € 12,30</span>
+</td>
+</tr>
+<tr class="hover:bg-background-light dark:hover:bg-[#15281d] transition-colors group">
+<td class="px-6 py-4 text-sm text-text-secondary-light dark:text-text-secondary-dark whitespace-nowrap">
+                                    25/09
+                                </td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-[#147a35] dark:text-primary">
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+</div>
+<span class="text-sm font-medium text-[#111813] dark:text-white group-hover:text-primary transition-colors">Vodafone Internet</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#dbe6df] dark:bg-[#344d3e] text-[#4b6d57] dark:text-[#a0b8a9]">
+                                        Utilidades
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right whitespace-nowrap">
+<span class="text-sm font-bold text-[#111813] dark:text-white tabular-nums">- € 35,00</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="md:hidden p-4 border-t border-[#dbe6df] dark:border-[#2a4032] flex justify-center">
+<button class="text-xs font-medium text-primary uppercase tracking-wider">Arraste para ver mais</button>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

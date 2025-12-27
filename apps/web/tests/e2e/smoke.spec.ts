@@ -13,22 +13,22 @@ describeIf('RitualFin smoke', () => {
     if (devAutoLogin) {
       await page.goto('/dev/autologin');
     } else {
-      await page.goto('/(auth)/login');
+      await page.goto('/login');
       await page.getByLabel('Email').fill(email ?? '');
       await page.getByLabel('Senha').fill(password ?? '');
       await page.getByRole('button', { name: 'Entrar' }).click();
     }
     await page.waitForURL('**/painel');
-    await expect(page.getByRole('heading', { name: 'Painel mensal' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Painel Financeiro' })).toBeVisible();
     await page.reload();
-    await expect(page.getByRole('heading', { name: 'Painel mensal' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Painel Financeiro' })).toBeVisible();
   });
 
   test('logout', async ({ page }) => {
     if (devAutoLogin) {
       await page.goto('/dev/autologin');
     } else {
-      await page.goto('/(auth)/login');
+      await page.goto('/login');
       await page.getByLabel('Email').fill(email ?? '');
       await page.getByLabel('Senha').fill(password ?? '');
       await page.getByRole('button', { name: 'Entrar' }).click();
@@ -44,7 +44,7 @@ const invalidDescribe =
 
 invalidDescribe('Invalid login', () => {
   test('shows error', async ({ page }) => {
-    await page.goto('/(auth)/login');
+    await page.goto('/login');
     await page.getByLabel('Email').fill('invalid@example.com');
     await page.getByLabel('Senha').fill('wrong-password');
     await page.getByRole('button', { name: 'Entrar' }).click();
