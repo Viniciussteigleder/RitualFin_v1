@@ -14,6 +14,15 @@ type RawRow = {
   exchange_rate: number | null;
 };
 
+type PreparedRow = {
+  authorisedOn: string;
+  keyDesc: string;
+  key: string;
+  descRaw: string;
+  descNorm: string;
+  parsedAmount: number;
+};
+
 const REQUIRED_COLUMNS = [
   'Authorised on',
   'Processed on',
@@ -231,36 +240,56 @@ serve(async (request) => {
   const batchDescCount = new Map<string, number>();
   const batchMonthDesc = new Map<string, Set<string>>();
 
-  const preparedRaw = rows
-    .map((row) => {
-      const authorisedOn = parseDate(row.authorised_on);
-      if (!authorisedOn) return null;
-      const keyDesc = buildKeyDesc(row);
-      const key = `${keyDesc} -- ${row.amount} -- ${authorisedOn}`;
-      const descRaw = keyDesc;
-      const descNorm = normalizeDescription(descRaw);
-      const monthKey = `${authorisedOn.slice(0, 7)}-01`;
-      batchDescCount.set(descNorm, (batchDescCount.get(descNorm) ?? 0) + 1);
-      if (!batchMonthDesc.has(monthKey)) {
-        batchMonthDesc.set(monthKey, new Set());
-      }
-      batchMonthDesc.get(monthKey)?.add(descNorm);
+  const rowErrors: string[] = [];
+  const preparedRaw = rows.map((row, index) => {
+    const authorisedOn = parseDate(row.authorised_on);
+    if (!authorisedOn) {
+      rowErrors.push(`Linha ${index + 2}: data invalida em Authorised on.`);
+    }
+    const parsedAmount = parseAmount(row.amount);
+    if (parsedAmount === null) {
+      rowErrors.push(`Linha ${index + 2}: valor invalido em Amount.`);
+    }
+    if (!authorisedOn || parsedAmount === null) {
+      return null;
+    }
 
-      return {
-        authorisedOn,
-        keyDesc,
-        key,
-        descRaw,
-        descNorm
-      };
-    })
-    .filter(Boolean) as Array<{
-    authorisedOn: string;
-    keyDesc: string;
-    key: string;
-    descRaw: string;
-    descNorm: string;
-  }>;
+    const keyDesc = buildKeyDesc(row);
+    const key = `${keyDesc} -- ${row.amount} -- ${authorisedOn}`;
+    const descRaw = keyDesc;
+    const descNorm = normalizeDescription(descRaw);
+    const monthKey = `${authorisedOn.slice(0, 7)}-01`;
+    batchDescCount.set(descNorm, (batchDescCount.get(descNorm) ?? 0) + 1);
+    if (!batchMonthDesc.has(monthKey)) {
+      batchMonthDesc.set(monthKey, new Set());
+    }
+    batchMonthDesc.get(monthKey)?.add(descNorm);
+
+    return {
+      authorisedOn,
+      keyDesc,
+      key,
+      descRaw,
+      descNorm,
+      parsedAmount
+    };
+  });
+
+  if (rowErrors.length > 0) {
+    await supabaseAdmin
+      .from('uploads')
+      .update({ status: 'error', error_message: rowErrors.slice(0, 5).join(' ') })
+      .eq('id', uploadId);
+    return new Response(
+      JSON.stringify({
+        error: 'CSV invalido',
+        details: rowErrors.slice(0, 10)
+      }),
+      { status: 400 }
+    );
+  }
+
+  const preparedRows = preparedRaw as PreparedRow[];
 
   const existingDupes = new Set<string>();
   for (const [monthStart, descSet] of batchMonthDesc.entries()) {
@@ -281,11 +310,11 @@ serve(async (request) => {
   }
 
   const rawInserts = rows.map((row, index) => {
-    const meta = preparedRaw[index];
+    const meta = preparedRows[index];
     return {
       upload_id: uploadId,
       profile_id: user.id,
-      authorised_on: meta?.authorisedOn ?? null,
+      authorised_on: meta.authorisedOn,
       processed_on: row.processed_on ? parseDate(row.processed_on) : null,
       amount: row.amount,
       currency: row.currency,
@@ -296,10 +325,10 @@ serve(async (request) => {
       foreign_currency: row.foreign_currency,
       exchange_rate: row.exchange_rate,
       fonte: 'M&M',
-      key_mm_desc: meta?.keyDesc ?? null,
-      key_mm: meta?.key ?? null,
-      desc_raw: meta?.descRaw ?? null,
-      desc_norm: meta?.descNorm ?? null
+      key_mm_desc: meta.keyDesc,
+      key_mm: meta.key,
+      desc_raw: meta.descRaw,
+      desc_norm: meta.descNorm
     };
   });
 
@@ -310,12 +339,11 @@ serve(async (request) => {
   }
 
   const transactionInserts = rows.map((row, index) => {
-    const meta = preparedRaw[index];
-    if (!meta) return null;
+    const meta = preparedRows[index];
     const descNorm = meta.descNorm;
     const monthDupes = batchDescCount.get(descNorm) ?? 0;
     const dupes = monthDupes > 1 || existingDupes.has(descNorm);
-    const parsedAmount = parseAmount(row.amount) ?? 0;
+    const parsedAmount = meta.parsedAmount;
     const ruleResult = applyRules(descNorm, ruleList);
     const appliedRule = ruleResult.rule;
     const isInternal = appliedRule?.category_1 === 'Interno';
@@ -349,7 +377,7 @@ serve(async (request) => {
     };
   });
 
-  const filteredTransactions = transactionInserts.filter(Boolean) as Record<string, unknown>[];
+  const filteredTransactions = transactionInserts as Record<string, unknown>[];
   let insertedCount = 0;
   if (filteredTransactions.length > 0) {
     const keys = filteredTransactions.map((item) => item.key).filter(Boolean) as string[];

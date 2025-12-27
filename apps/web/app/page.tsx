@@ -1,13 +1,15 @@
-import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import { createSupabaseServerClient } from '@/lib/supabase/serverClient';
 
-export default function HomePage() {
-  return (
-    <section className="page-placeholder">
-      <h1>RitualFin v1</h1>
-      <p>Controle financeiro simples: faça upload do seu CSV Miles &amp; More e veja o dashboard.</p>
-      <Link href="/login" className="sidebar-link">
-        Entrar com sua conta
-      </Link>
-    </section>
-  );
+export default async function HomePage() {
+  const supabase = createSupabaseServerClient();
+  const {
+    data: { session }
+  } = await supabase.auth.getSession();
+
+  if (session) {
+    redirect('/painel');
+  }
+
+  redirect('/login');
 }
