@@ -24,7 +24,7 @@
 - Uploads: dropzone card with file selection and submit CTA, history table with status pills and counts.
 - Confirm queue: KPI cards for pending, unclassified, conflicts; batch action panel with rule creation; table with tags, inline category select, and per-row save.
 - Rules: rule creation form, filters row, rules table with badges for category and type.
-- Settings: profile summary, export card (month selector + CTA), locale/currency selectors.
+- Settings: profile summary, export card (month selector + CTA), locale/currency selectors, audit log table.
 
 ## UI kit inventory
 - Tokens and layout: apps/web/styles/globals.css

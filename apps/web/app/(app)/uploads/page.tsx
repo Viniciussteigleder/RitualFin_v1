@@ -49,25 +49,20 @@ export default function UploadsPage() {
     loadUploads();
   }, [loadUploads]);
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const selected = event.target.files?.[0] ?? null;
-    setFile(selected);
-    setError('');
-    setMessage('');
-  };
-
-  const handleSubmit = async () => {
-    if (!file) return;
+  const handleSubmit = async (selectedFile?: File | null) => {
+    const fileToUpload = selectedFile ?? file;
+    if (!fileToUpload || isUploading) return;
     setIsUploading(true);
     setError('');
     setMessage('');
+    setFile(fileToUpload);
 
     try {
-      const csvText = await file.text();
+      const csvText = await fileToUpload.text();
       const { data, error } = await supabaseClient.functions.invoke('mm-import', {
         body: {
           csv: csvText,
-          filename: file.name
+          filename: fileToUpload.name
         }
       });
 
@@ -83,6 +78,17 @@ export default function UploadsPage() {
       setError(message);
     } finally {
       setIsUploading(false);
+    }
+  };
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const selected = event.target.files?.[0] ?? null;
+    setError('');
+    setMessage('');
+    if (selected) {
+      void handleSubmit(selected);
+    } else {
+      setFile(null);
     }
   };
 

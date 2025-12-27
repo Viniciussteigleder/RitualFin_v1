@@ -2,13 +2,130 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Painel RitualFin</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Painel mensal</h1>
-      <p>Cards: gasto, receitas, orçamento, projeção.</p>
-    </header>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="logo">RitualFin</div>
+        <nav class="nav">
+          <a href="#">Uploads</a>
+          <a href="#">Confirmar</a>
+          <a href="#">Regras</a>
+          <a class="active" href="#">Painel</a>
+          <a href="#">Configuracoes</a>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="chip chip-success">Painel pronto</div>
+          <span class="meta">Base: Authorised on</span>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <span class="eyebrow">Painel mensal</span>
+            <strong>Setembro 2024</strong>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost">Ago 2024</button>
+            <button class="ghost">Out 2024</button>
+            <button class="primary">Exportar CSV</button>
+          </div>
+        </header>
+
+        <main class="main">
+          <section class="kpis">
+            <div class="kpi">
+              <span class="label">Gastos</span>
+              <span class="value">EUR 2.480,10</span>
+              <span class="meta">Exclui exclude_from_budget</span>
+            </div>
+            <div class="kpi">
+              <span class="label">Receitas</span>
+              <span class="value">EUR 3.420,00</span>
+              <span class="meta">Saldo do mes</span>
+            </div>
+            <div class="kpi">
+              <span class="label">Orcamento</span>
+              <span class="value">EUR 3.000,00</span>
+              <span class="meta">Total definido</span>
+            </div>
+            <div class="kpi">
+              <span class="label">Remaining</span>
+              <span class="value">EUR 519,90</span>
+              <span class="meta">Atualizado hoje</span>
+            </div>
+            <div class="kpi highlight">
+              <span class="label">Projecao simples</span>
+              <span class="value">EUR 2.980,40</span>
+              <span class="meta">Gasto atual + fixos + taxa variavel</span>
+            </div>
+          </section>
+
+          <section class="breakdown">
+            <div class="breakdown-head">
+              <h2>Orcamento por categoria</h2>
+              <div class="search">
+                <input type="text" placeholder="Buscar transacao ou categoria..." />
+              </div>
+            </div>
+            <div class="category">
+              <span>Moradia</span>
+              <div class="bar"><span style="width: 62%"></span></div>
+              <span class="meta">EUR 980 / 1.580</span>
+            </div>
+            <div class="category">
+              <span>Alimentacao</span>
+              <div class="bar"><span style="width: 48%"></span></div>
+              <span class="meta">EUR 480 / 1.000</span>
+            </div>
+            <div class="category">
+              <span>Transporte</span>
+              <div class="bar"><span style="width: 28%"></span></div>
+              <span class="meta">EUR 140 / 500</span>
+            </div>
+            <div class="category">
+              <span>Saude</span>
+              <div class="bar"><span style="width: 18%"></span></div>
+              <span class="meta">EUR 90 / 500</span>
+            </div>
+          </section>
+
+          <section class="transactions">
+            <div class="table-head">
+              <h2>Transacoes filtradas</h2>
+              <span class="meta">Clique em uma categoria para filtrar</span>
+            </div>
+            <div class="table-row">
+              <div>
+                <strong>Aluguel</strong>
+                <span class="meta">01/09/2024 · Moradia</span>
+              </div>
+              <div class="meta">EUR 1.200,00</div>
+              <div class="chip chip-plain">Fixo</div>
+            </div>
+            <div class="table-row">
+              <div>
+                <strong>Mercado Central</strong>
+                <span class="meta">08/09/2024 · Alimentacao</span>
+              </div>
+              <div class="meta">EUR 82,40</div>
+              <div class="chip chip-plain">Variavel</div>
+            </div>
+            <div class="table-row">
+              <div>
+                <strong>Metro</strong>
+                <span class="meta">12/09/2024 · Transporte</span>
+              </div>
+              <div class="meta">EUR 39,90</div>
+              <div class="chip chip-plain">Variavel</div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

@@ -2,6 +2,8 @@
 
 ## Commands executed
 - pnpm --filter apps-web lint -> PASS (no ESLint warnings or errors)
+- pnpm --filter apps-web lint -> PASS (no ESLint warnings or errors) [post-audit-log UI change]
+- pnpm --filter apps-web test -> PASS (7 tests)
 
 ## Manual checks
 - Not run: requires dev server and Supabase connectivity.

@@ -2,13 +2,99 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Regras RitualFin</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Regras de categorização</h1>
-      <p>Lista de keywords e exportação para Markdown.</p>
-    </header>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="logo">RitualFin</div>
+        <nav class="nav">
+          <a href="#">Uploads</a>
+          <a href="#">Confirmar</a>
+          <a class="active" href="#">Regras</a>
+          <a href="#">Painel</a>
+          <a href="#">Configuracoes</a>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="chip chip-info">Keywords v1</div>
+          <span class="meta">Match por desc_norm</span>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <span class="eyebrow">Regras</span>
+            <strong>Automatize categorias com keywords</strong>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost">Exportar Markdown</button>
+            <button class="primary">Nova regra</button>
+          </div>
+        </header>
+
+        <main class="main">
+          <section class="rules-list">
+            <div class="rules-head">
+              <h2>Lista de regras</h2>
+              <span class="meta">Keywords sao comparadas em desc_norm (contains).</span>
+            </div>
+            <div class="rule-row">
+              <div class="rule-main">
+                <strong>Alimentacao · Restaurante</strong>
+                <span class="meta">Keywords: bistro; restaurante; brasserie</span>
+              </div>
+              <div class="rule-meta">
+                <span class="meta">Atualizada 18/09/2024</span>
+                <button class="ghost">Editar</button>
+              </div>
+            </div>
+            <div class="rule-row">
+              <div class="rule-main">
+                <strong>Transporte · Uber</strong>
+                <span class="meta">Keywords: uber; ride; ubertaxi</span>
+              </div>
+              <div class="rule-meta">
+                <span class="meta">Atualizada 01/09/2024</span>
+                <button class="ghost">Editar</button>
+              </div>
+            </div>
+            <div class="rule-row">
+              <div class="rule-main">
+                <strong>Saude · Farmacia</strong>
+                <span class="meta">Keywords: farmacia; drogaria; pharma</span>
+              </div>
+              <div class="rule-meta">
+                <span class="meta">Atualizada 12/08/2024</span>
+                <button class="ghost">Editar</button>
+              </div>
+            </div>
+          </section>
+
+          <aside class="drawer">
+            <h3>Editar regra</h3>
+            <label>
+              Categoria I
+              <input type="text" value="Alimentacao" />
+            </label>
+            <label>
+              Categoria II
+              <input type="text" value="Restaurante" />
+            </label>
+            <label>
+              Keywords
+              <textarea rows="4">bistro; restaurante; brasserie</textarea>
+            </label>
+            <div class="drawer-actions">
+              <button class="ghost">Cancelar</button>
+              <button class="primary">Salvar regra</button>
+            </div>
+            <p class="note">Separar keywords por ponto e virgula.</p>
+          </aside>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

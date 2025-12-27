@@ -2,13 +2,116 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Uploads RitualFin</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Uploads</h1>
-      <p>Arraste um CSV Miles &amp; More ou clique para selecionar.</p>
-    </header>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="logo">RitualFin</div>
+        <nav class="nav">
+          <a class="active" href="#">Uploads</a>
+          <a href="#">Confirmar</a>
+          <a href="#">Regras</a>
+          <a href="#">Painel</a>
+          <a href="#">Configuracoes</a>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="chip chip-success">Sem pendencias</div>
+          <span class="meta">Base: Authorised on</span>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <span class="eyebrow">Uploads</span>
+            <strong>Envie seu CSV Miles &amp; More</strong>
+          </div>
+          <div class="topbar-actions">
+            <span class="chip chip-info">1 arquivo por vez</span>
+            <button class="ghost">Ajuda</button>
+            <button class="avatar">VS</button>
+          </div>
+        </header>
+
+        <main class="main">
+          <section class="hero">
+            <div class="dropzone">
+              <div class="drop-icon">CSV</div>
+              <div>
+                <h1>Arraste um CSV Miles &amp; More</h1>
+                <p>Ou clique para selecionar o arquivo no seu computador.</p>
+              </div>
+              <button class="primary">Selecionar arquivo</button>
+              <span class="helper">Header obrigatorio: Transaction date, Authorised on, Amount</span>
+            </div>
+            <div class="requirements">
+              <h2>Requisitos do CSV</h2>
+              <ul>
+                <li>Arquivo unico por upload.</li>
+                <li>Formato Miles &amp; More original.</li>
+                <li>Base do mes: <strong>Authorised on</strong>.</li>
+                <li>Valores com virgula decimal (ex: 12,50).</li>
+              </ul>
+              <div class="note">
+                <strong>Validacao imediata</strong>
+                <p>Erros de header sao mostrados antes do processamento.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="status-row">
+            <div class="status-card">
+              <span class="label">Status atual</span>
+              <span class="value">Processando</span>
+              <span class="meta">Importar · Enriquecer · Deduplicar</span>
+            </div>
+            <div class="status-card">
+              <span class="label">Linhas validas</span>
+              <span class="value">1.248</span>
+              <span class="meta">0 invalidas</span>
+            </div>
+            <div class="status-card">
+              <span class="label">Conflitos</span>
+              <span class="value">6</span>
+              <span class="meta">Enviar para Confirmar</span>
+            </div>
+          </section>
+
+          <section class="table">
+            <div class="table-head">
+              <h2>Historico</h2>
+              <button class="ghost">Ver detalhes</button>
+            </div>
+            <div class="table-row">
+              <div>
+                <strong>mm-setembro-2024.csv</strong>
+                <span class="meta">Enviado ha 2 min</span>
+              </div>
+              <div class="meta">1.248 linhas</div>
+              <div class="chip chip-warning">Processando</div>
+            </div>
+            <div class="table-row">
+              <div>
+                <strong>mm-agosto-2024.csv</strong>
+                <span class="meta">Enviado 01/09/2024</span>
+              </div>
+              <div class="meta">1.112 linhas</div>
+              <div class="chip chip-success">Pronto</div>
+            </div>
+            <div class="table-row error">
+              <div>
+                <strong>mm-julho-2024.csv</strong>
+                <span class="meta">Enviado 01/08/2024</span>
+              </div>
+              <div class="meta">Header invalido</div>
+              <div class="chip chip-danger">Erro</div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

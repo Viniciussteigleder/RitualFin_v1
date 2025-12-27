@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Configuracoes RitualFin</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="logo">RitualFin</div>
+        <nav class="nav">
+          <a href="#">Uploads</a>
+          <a href="#">Confirmar</a>
+          <a href="#">Regras</a>
+          <a href="#">Painel</a>
+          <a class="active" href="#">Configuracoes</a>
+        </nav>
+        <div class="sidebar-foot">
+          <button class="ghost">Logout</button>
+          <span class="meta">Acesso seguro</span>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <span class="eyebrow">Configuracoes</span>
+            <strong>Perfil e auditoria</strong>
+          </div>
+        </header>
+
+        <main class="main">
+          <section class="panel">
+            <h2>Perfil</h2>
+            <div class="profile">
+              <div class="avatar">VS</div>
+              <div>
+                <strong>Vinicius Steigleder</strong>
+                <span class="meta">vinicius@email.com</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>Exportar ledger</h2>
+            <div class="export">
+              <label>
+                Mes
+                <select>
+                  <option>Setembro 2024</option>
+                  <option>Agosto 2024</option>
+                  <option>Julho 2024</option>
+                </select>
+              </label>
+              <button class="primary">Exportar CSV do mes</button>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>Audit log</h2>
+            <div class="table-row">
+              <div>
+                <strong>Batch confirmacao</strong>
+                <span class="meta">6 transacoes confirmadas</span>
+              </div>
+              <div class="meta">21/09/2024 · 10:22</div>
+              <div class="chip chip-plain">Manual</div>
+            </div>
+            <div class="table-row">
+              <div>
+                <strong>Regra atualizada</strong>
+                <span class="meta">Alimentacao · Restaurante</span>
+              </div>
+              <div class="meta">20/09/2024 · 14:05</div>
+              <div class="chip chip-plain">Regra</div>
+            </div>
+            <div class="table-row">
+              <div>
+                <strong>Edicao manual</strong>
+                <span class="meta">Farmacia Central</span>
+              </div>
+              <div class="meta">18/09/2024 · 19:48</div>
+              <div class="chip chip-plain">Manual</div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

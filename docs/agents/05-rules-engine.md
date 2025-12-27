@@ -16,6 +16,20 @@
 ## Export
 - Gerar regras.md a partir do banco
 
+## UX/UI (MVP)
+- Lista de regras com categoria, keywords e ultima atualizacao.
+- Botao "Nova regra" e "Exportar Markdown".
+- Edicao em drawer lateral com campos essenciais.
+- Validar keywords duplicadas antes de salvar.
+
+## Estados
+- Vazio: "Sem regras ainda. Crie a primeira ao confirmar transacoes."
+- Erro salvar: "Nao foi possivel salvar. Tente novamente."
+
+## Microcopy PT-BR
+- "Keywords sao comparadas em desc_norm (contains)."
+- "Separar keywords por ponto e virgula."
+
 ## Aceite
 - Determinístico.
 - Conflitos vão para Confirmar.

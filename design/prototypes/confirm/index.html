@@ -2,13 +2,118 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Confirmar RitualFin</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Confirmar transações</h1>
-      <p>Filtre por conflito, sem match ou duplicata suspeita.</p>
-    </header>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="logo">RitualFin</div>
+        <nav class="nav">
+          <a href="#">Uploads</a>
+          <a class="active" href="#">Confirmar</a>
+          <a href="#">Regras</a>
+          <a href="#">Painel</a>
+          <a href="#">Configuracoes</a>
+        </nav>
+        <div class="sidebar-foot">
+          <div class="chip chip-warning">6 pendencias</div>
+          <span class="meta">Revisao manual obrigatoria</span>
+        </div>
+      </aside>
+
+      <div class="content">
+        <header class="topbar">
+          <div class="topbar-title">
+            <span class="eyebrow">Confirmar</span>
+            <strong>Revisar conflitos antes de consolidar</strong>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost">Resumo</button>
+            <button class="primary">Confirmar selecionados</button>
+          </div>
+        </header>
+
+        <main class="main">
+          <section class="filters">
+            <div class="filter-group">
+              <button class="chip chip-active">Conflito</button>
+              <button class="chip chip-plain">Sem match</button>
+              <button class="chip chip-plain">Duplicata suspeita</button>
+            </div>
+            <div class="search">
+              <input type="text" placeholder="Buscar descricao, valor, categoria..." />
+              <span class="chip chip-info">Categoria: Alimentacao</span>
+            </div>
+          </section>
+
+          <section class="queue">
+            <div class="queue-head">
+              <h2>Fila de confirmacao</h2>
+              <span class="meta">Nada sera aplicado automaticamente. Revise e confirme.</span>
+            </div>
+            <div class="queue-row">
+              <div class="row-main">
+                <strong>Restaurante Porto</strong>
+                <span class="meta">22/09/2024 · EUR 42,90 · Cartao</span>
+              </div>
+              <div class="row-meta">
+                <span class="chip chip-warning">Conflito</span>
+                <span class="chip chip-plain">Alimentacao</span>
+              </div>
+              <div class="row-actions">
+                <button class="ghost">Editar</button>
+                <button class="primary">Confirmar</button>
+              </div>
+            </div>
+            <div class="queue-row manual">
+              <div class="row-main">
+                <strong>Farmacia Central</strong>
+                <span class="meta">21/09/2024 · EUR 18,20 · Debito</span>
+              </div>
+              <div class="row-meta">
+                <span class="chip chip-danger">Ajuste manual</span>
+                <span class="chip chip-plain">Saude</span>
+              </div>
+              <div class="row-actions">
+                <button class="ghost" disabled>Editar</button>
+                <button class="primary" disabled>Confirmar</button>
+              </div>
+            </div>
+            <div class="queue-row">
+              <div class="row-main">
+                <strong>Supermercado Norte</strong>
+                <span class="meta">20/09/2024 · EUR 86,10 · Cartao</span>
+              </div>
+              <div class="row-meta">
+                <span class="chip chip-warning">Sem match</span>
+                <span class="chip chip-plain">Mercado</span>
+              </div>
+              <div class="row-actions">
+                <button class="ghost">Editar</button>
+                <button class="primary">Confirmar</button>
+              </div>
+            </div>
+          </section>
+
+          <aside class="summary">
+            <h3>Resumo da fila</h3>
+            <div class="summary-item">
+              <span class="label">Transacoes pendentes</span>
+              <span class="value">6</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Impacto total</span>
+              <span class="value">EUR 482,40</span>
+            </div>
+            <div class="summary-note">
+              <strong>Regra sugerida</strong>
+              <p>Ao confirmar, uma regra pode ser criada para "Restaurante".</p>
+            </div>
+          </aside>
+        </main>
+      </div>
+    </div>
   </body>
 </html>

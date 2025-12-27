@@ -6,6 +6,7 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Input from '@/components/ui/Input';
 import Select from '@/components/ui/Select';
+import { Table, TableContainer } from '@/components/ui/Table';
 
 type ProfileRecord = {
   id: string;
@@ -14,9 +15,17 @@ type ProfileRecord = {
   name: string | null;
 };
 
+type AuditRecord = {
+  id: string;
+  actor: string;
+  action: string;
+  created_at: string;
+};
+
 export default function ConfiguracoesPage() {
   const supabaseClient = useSupabaseClient();
   const [profile, setProfile] = useState<ProfileRecord | null>(null);
+  const [auditEntries, setAuditEntries] = useState<AuditRecord[]>([]);
   const [email, setEmail] = useState('');
   const [month, setMonth] = useState(() => new Date().toISOString().slice(0, 7));
   const [message, setMessage] = useState('');
@@ -33,9 +42,23 @@ export default function ConfiguracoesPage() {
     setProfile(data as ProfileRecord);
   }, [supabaseClient]);
 
+  const loadAudit = useCallback(async () => {
+    const { data, error } = await supabaseClient
+      .from('audit_log')
+      .select('id, actor, action, created_at')
+      .order('created_at', { ascending: false })
+      .limit(20);
+    if (error) {
+      setError(error.message);
+      return;
+    }
+    setAuditEntries((data ?? []) as AuditRecord[]);
+  }, [supabaseClient]);
+
   useEffect(() => {
     loadProfile();
-  }, [loadProfile]);
+    loadAudit();
+  }, [loadProfile, loadAudit]);
 
   const handleExport = async () => {
     setMessage('');
@@ -139,6 +162,35 @@ export default function ConfiguracoesPage() {
             <option value="EUR">Euro (EUR)</option>
           </Select>
         </div>
+      </Card>
+      <Card className="rf-card-default">
+        <h2>Audit Log</h2>
+        <TableContainer>
+          <Table>
+            <thead>
+              <tr>
+                <th>Quando</th>
+                <th>Ação</th>
+                <th>Quem</th>
+              </tr>
+            </thead>
+            <tbody>
+              {auditEntries.length === 0 ? (
+                <tr>
+                  <td colSpan={3}>Nenhuma alteração registrada ainda.</td>
+                </tr>
+              ) : (
+                auditEntries.map((entry) => (
+                  <tr key={entry.id}>
+                    <td>{new Date(entry.created_at).toLocaleString('pt-BR')}</td>
+                    <td>{entry.action}</td>
+                    <td>{entry.actor}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </Table>
+        </TableContainer>
       </Card>
       {error && <p className="text-error">{error}</p>}
       {message && <p className="text-success">{message}</p>}
