@@ -1,4 +1,3 @@
-import { serve } from 'https://deno.land/std@0.230.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 type RawRow = {
@@ -118,7 +117,7 @@ function applyRules(descNorm: string, rules: Record<string, string>[]) {
   return { needsReview: false, rule: matches[0], conflict: false };
 }
 
-serve(async (request) => {
+Deno.serve(async (request) => {
   if (request.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Metodo nao suportado' }), { status: 405 });
   }

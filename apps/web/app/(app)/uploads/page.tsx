@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState, type ChangeEvent } from 'react';
-import { useSupabaseClient } from '@/lib/supabase/provider';
+import { useSupabaseClient, useSession } from '@/lib/supabase/provider';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
@@ -20,6 +20,7 @@ type UploadRecord = {
 
 export default function UploadsPage() {
   const supabaseClient = useSupabaseClient();
+  const session = useSession();
   const [uploads, setUploads] = useState<UploadRecord[]>([]);
   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -52,6 +53,13 @@ export default function UploadsPage() {
   const handleSubmit = async (selectedFile?: File | null) => {
     const fileToUpload = selectedFile ?? file;
     if (!fileToUpload || isUploading) return;
+
+    // Check authentication
+    if (!session) {
+      setError('Você precisa estar autenticado para fazer upload.');
+      return;
+    }
+
     setIsUploading(true);
     setError('');
     setMessage('');
@@ -59,23 +67,65 @@ export default function UploadsPage() {
 
     try {
       const csvText = await fileToUpload.text();
-      const { data, error } = await supabaseClient.functions.invoke('mm-import', {
-        body: {
-          csv: csvText,
-          filename: fileToUpload.name
-        }
-      });
+      console.log('[Upload] Starting upload for:', fileToUpload.name);
+      console.log('[Upload] User:', session.user.email);
+      console.log('[Upload] File size:', Math.round(fileToUpload.size / 1024), 'KB');
 
-      if (error) {
-        throw new Error(error.message);
+      // Get fresh session token
+      const { data: sessionData, error: sessionError } = await supabaseClient.auth.getSession();
+
+      if (sessionError || !sessionData.session) {
+        console.error('[Upload] Session error:', sessionError);
+        throw new Error('Sessão inválida. Faça login novamente.');
       }
 
+      const accessToken = sessionData.session.access_token;
+      console.log('[Upload] Has access token:', !!accessToken);
+      console.log('[Upload] Token preview:', accessToken.substring(0, 20) + '...');
+
+      // Use direct fetch instead of supabase.functions.invoke
+      const functionUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/mm-import`;
+      console.log('[Upload] Function URL:', functionUrl);
+
+      const response = await fetch(functionUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        },
+        body: JSON.stringify({
+          csv: csvText,
+          filename: fileToUpload.name
+        })
+      });
+
+      console.log('[Upload] Response status:', response.status);
+      console.log('[Upload] Response headers:', Object.fromEntries(response.headers.entries()));
+
+      const responseText = await response.text();
+      console.log('[Upload] Response text:', responseText);
+
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (e) {
+        console.error('[Upload] Failed to parse response as JSON:', e);
+        throw new Error(`Resposta inválida do servidor: ${responseText.substring(0, 100)}`);
+      }
+
+      if (!response.ok) {
+        console.error('[Upload] Function error:', data);
+        throw new Error(data.error || data.message || `Erro ${response.status}`);
+      }
+
+      console.log('[Upload] Success:', data);
       setMessage('Upload enviado e processado. Confira o histórico.');
       setFile(null);
       await loadUploads();
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Erro ao processar upload';
-      setError(message);
+      console.error('[Upload] Catch error:', err);
+      const errorMsg = err instanceof Error ? err.message : 'Erro desconhecido ao processar upload';
+      setError(errorMsg);
     } finally {
       setIsUploading(false);
     }
@@ -111,7 +161,7 @@ export default function UploadsPage() {
           </Button>
           <span className="muted">Suporta apenas arquivos CSV do Miles & More. Limite de 10MB.</span>
         </label>
-        <Button onClick={handleSubmit} disabled={!file || isUploading}>
+        <Button onClick={() => handleSubmit()} disabled={!file || isUploading}>
           {isUploading ? 'Processando...' : 'Enviar CSV'}
         </Button>
         {error && <p className="text-error">{error}</p>}

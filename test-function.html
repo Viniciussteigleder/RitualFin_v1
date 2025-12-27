@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Edge Function</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Test mm-import Function</h1>
+    <button onclick="testFunction()">Test Function</button>
+    <pre id="output"></pre>
+
+    <script>
+        const supabaseUrl = 'https://dfvlnzyqaapztsmdounj.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmdmxuenlxYWFwenRzbWRvdW5qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY3NzE3NDUsImV4cCI6MjA4MjM0Nzc0NX0.GUKWYkvVPW55VzHZzzjrrIisF5f2Fr8AJ0soTB6iLEA';
+
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+        async function testFunction() {
+            const output = document.getElementById('output');
+            output.textContent = 'Testing...';
+
+            try {
+                // First login
+                const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+                    email: 'testv1@gmail.com',
+                    password: 'testv1++'
+                });
+
+                if (authError) {
+                    output.textContent = 'Auth error: ' + JSON.stringify(authError, null, 2);
+                    return;
+                }
+
+                output.textContent = 'Logged in! User: ' + authData.user.email + '\n\nInvoking function...';
+
+                // Then test function
+                const testCSV = 'Authorised on,Processed on,Amount,Currency,Description,Payment type,Status\n01.12.2024,01.12.2024,10.50,EUR,Test Purchase,Card,Processed';
+
+                const { data, error } = await supabase.functions.invoke('mm-import', {
+                    body: {
+                        csv: testCSV,
+                        filename: 'test.csv'
+                    }
+                });
+
+                if (error) {
+                    output.textContent += '\n\nFunction error: ' + JSON.stringify(error, null, 2);
+                } else {
+                    output.textContent += '\n\nSuccess! Data: ' + JSON.stringify(data, null, 2);
+                }
+            } catch (err) {
+                output.textContent = 'Catch error: ' + err.message + '\n\n' + JSON.stringify(err, null, 2);
+            }
+        }
+    </script>
+</body>
+</html>

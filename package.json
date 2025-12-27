@@ -12,5 +12,8 @@
   "workspaces": [
     "apps/web",
     "packages/shared"
-  ]
+  ],
+  "devDependencies": {
+    "pg": "^8.16.3"
+  }
 }

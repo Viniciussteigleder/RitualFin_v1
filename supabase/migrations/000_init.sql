@@ -90,6 +90,9 @@ create table if not exists transactions (
   internal_transfer boolean not null default false,
   exclude_from_budget boolean not null default false,
   needs_review boolean not null default false,
+  rule_miss boolean not null default false,
+  rule_conflict boolean not null default false,
+  duplicate_suspect boolean not null default false,
   rule_id_applied uuid references rules(id),
   status text,
   created_at timestamptz not null default now()
@@ -144,45 +147,92 @@ alter table rules enable row level security;
 alter table budgets enable row level security;
 alter table audit_log enable row level security;
 
+drop policy if exists "Profiles are viewable by owner" on profiles;
 create policy "Profiles are viewable by owner"
 on profiles for select
 using (id = auth.uid());
 
+drop policy if exists "Profiles are updatable by owner" on profiles;
 create policy "Profiles are updatable by owner"
 on profiles for update
 using (id = auth.uid());
 
+drop policy if exists "Accounts are scoped to owner" on accounts;
 create policy "Accounts are scoped to owner"
 on accounts for all
 using (profile_id = auth.uid())
 with check (profile_id = auth.uid());
 
+drop policy if exists "Uploads are scoped to owner" on uploads;
 create policy "Uploads are scoped to owner"
 on uploads for all
 using (profile_id = auth.uid())
 with check (profile_id = auth.uid());
 
+drop policy if exists "Raw transactions are scoped to owner" on raw_mm_transactions;
 create policy "Raw transactions are scoped to owner"
 on raw_mm_transactions for all
 using (profile_id = auth.uid())
 with check (profile_id = auth.uid());
 
+drop policy if exists "Transactions are scoped to owner" on transactions;
 create policy "Transactions are scoped to owner"
 on transactions for all
 using (profile_id = auth.uid())
 with check (profile_id = auth.uid());
 
+drop policy if exists "Rules are scoped to owner" on rules;
 create policy "Rules are scoped to owner"
 on rules for all
 using (profile_id = auth.uid())
 with check (profile_id = auth.uid());
 
+drop policy if exists "Budgets are scoped to owner" on budgets;
 create policy "Budgets are scoped to owner"
 on budgets for all
 using (profile_id = auth.uid())
 with check (profile_id = auth.uid());
 
+drop policy if exists "Audit log is scoped to owner" on audit_log;
 create policy "Audit log is scoped to owner"
 on audit_log for all
 using (profile_id = auth.uid())
 with check (profile_id = auth.uid());
+
+-- create storage bucket for uploads
+insert into storage.buckets (id, name, public)
+values ('uploads', 'uploads', false)
+on conflict (id) do nothing;
+
+-- storage policies for uploads bucket
+drop policy if exists "Users can upload their own files" on storage.objects;
+create policy "Users can upload their own files"
+on storage.objects for insert
+with check (
+  bucket_id = 'uploads' and
+  auth.uid()::text = (storage.foldername(name))[1]
+);
+
+drop policy if exists "Users can view their own files" on storage.objects;
+create policy "Users can view their own files"
+on storage.objects for select
+using (
+  bucket_id = 'uploads' and
+  auth.uid()::text = (storage.foldername(name))[1]
+);
+
+drop policy if exists "Users can update their own files" on storage.objects;
+create policy "Users can update their own files"
+on storage.objects for update
+using (
+  bucket_id = 'uploads' and
+  auth.uid()::text = (storage.foldername(name))[1]
+);
+
+drop policy if exists "Users can delete their own files" on storage.objects;
+create policy "Users can delete their own files"
+on storage.objects for delete
+using (
+  bucket_id = 'uploads' and
+  auth.uid()::text = (storage.foldername(name))[1]
+);

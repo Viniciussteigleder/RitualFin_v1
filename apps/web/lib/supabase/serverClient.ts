@@ -15,10 +15,18 @@ export function createSupabaseServerClient() {
         return cookieStore.get(name)?.value;
       },
       set(name: string, value: string, options: { [key: string]: unknown }) {
-        cookieStore.set({ name, value, ...options });
+        try {
+          cookieStore.set({ name, value, ...options });
+        } catch {
+          // Cookie modification in Server Components is not allowed
+        }
       },
       remove(name: string, options: { [key: string]: unknown }) {
-        cookieStore.set({ name, value: '', ...options });
+        try {
+          cookieStore.set({ name, value: '', ...options });
+        } catch {
+          // Cookie modification in Server Components is not allowed
+        }
       }
     }
   });
