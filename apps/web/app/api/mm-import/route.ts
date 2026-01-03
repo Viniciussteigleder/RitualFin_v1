@@ -171,10 +171,9 @@ export async function POST(request: NextRequest) {
     const supabaseUrl = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
     const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? '';
 
-    console.log('[API] Env check:', {
+    console.log('[API] Environment check:', {
       hasUrl: !!supabaseUrl,
-      hasKey: !!supabaseServiceKey,
-      keyPrefix: supabaseServiceKey.substring(0, 20)
+      hasKey: !!supabaseServiceKey
     });
 
     if (!supabaseUrl || !supabaseServiceKey) {
@@ -224,6 +223,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Enforce size limit (10MB)
+    const MAX_SIZE = 10 * 1024 * 1024;
+    if (csvText.length > MAX_SIZE) {
+      return NextResponse.json(
+        {
+          error: 'Arquivo muito grande',
+          details: `Tamanho máximo: 10MB. Seu arquivo: ${Math.round(csvText.length / 1024 / 1024)}MB`
+        },
+        { status: 413 }
+      );
+    }
+
     const lines = csvText.split(/\r?\n/).filter((line: string) => line.trim().length > 0);
     if (lines.length === 0) {
       return NextResponse.json({ error: 'CSV vazio' }, { status: 400 });
@@ -231,7 +242,7 @@ export async function POST(request: NextRequest) {
 
     // Detect header line (Miles & More exports may have title line first)
     let headerLineIndex = 0;
-    const delimiter = detectDelimiter(lines[0]);
+    let delimiter = detectDelimiter(lines[0]);
 
     // Check if first line looks like a header or a title
     const firstLineParsed = parseCsvLine(lines[0], delimiter);
@@ -239,7 +250,8 @@ export async function POST(request: NextRequest) {
 
     if (!hasRequiredColumns && lines.length > 1) {
       // First line is probably a title (e.g., "Miles & More Gold Credit Card;5310XXXXXXXX7340")
-      // Try second line as header
+      // Try second line as header and re-detect delimiter
+      delimiter = detectDelimiter(lines[1]);
       const secondLineParsed = parseCsvLine(lines[1], delimiter);
       const secondHasRequired = REQUIRED_COLUMNS.some((col) => secondLineParsed.includes(col));
 
@@ -322,10 +334,22 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const { data: rules } = await supabaseAdmin
+    const { data: rules, error: rulesError } = await supabaseAdmin
       .from('rules')
       .select('id, type, fix_var, category_1, category_2, keywords')
       .eq('profile_id', user.id);
+
+    if (rulesError) {
+      console.error('[API] Rules query error:', rulesError);
+      await supabaseAdmin
+        .from('uploads')
+        .update({ status: 'error', error_message: 'Erro ao carregar regras de categorização' })
+        .eq('id', uploadId);
+      return NextResponse.json(
+        { error: 'Erro ao carregar regras de categorização', details: rulesError.message },
+        { status: 500 }
+      );
+    }
 
     const ruleList = rules ?? [];
     const batchDescCount = new Map<string, number>();
@@ -333,13 +357,15 @@ export async function POST(request: NextRequest) {
 
     const rowErrors: string[] = [];
     const preparedRaw = rows.map((row, index) => {
+      // Adjust line number: index is 0-based, +1 for data row, +1 for Excel/CSV line numbering, +headerLineIndex for title
+      const lineNum = index + dataStartIndex + 1;
       const authorisedOn = parseDate(row.authorised_on);
       if (!authorisedOn) {
-        rowErrors.push(`Linha ${index + 2}: data invalida em Authorised on.`);
+        rowErrors.push(`Linha ${lineNum}: data invalida em Authorised on.`);
       }
       const parsedAmount = parseAmount(row.amount);
       if (parsedAmount === null) {
-        rowErrors.push(`Linha ${index + 2}: valor invalido em Amount.`);
+        rowErrors.push(`Linha ${lineNum}: valor invalido em Amount.`);
       }
       if (!authorisedOn || parsedAmount === null) {
         return null;

@@ -496,6 +496,38 @@ textarea:focus-visible {
   display: none;
 }
 
+.upload-input-accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.upload-input-accessible:focus + .upload-dropzone {
+  outline: 2px solid var(--rf-primary);
+  outline-offset: 2px;
+}
+
+.upload-area {
+  position: relative;
+  width: 100%;
+}
+
+.file-selected {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background: var(--rf-surface-soft);
+  border-radius: 12px;
+  text-align: center;
+  color: var(--rf-success);
+  font-weight: 500;
+}
+
 .batch-bar {
   position: sticky;
   bottom: 1rem;

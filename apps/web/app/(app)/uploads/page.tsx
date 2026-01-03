@@ -54,6 +54,14 @@ export default function UploadsPage() {
     const fileToUpload = selectedFile ?? file;
     if (!fileToUpload || isUploading) return;
 
+    // Check file size (10MB limit)
+    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB in bytes
+    if (fileToUpload.size > MAX_FILE_SIZE) {
+      setError(`Arquivo muito grande. Tamanho máximo: 10MB. Seu arquivo: ${Math.round(fileToUpload.size / 1024 / 1024)}MB`);
+      setFile(null);
+      return;
+    }
+
     // Check authentication
     if (!session) {
       setError('Você precisa estar autenticado para fazer upload.');
@@ -68,20 +76,18 @@ export default function UploadsPage() {
     try {
       const csvText = await fileToUpload.text();
       console.log('[Upload] Starting upload for:', fileToUpload.name);
-      console.log('[Upload] User:', session.user.email);
       console.log('[Upload] File size:', Math.round(fileToUpload.size / 1024), 'KB');
 
       // Get fresh session token
       const { data: sessionData, error: sessionError } = await supabaseClient.auth.getSession();
 
       if (sessionError || !sessionData.session) {
-        console.error('[Upload] Session error:', sessionError);
+        console.error('[Upload] Session error');
         throw new Error('Sessão inválida. Faça login novamente.');
       }
 
       const accessToken = sessionData.session.access_token;
-      console.log('[Upload] Has access token:', !!accessToken);
-      console.log('[Upload] Token preview:', accessToken.substring(0, 20) + '...');
+      console.log('[Upload] Authentication ready');
 
       // Use Next.js API route instead of Supabase Edge Function
       const apiUrl = '/api/mm-import';
@@ -115,7 +121,25 @@ export default function UploadsPage() {
 
       if (!response.ok) {
         console.error('[Upload] Function error:', data);
-        throw new Error(data.error || data.message || `Erro ${response.status}`);
+        let errorMsg = data.error || data.message || `Erro ${response.status}`;
+
+        // Add detailed error information if available
+        if (data.missing && data.missing.length > 0) {
+          errorMsg += `\n\nColunas faltando: ${data.missing.join(', ')}`;
+          if (data.expected) {
+            errorMsg += `\n\nColunas esperadas: ${data.expected.join(', ')}`;
+          }
+        }
+
+        if (data.details) {
+          if (typeof data.details === 'string') {
+            errorMsg += `\n\n${data.details}`;
+          } else if (Array.isArray(data.details)) {
+            errorMsg += `\n\n${data.details.join('\n')}`;
+          }
+        }
+
+        throw new Error(errorMsg);
       }
 
       console.log('[Upload] Success:', data);
@@ -135,11 +159,7 @@ export default function UploadsPage() {
     const selected = event.target.files?.[0] ?? null;
     setError('');
     setMessage('');
-    if (selected) {
-      void handleSubmit(selected);
-    } else {
-      setFile(null);
-    }
+    setFile(selected);
   };
 
   return (
@@ -151,26 +171,42 @@ export default function UploadsPage() {
         </div>
       </header>
       <Card className="rf-card-default">
-        <label className="upload-dropzone">
-          <input type="file" accept=".csv,text/csv" onChange={handleFileChange} />
-          <div className="rf-logo">⬆</div>
-          <strong>Arraste seu arquivo CSV aqui</strong>
-          <span className="muted">Ou clique para selecionar do seu computador.</span>
-          <Button variant="secondary" disabled={!file}>
-            {file ? fileLabel : 'Selecionar Arquivo'}
-          </Button>
-          <span className="muted">Suporta apenas arquivos CSV do Miles & More. Limite de 10MB.</span>
-        </label>
+        <div className="upload-area">
+          <label htmlFor="csv-upload" className="upload-dropzone">
+            <div className="rf-logo">⬆</div>
+            <strong>Selecione um arquivo CSV</strong>
+            <span className="muted">Clique aqui ou arraste o arquivo do Miles & More.</span>
+            <span className="muted">Limite de 10MB.</span>
+          </label>
+          <input
+            id="csv-upload"
+            type="file"
+            accept=".csv,text/csv"
+            onChange={handleFileChange}
+            className="upload-input-accessible"
+            aria-label="Selecionar arquivo CSV"
+          />
+          {file && (
+            <div className="file-selected">
+              <span>✓ {fileLabel}</span>
+            </div>
+          )}
+        </div>
         <Button onClick={() => handleSubmit()} disabled={!file || isUploading}>
           {isUploading ? 'Processando...' : 'Enviar CSV'}
         </Button>
-        {error && <p className="text-error">{error}</p>}
+        {error && (
+          <div className="error-box">
+            {error.split('\n').map((line, idx) => (
+              <p key={idx} className="text-error">{line}</p>
+            ))}
+          </div>
+        )}
         {message && <p className="text-success">{message}</p>}
       </Card>
       <Card className="rf-card-default">
         <div className="uploads-header">
           <h2>Histórico de Importações</h2>
-          <Button variant="ghost">Filtrar</Button>
         </div>
         <TableContainer>
           <Table>
