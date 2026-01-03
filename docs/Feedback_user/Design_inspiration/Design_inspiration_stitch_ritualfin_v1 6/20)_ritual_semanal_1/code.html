@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ritual Semanal - Couple Budget Coach</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-dark": "#0eb57d",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e26",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for cleaner look in sidebars */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar (Desktop) -->
+<aside class="hidden md:flex flex-col w-72 h-full bg-surface-light dark:bg-surface-dark border-r border-gray-200 dark:border-gray-800 shrink-0 z-20">
+<div class="p-6 pb-2">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-primary/20 p-2 rounded-xl text-primary">
+<span class="material-symbols-outlined text-3xl">favorite</span>
+</div>
+<span class="text-xl font-bold tracking-tight">CoupleCoach</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-background-light dark:bg-background-dark mb-6">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-primary" data-alt="Profile picture of a couple smiling together" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBh7XcIz0S5-bhUHGwAv3a3IMIHnKFLN97V2ja3s7Rk6s26btUlybJ7tWR5hsK7su5Ln6R46LbWlyL_KGqP3PB4hAJXbhf45CZ8eDs7XHfQOOmGZso9DtgCQ2e5NQ9TRJckIuCmYBaos4OtPo2K_R2t1Msr_jvELWNTJm9gYNw1YRADLmUkdQAHHuVRL-4qTsrZuk98Xj96OWFEXyZLIOe7bhEWtn-YBDtxZIOtD2sw-EiUrlEA9RCsd695FoZNSsA_nT-Giy4p_B4");'>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold leading-tight">Casal Silva</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Plano Premium</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 flex flex-col gap-2 overflow-y-auto no-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">grid_view</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">receipt_long</span>
+<span class="font-medium text-sm">Extrato</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-slate-900 dark:text-white font-semibold" href="#">
+<span class="material-symbols-outlined text-primary icon-filled">check_circle</span>
+<span class="text-sm">Ritual Semanal</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">ads_click</span>
+<span class="font-medium text-sm">Metas</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">settings</span>
+<span class="font-medium text-sm">Configurações</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-100 dark:border-gray-800">
+<button class="flex items-center gap-3 px-4 py-3 w-full text-left text-slate-500 dark:text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-medium text-sm">Sair</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-y-auto bg-background-light dark:bg-background-dark relative">
+<!-- Sticky Header for Progress -->
+<div class="sticky top-0 z-10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 px-6 py-4 md:px-10 lg:px-20">
+<div class="max-w-4xl mx-auto w-full">
+<div class="flex items-center justify-between mb-2">
+<h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider">Ritual Semanal</h2>
+<span class="text-sm font-medium text-primary">3 de 5 passos</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full transition-all duration-500" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 px-6 py-8 md:px-10 lg:px-20">
+<div class="max-w-4xl mx-auto flex flex-col gap-10 pb-20">
+<!-- Header Section -->
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Ritual Semanal</h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg">Alinhamento financeiro e conexão do casal.</p>
+</div>
+<!-- Step 1: Review (Acordo Anterior) -->
+<section class="flex flex-col gap-5">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary">history</span>
+<h2 class="text-xl font-bold">1. Como foi a semana passada?</h2>
+</div>
+<div class="relative overflow-hidden rounded-2xl group cursor-pointer shadow-sm hover:shadow-md transition-all">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Abstract gradient background illustrating focus and clarity" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAa9p1vapEupz_u5Q1fe_WjfLRJ9oS9dJPi-kTdK-HfsxUM_48MF4F4sggRzwx8Yrr9OMAFc4v11c-C8hyhM3pmKK660hKBozPoPbmWEH4UM6Ugj1b9bcRFpKkN9iXCsRuzHDuWS-X99WUwIbcuTKh9o692UAXBuG_5TFlPi6jyhIWrFtVa2XSsDT9NGRABJUuTSjweuSztfXWDcrwcuQbUcqgr-AR4kWJLMGlxQDvl7fmKkcP0Jf7o-rOoIkoZow1DBdiCyr9k6Xc");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10"></div>
+<!-- Content -->
+<div class="relative z-10 p-6 md:p-8 flex flex-col md:flex-row items-end md:items-center justify-between gap-6 min-h-[200px]">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-white/20 backdrop-blur-md text-white text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wider">Acordo Anterior</span>
+</div>
+<p class="text-white text-2xl font-bold leading-tight max-w-lg">
+                                        "Focar em reduzir gastos com iFood e fazer mercado no domingo."
+                                    </p>
+</div>
+<div class="flex flex-col items-center gap-3 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/10 min-w-[160px]">
+<span class="text-white text-sm font-medium">Cumpriram?</span>
+<div class="flex gap-2">
+<button class="size-10 rounded-full bg-white/10 hover:bg-red-500 hover:text-white flex items-center justify-center text-white transition-colors" title="Não">
+<span class="material-symbols-outlined">close</span>
+</button>
+<button class="size-10 rounded-full bg-primary hover:bg-primary-dark flex items-center justify-center text-slate-900 font-bold transition-colors shadow-[0_0_15px_rgba(19,236,164,0.4)]" title="Sim">
+<span class="material-symbols-outlined">check</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Divider -->
+<hr class="border-gray-200 dark:border-gray-800"/>
+<!-- Step 2: Overview (Visão Geral) -->
+<section class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<h2 class="text-xl font-bold">2. Visão Geral da Semana</h2>
+</div>
+<span class="text-sm text-slate-500 dark:text-slate-400">Dia 12 de 30</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card 1: Saldo Restante -->
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">account_balance_wallet</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Saldo Restante (Livre)</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-black text-slate-900 dark:text-white">R$ 1.240,00</h3>
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">+4% vs mês passado</span>
+</div>
+<div class="mt-4 w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 65%"></div>
+</div>
+<p class="text-xs text-slate-400 mt-2">65% do orçamento mensal disponível</p>
+</div>
+<!-- Card 2: Projeção -->
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-blue-500">trending_up</span>
+</div>
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Projeção Final de Mês</p>
+<div class="flex items-baseline gap-2">
+<h3 class="text-3xl font-black text-slate-900 dark:text-white">R$ 450,00</h3>
+<span class="text-xs font-bold text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full">Positivo</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 mt-4 leading-relaxed">
+                                    Mantendo o ritmo atual, vocês terminarão o mês no <span class="font-bold text-primary">verde</span>. Ótimo trabalho!
+                                </p>
+</div>
+</div>
+<!-- Categories Breakdown -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 p-6 shadow-sm">
+<h3 class="text-base font-bold text-slate-900 dark:text-white mb-4">Top Categorias (Orçado vs Realizado)</h3>
+<div class="flex flex-col gap-5">
+<!-- Category Item 1 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-orange-400"></div>
+<span class="font-medium text-slate-700 dark:text-slate-200">Mercado &amp; Alimentação</span>
+</div>
+<span class="text-slate-500 dark:text-slate-400">R$ 850 / R$ 1.000 (85%)</span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+<div class="bg-orange-400 h-2 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Category Item 2 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="font-medium text-slate-700 dark:text-slate-200">Lazer &amp; Restaurantes</span>
+</div>
+<span class="text-slate-500 dark:text-slate-400">R$ 200 / R$ 600 (33%)</span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 33%"></div>
+</div>
+</div>
+<!-- Category Item 3 -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-red-500"></div>
+<span class="font-medium text-slate-700 dark:text-slate-200">Transporte</span>
+</div>
+<span class="text-slate-500 dark:text-slate-400">R$ 320 / R$ 300 (106%)</span>
+</div>
+<div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+<div class="bg-red-500 h-2 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Upcoming (Próximos 7 dias) -->
+<section class="flex flex-col gap-5">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<h2 class="text-xl font-bold">3. O que vem por aí (7 dias)</h2>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden">
+<div class="divide-y divide-gray-100 dark:divide-gray-800">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-2 w-14">
+<span class="text-xs font-bold text-slate-500 uppercase">Qui</span>
+<span class="text-lg font-black text-slate-900 dark:text-white">16</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">Netflix Assinatura</span>
+<span class="text-xs text-slate-500">Cartão Nubank • Fixo</span>
+</div>
+</div>
+<span class="font-bold text-slate-900 dark:text-white">- R$ 55,90</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-2 w-14">
+<span class="text-xs font-bold text-slate-500 uppercase">Sáb</span>
+<span class="text-lg font-black text-slate-900 dark:text-white">18</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">Feira Semanal</span>
+<span class="text-xs text-slate-500">Estimativa • Variável</span>
+</div>
+</div>
+<span class="font-bold text-slate-900 dark:text-white">- R$ 150,00</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-2 w-14">
+<span class="text-xs font-bold text-slate-500 uppercase">Seg</span>
+<span class="text-lg font-black text-slate-900 dark:text-white">20</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-slate-900 dark:text-white">Conta de Luz</span>
+<span class="text-xs text-slate-500">Boleto • Fixo</span>
+</div>
+</div>
+<span class="font-bold text-slate-900 dark:text-white">- R$ 210,40</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Divider -->
+<hr class="border-gray-200 dark:border-gray-800"/>
+<!-- Final: New Agreement -->
+<section class="flex flex-col gap-5">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary">handshake</span>
+<h2 class="text-xl font-bold">Novo Acordo da Semana</h2>
+</div>
+<div class="bg-gradient-to-br from-primary/5 to-transparent p-6 rounded-2xl border border-primary/20">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3" for="agreement">Qual o foco para os próximos 7 dias?</label>
+<textarea class="w-full rounded-xl border-gray-200 dark:border-gray-700 bg-white dark:bg-background-dark text-slate-900 dark:text-white p-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow resize-none" id="agreement" placeholder="Ex: Vamos tentar fazer 2 jantares em casa e economizar no Uber..." rows="3"></textarea>
+<!-- Suggestions -->
+<div class="flex flex-wrap gap-2 mt-4">
+<button class="px-3 py-1.5 text-xs font-medium rounded-lg bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary transition-colors">🎯 Sem iFood esta semana</button>
+<button class="px-3 py-1.5 text-xs font-medium rounded-lg bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary transition-colors">🛒 Mercado só com lista</button>
+<button class="px-3 py-1.5 text-xs font-medium rounded-lg bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 border border-gray-200 dark:border-gray-700 hover:border-primary hover:text-primary transition-colors">🚗 Uber só em emergência</button>
+</div>
+</div>
+</section>
+<!-- Sticky Bottom Action (Mobile optimized visual) -->
+<div class="flex items-center justify-end gap-4 pt-4">
+<button class="px-6 py-3 rounded-xl font-bold text-slate-500 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                            Salvar rascunho
+                        </button>
+<button class="px-8 py-3 rounded-xl bg-primary hover:bg-primary-dark text-slate-900 font-bold shadow-lg shadow-primary/30 transition-all hover:scale-105 flex items-center gap-2">
+<span>Concluir Ritual</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

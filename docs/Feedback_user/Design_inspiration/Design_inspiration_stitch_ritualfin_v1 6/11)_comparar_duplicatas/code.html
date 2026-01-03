@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Resolver Duplicata</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-hover": "#0fd693",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e26",
+                        "text-main": "#111816",
+                        "text-muted": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dbe6e2;
+            border-radius: 3px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #2a4038;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-gray-100 overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="hidden lg:flex w-72 flex-col justify-between bg-surface-light dark:bg-surface-dark border-r border-gray-200 dark:border-gray-800 p-6 z-10">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full h-10 w-10 shadow-sm" data-alt="CasalFin logo with abstract geometric shapes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAivtvtSN_b--QoD3x_wrzBkNSga7hY1UECHBFAepGQlCOo5PN3BqbgyAHQLStwEmlfjkhF-yD4aLL4EAfGLauVPbZUBbR_LaK5JwfwaUdkCbvW_IOBQvF2n1efng5bq24fa1USAy20-Tgz6MXyMKLWOaHLN2ZlPxC3nsU4HyrrQ_9G1fR2IT0HOu0EcVAtRZ9hOnJAmWVgliCT8ZZm-BQnFagqCwjelAWpgI6SeTsWrSRyhezrSz7Z2i1Q1ldIuPmFjcpOVLKEIS0");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-main dark:text-white text-base font-bold leading-tight">CasalFin</h1>
+<p class="text-text-muted text-[10px] font-normal tracking-wide">Finanças claras, riqueza a dois</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">pie_chart</span>
+<span class="text-sm font-medium">Visão Geral</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary-hover dark:text-primary" href="#">
+<span class="material-symbols-outlined text-[24px] icon-fill">credit_card</span>
+<span class="text-sm font-bold">Transações</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">account_balance</span>
+<span class="text-sm font-medium">Orçamento</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">bar_chart</span>
+<span class="text-sm font-medium">Relatórios</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<button class="flex w-full cursor-pointer items-center justify-center rounded-lg h-12 bg-primary hover:bg-primary-hover transition-colors text-text-main text-sm font-bold shadow-sm">
+<span class="mr-2 material-symbols-outlined text-[20px]">add</span>
+<span>Nova Transação</span>
+</button>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-text-muted">settings</span>
+<span class="text-text-main dark:text-gray-200 text-sm font-medium">Configurações</span>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full relative overflow-hidden bg-background-light dark:bg-background-dark">
+<header class="h-20 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-8 bg-surface-light/50 dark:bg-surface-dark/50 backdrop-blur-sm">
+<h2 class="text-2xl font-bold text-text-main dark:text-white opacity-30">Todas as Transações</h2>
+<div class="flex items-center gap-4 opacity-30">
+<div class="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+<div class="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+</div>
+</header>
+<div class="flex-1 p-8 opacity-20 pointer-events-none filter blur-[2px]">
+<div class="w-full h-64 bg-gray-200 dark:bg-gray-800 rounded-xl mb-6"></div>
+<div class="flex gap-6">
+<div class="w-2/3 h-96 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+<div class="w-1/3 h-96 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+</div>
+</div>
+<div class="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 sm:p-6 overflow-y-auto">
+<div class="relative w-full max-w-5xl bg-surface-light dark:bg-surface-dark rounded-2xl shadow-2xl flex flex-col max-h-[95vh] overflow-hidden border border-gray-100 dark:border-gray-700 animate-in fade-in zoom-in-95 duration-200">
+<div class="flex items-start justify-between p-6 pb-4 border-b border-gray-100 dark:border-gray-800">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-3">
+<h3 class="text-2xl font-bold text-text-main dark:text-white tracking-tight">Resolver Duplicata</h3>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 dark:bg-green-900/30 border border-green-100 dark:border-green-800/50">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400 text-[16px]">verified</span>
+<span class="text-xs font-bold text-green-700 dark:text-green-300">95% de certeza</span>
+</div>
+</div>
+<p class="text-text-muted text-sm dark:text-gray-400">Identificamos uma possível transação duplicada. Compare os detalhes e decida a melhor ação.</p>
+</div>
+<button class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 bg-background-light/50 dark:bg-background-dark/50">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">database</span>
+<h4 class="text-sm font-bold text-text-muted uppercase tracking-wider">Transação Existente (A)</h4>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm overflow-hidden">
+<div class="p-5 border-b border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-white/5">
+<p class="text-xs text-text-muted font-medium mb-1">Valor</p>
+<p class="text-2xl font-bold text-text-main dark:text-white">€ 150,00</p>
+</div>
+<div class="flex flex-col divide-y divide-gray-100 dark:divide-gray-800">
+<div class="flex flex-col p-4 gap-1 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<span class="text-xs text-text-muted">Data</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-[18px]">calendar_today</span>
+<span class="text-sm font-medium text-text-main dark:text-gray-200">15/10/2023</span>
+</div>
+</div>
+<div class="flex flex-col p-4 gap-1 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<span class="text-xs text-text-muted">Comerciante</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-[18px]">storefront</span>
+<span class="text-sm font-medium text-text-main dark:text-gray-200">Netflix</span>
+</div>
+</div>
+<div class="flex flex-col p-4 gap-1 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<span class="text-xs text-text-muted">Categoria</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-[18px]">label</span>
+<span class="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold">Assinaturas</span>
+</div>
+</div>
+<div class="flex flex-col p-4 gap-1 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<span class="text-xs text-text-muted">Conta</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-[18px]">account_balance_wallet</span>
+<span class="text-sm font-medium text-text-main dark:text-gray-200">Nubank</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-gray-50 dark:bg-black/20 border-t border-gray-100 dark:border-gray-800">
+<p class="text-xs text-text-muted font-medium mb-3">Evidência (Comprovante)</p>
+<div class="relative group cursor-pointer overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 w-full h-24 bg-gray-200">
+<div class="absolute inset-0 bg-cover bg-center opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300" data-alt="Imagem de recibo de pagamento Netflix" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0DpOxt17i2kdZCDB9HWN0iYbb0x61TC8p8ibH2QEaYd3YKGIGMmFIwVvu-BQsyZJR80HaqgWuHU4725Crq5RJRlbUFHMZeO_PRbOi8WbQLvoa_3xe0JVHT3UDwP1ZZqPJQjdCsRwZCv1XNy4PznFQdljdXEvg6WkETS6172lWLMTXd9uuGmcnJ4xfDgiaHBrl6hugGyjh7qvSD2z8OAv5CcDGOykYiUkvQZZM2qCFRQvQa2-mruG7_yVVf8JxB_oVUDsajiMH6G0");'></div>
+<div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">Ver Imagem</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[20px]">input</span>
+<h4 class="text-sm font-bold text-text-muted uppercase tracking-wider">Nova Importação (B)</h4>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl border border-primary/30 shadow-[0_0_15px_rgba(19,236,164,0.1)] overflow-hidden">
+<div class="p-5 border-b border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-white/5 relative">
+<p class="text-xs text-text-muted font-medium mb-1">Valor</p>
+<p class="text-2xl font-bold text-text-main dark:text-white">€ 150,00</p>
+<div class="absolute top-5 right-5 text-gray-300 dark:text-gray-600" title="Valores idênticos">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+</div>
+<div class="flex flex-col divide-y divide-gray-100 dark:divide-gray-800">
+<div class="flex flex-col p-4 gap-1 bg-amber-50/50 dark:bg-amber-900/10 border-l-4 border-amber-400 transition-colors">
+<div class="flex justify-between">
+<span class="text-xs text-amber-700 dark:text-amber-500 font-bold">Data (Diferente)</span>
+<span class="text-[10px] uppercase font-bold text-amber-600 bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 rounded">Diff</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-600 dark:text-amber-500 text-[18px]">calendar_today</span>
+<span class="text-sm font-bold text-text-main dark:text-white">16/10/2023</span>
+</div>
+</div>
+<div class="flex flex-col p-4 gap-1 bg-amber-50/50 dark:bg-amber-900/10 border-l-4 border-amber-400 transition-colors">
+<div class="flex justify-between">
+<span class="text-xs text-amber-700 dark:text-amber-500 font-bold">Comerciante (Diferente)</span>
+<span class="text-[10px] uppercase font-bold text-amber-600 bg-amber-100 dark:bg-amber-900/40 px-1.5 py-0.5 rounded">Diff</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-600 dark:text-amber-500 text-[18px]">storefront</span>
+<span class="text-sm font-bold text-text-main dark:text-white">Netflix Serv.</span>
+</div>
+</div>
+<div class="flex flex-col p-4 gap-1 opacity-60 hover:opacity-100 transition-opacity">
+<span class="text-xs text-text-muted">Categoria</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-[18px]">label</span>
+<span class="px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 text-xs font-medium">Assinaturas</span>
+</div>
+</div>
+<div class="flex flex-col p-4 gap-1 opacity-60 hover:opacity-100 transition-opacity">
+<span class="text-xs text-text-muted">Conta</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-[18px]">account_balance_wallet</span>
+<span class="text-sm font-medium text-text-main dark:text-gray-200">Nubank</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-gray-50 dark:bg-black/20 border-t border-gray-100 dark:border-gray-800">
+<p class="text-xs text-text-muted font-medium mb-3">Evidência (CSV Import)</p>
+<div class="w-full bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg p-3 font-mono text-[10px] text-gray-500 overflow-x-auto whitespace-nowrap">
+                                            2023-10-16,Netflix Serv.,-150.00,EUR,Nubank_CC
+                                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-surface-light dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+<button class="text-text-muted hover:text-gray-600 dark:hover:text-gray-400 text-sm font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900/20">
+                            Ignorar conflito
+                        </button>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none h-11 px-6 rounded-lg border border-gray-300 dark:border-gray-600 text-text-main dark:text-white font-bold text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-all flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-[20px] text-gray-400 group-hover:text-text-main dark:group-hover:text-white transition-colors">call_split</span>
+                                Manter Separadas
+                            </button>
+<button class="flex-1 md:flex-none h-11 px-8 rounded-lg bg-primary hover:bg-primary-hover text-text-main font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 transform active:scale-95">
+<span class="material-symbols-outlined text-[20px] icon-fill">merge</span>
+                                Mesclar Transações
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="lg:hidden fixed bottom-0 left-0 w-full bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 flex justify-around py-3 z-40">
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="text-[10px] font-medium">Dash</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined icon-fill">credit_card</span>
+<span class="text-[10px] font-bold">Transações</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-[10px] font-medium">Novo</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-medium">Relatórios</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</nav>
+</div>
+
+</body></html>

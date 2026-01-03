@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mapear CSV - CasalFin</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e26",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display text-[#111816] dark:text-white overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="w-full bg-surface-light dark:bg-surface-dark border-b border-[#e6ebe9] dark:border-[#2a4038] sticky top-0 z-50">
+<div class="px-4 md:px-10 lg:px-40 py-3 flex items-center justify-between mx-auto max-w-[1440px]">
+<div class="flex items-center gap-4 text-[#111816] dark:text-white">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-[32px]">account_balance_wallet</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">CasalFin</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Início</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Funcionalidades</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Sobre nós</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="size-8 rounded-full bg-[#f0f4f3] dark:bg-[#2a4038] flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center py-10 px-4 md:px-10 w-full max-w-[1024px] mx-auto">
+<!-- Progress Bar (Wizard Step) -->
+<div class="w-full mb-8">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<p class="text-sm font-bold text-primary uppercase tracking-wider">Passo 2 de 4</p>
+<span class="text-sm font-medium text-[#61897c] dark:text-[#8baaa0]">50%</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#dbe6e2] dark:bg-[#2a4038] overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 50%;"></div>
+</div>
+</div>
+</div>
+<!-- Page Heading -->
+<div class="w-full mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div class="flex flex-col gap-3 max-w-2xl">
+<h1 class="text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em] text-[#111816] dark:text-white">
+                    Mapear Colunas do Extrato
+                </h1>
+<p class="text-base md:text-lg font-medium text-[#61897c] dark:text-[#a0bfb5]">
+                    Relacione as colunas do seu arquivo com as informações do CasalFin. Sugerimos o melhor para você.
+                </p>
+</div>
+<div class="hidden md:block">
+<button class="flex items-center gap-2 text-sm font-bold text-primary hover:underline">
+<span class="material-symbols-outlined text-lg">help</span>
+                    Como funciona?
+                </button>
+</div>
+</div>
+<!-- Mapping Table/Area -->
+<div class="w-full bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-[#e6ebe9] dark:border-[#2a4038] overflow-hidden">
+<!-- Table Header -->
+<div class="hidden md:grid grid-cols-12 gap-4 px-6 py-4 bg-[#fbfdfc] dark:bg-[#1c362e] border-b border-[#e6ebe9] dark:border-[#2a4038]">
+<div class="col-span-3 text-xs font-bold text-[#61897c] dark:text-[#8baaa0] uppercase tracking-wider">Campo no CasalFin</div>
+<div class="col-span-5 text-xs font-bold text-[#61897c] dark:text-[#8baaa0] uppercase tracking-wider">Coluna no seu CSV</div>
+<div class="col-span-4 text-xs font-bold text-[#61897c] dark:text-[#8baaa0] uppercase tracking-wider">Exemplo (Linha 1)</div>
+</div>
+<!-- Row 1: Data -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-5 border-b border-[#e6ebe9] dark:border-[#2a4038] hover:bg-[#f6f8f7] dark:hover:bg-[#1a332b] transition-colors group">
+<div class="col-span-1 md:col-span-3 flex items-center gap-3">
+<div class="size-8 rounded-lg bg-[#e8fbf5] dark:bg-[#1a3830] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div>
+<p class="font-bold text-[#111816] dark:text-white">Data</p>
+<p class="text-xs text-[#61897c] dark:text-[#8baaa0] md:hidden">Campo Obrigatório</p>
+</div>
+</div>
+<div class="col-span-1 md:col-span-5 flex flex-col justify-center">
+<label class="md:hidden text-xs font-bold text-[#61897c] mb-1 uppercase">Mapear para:</label>
+<div class="relative w-full">
+<select class="w-full h-12 pl-4 pr-10 rounded-lg border border-[#dbe6e2] dark:border-[#406155] bg-white dark:bg-[#10221c] text-[#111816] dark:text-white font-medium focus:ring-2 focus:ring-primary focus:border-primary appearance-none cursor-pointer outline-none transition-all">
+<option selected="" value="data_transacao">Data Transação</option>
+<option value="data_lancamento">Data Lançamento</option>
+<option value="ignore">Ignorar coluna</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+<span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#13eca4]/20 text-[#0d5c42] dark:text-[#5cf2c0]">
+                                95% CERTEZA
+                            </span>
+<span class="material-symbols-outlined text-[#61897c]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-4 flex items-center md:pl-4">
+<div class="flex items-center gap-2 px-3 py-2 rounded bg-[#f6f8f7] dark:bg-[#10221c] w-full border border-transparent group-hover:border-[#e6ebe9] dark:group-hover:border-[#406155] transition-colors">
+<span class="text-sm font-medium text-[#61897c] dark:text-[#a0bfb5] truncate">25/10/2023</span>
+</div>
+</div>
+</div>
+<!-- Row 2: Descrição -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-5 border-b border-[#e6ebe9] dark:border-[#2a4038] hover:bg-[#f6f8f7] dark:hover:bg-[#1a332b] transition-colors group">
+<div class="col-span-1 md:col-span-3 flex items-center gap-3">
+<div class="size-8 rounded-lg bg-[#e8fbf5] dark:bg-[#1a3830] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<p class="font-bold text-[#111816] dark:text-white">Descrição</p>
+</div>
+</div>
+<div class="col-span-1 md:col-span-5 flex flex-col justify-center">
+<label class="md:hidden text-xs font-bold text-[#61897c] mb-1 uppercase">Mapear para:</label>
+<div class="relative w-full">
+<select class="w-full h-12 pl-4 pr-10 rounded-lg border border-[#dbe6e2] dark:border-[#406155] bg-white dark:bg-[#10221c] text-[#111816] dark:text-white font-medium focus:ring-2 focus:ring-primary focus:border-primary appearance-none cursor-pointer outline-none transition-all">
+<option selected="" value="historico">Histórico</option>
+<option value="detalhes">Detalhes</option>
+<option value="ignore">Ignorar coluna</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+<span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#13eca4]/10 text-[#0d5c42] dark:text-[#5cf2c0]">
+                                80% CERTEZA
+                            </span>
+<span class="material-symbols-outlined text-[#61897c]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-4 flex items-center md:pl-4">
+<div class="flex items-center gap-2 px-3 py-2 rounded bg-[#f6f8f7] dark:bg-[#10221c] w-full border border-transparent group-hover:border-[#e6ebe9] dark:group-hover:border-[#406155] transition-colors">
+<span class="text-sm font-medium text-[#61897c] dark:text-[#a0bfb5] truncate">Compra Supermercado Pingo Doce</span>
+</div>
+</div>
+</div>
+<!-- Row 3: Valor -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-5 border-b border-[#e6ebe9] dark:border-[#2a4038] hover:bg-[#f6f8f7] dark:hover:bg-[#1a332b] transition-colors group">
+<div class="col-span-1 md:col-span-3 flex items-center gap-3">
+<div class="size-8 rounded-lg bg-[#e8fbf5] dark:bg-[#1a3830] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="font-bold text-[#111816] dark:text-white">Valor</p>
+</div>
+</div>
+<div class="col-span-1 md:col-span-5 flex flex-col justify-center">
+<label class="md:hidden text-xs font-bold text-[#61897c] mb-1 uppercase">Mapear para:</label>
+<div class="relative w-full">
+<select class="w-full h-12 pl-4 pr-10 rounded-lg border border-[#dbe6e2] dark:border-[#406155] bg-white dark:bg-[#10221c] text-[#111816] dark:text-white font-medium focus:ring-2 focus:ring-primary focus:border-primary appearance-none cursor-pointer outline-none transition-all">
+<option selected="" value="quantia">Quantia</option>
+<option value="montante">Montante</option>
+<option value="ignore">Ignorar coluna</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+<span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-[#13eca4]/20 text-[#0d5c42] dark:text-[#5cf2c0]">
+                                99% CERTEZA
+                            </span>
+<span class="material-symbols-outlined text-[#61897c]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-4 flex items-center md:pl-4">
+<div class="flex items-center gap-2 px-3 py-2 rounded bg-[#f6f8f7] dark:bg-[#10221c] w-full border border-transparent group-hover:border-[#e6ebe9] dark:group-hover:border-[#406155] transition-colors">
+<span class="text-sm font-medium text-[#61897c] dark:text-[#a0bfb5] truncate">-54,20 €</span>
+</div>
+</div>
+</div>
+<!-- Row 4: Tipo -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-5 border-b border-[#e6ebe9] dark:border-[#2a4038] hover:bg-[#f6f8f7] dark:hover:bg-[#1a332b] transition-colors group">
+<div class="col-span-1 md:col-span-3 flex items-center gap-3">
+<div class="size-8 rounded-lg bg-[#e8fbf5] dark:bg-[#1a3830] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">category</span>
+</div>
+<div>
+<p class="font-bold text-[#111816] dark:text-white">Tipo</p>
+</div>
+</div>
+<div class="col-span-1 md:col-span-5 flex flex-col justify-center">
+<label class="md:hidden text-xs font-bold text-[#61897c] mb-1 uppercase">Mapear para:</label>
+<div class="relative w-full">
+<select class="w-full h-12 pl-4 pr-10 rounded-lg border border-[#dbe6e2] dark:border-[#406155] bg-white dark:bg-[#10221c] text-[#61897c] font-medium focus:ring-2 focus:ring-primary focus:border-primary appearance-none cursor-pointer outline-none transition-all">
+<option disabled="" selected="" value="">Selecionar coluna...</option>
+<option value="tipo_movimento">Tipo Movimento</option>
+<option value="categoria">Categoria</option>
+<option value="ignore">Ignorar coluna</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+<span class="material-symbols-outlined text-[#61897c]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-4 flex items-center md:pl-4">
+<div class="flex items-center gap-2 px-3 py-2 rounded bg-[#f6f8f7] dark:bg-[#10221c] w-full border border-transparent group-hover:border-[#e6ebe9] dark:group-hover:border-[#406155] transition-colors">
+<span class="text-sm font-medium text-[#61897c] dark:text-[#a0bfb5] italic">Débito (Sugestão)</span>
+</div>
+</div>
+</div>
+<!-- Row 5: Conta -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-5 hover:bg-[#f6f8f7] dark:hover:bg-[#1a332b] transition-colors group">
+<div class="col-span-1 md:col-span-3 flex items-center gap-3">
+<div class="size-8 rounded-lg bg-[#e8fbf5] dark:bg-[#1a3830] flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div>
+<p class="font-bold text-[#111816] dark:text-white">Conta</p>
+</div>
+</div>
+<div class="col-span-1 md:col-span-5 flex flex-col justify-center">
+<label class="md:hidden text-xs font-bold text-[#61897c] mb-1 uppercase">Mapear para:</label>
+<div class="relative w-full">
+<select class="w-full h-12 pl-4 pr-10 rounded-lg border border-[#dbe6e2] dark:border-[#406155] bg-white dark:bg-[#10221c] text-[#61897c] font-medium focus:ring-2 focus:ring-primary focus:border-primary appearance-none cursor-pointer outline-none transition-all">
+<option disabled="" selected="" value="">Selecionar coluna...</option>
+<option value="conta_origem">Conta Origem</option>
+<option value="banco">Banco</option>
+<option value="ignore">Ignorar coluna</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2 pointer-events-none">
+<span class="material-symbols-outlined text-[#61897c]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="col-span-1 md:col-span-4 flex items-center md:pl-4">
+<div class="flex items-center gap-2 px-3 py-2 rounded bg-[#f6f8f7] dark:bg-[#10221c] w-full border border-transparent group-hover:border-[#e6ebe9] dark:group-hover:border-[#406155] transition-colors">
+<span class="text-sm font-medium text-[#61897c] dark:text-[#a0bfb5] italic">Conta Corrente (Sugestão)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Info/Warning Panel -->
+<div class="w-full mt-6">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-lg bg-[#f0f4f3] dark:bg-[#1a332b] border border-[#dbe6e2] dark:border-[#2a4038]">
+<div class="size-10 rounded-full bg-white dark:bg-[#10221c] flex flex-shrink-0 items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">info</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-[#111816] dark:text-white">Verifique as colunas não mapeadas</p>
+<p class="text-sm text-[#61897c] dark:text-[#a0bfb5]">As colunas "Tipo" e "Conta" não foram identificadas automaticamente com alta precisão.</p>
+</div>
+</div>
+</div>
+<!-- Action Panel / Footer -->
+<div class="w-full mt-10 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto h-12 px-6 rounded-lg border border-transparent hover:bg-[#f0f4f3] dark:hover:bg-[#1c362e] text-[#61897c] dark:text-[#a0bfb5] text-base font-bold transition-colors">
+                Voltar
+            </button>
+<button class="w-full sm:w-auto h-12 px-8 rounded-lg bg-primary hover:bg-[#0fd492] text-[#10221c] text-base font-bold shadow-sm shadow-[#13eca4]/30 transition-all flex items-center justify-center gap-2">
+                Continuar
+                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Background decorative element -->
+<div class="fixed top-0 left-0 w-full h-[400px] bg-gradient-to-b from-white to-transparent dark:from-[#162e26] dark:to-transparent -z-10 pointer-events-none" data-alt="Soft gradient background fading from top"></div>
+</body></html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Revisão Guiada Mensal - CasalFin</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-dark": "#0fb880",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2c26",
+                        "text-main": "#111816",
+                        "text-secondary": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dbe6e2;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-[#f0f4f3] dark:border-gray-800">
+<div class="px-4 md:px-10 py-3 max-w-[1200px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-4 text-[#111816] dark:text-white">
+<div class="size-8 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">savings</span>
+</div>
+<h2 class="text-[#111816] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">CasalFin</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-6 lg:gap-9">
+<a class="text-[#111816] dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Visão Geral</a>
+<a class="text-[#111816] dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Transações</a>
+<a class="text-[#111816] dark:text-gray-200 text-sm font-medium text-primary" href="#">Metas</a>
+<a class="text-[#111816] dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Perfil</a>
+</nav>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-white shadow-sm cursor-pointer" data-alt="Profile picture of a smiling couple" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDmp-jccQPouuQM6yXDGlT3YMGli5JXIa3R7Ud9jGSZhT47sUnjh_tfDlNK_ECE224NZTdSoSJmIN7sAmTWFWNfUTv-CO73vf__QavW4OwVKUsjIjLEOjPf-xWNPhwRxASlhY14MhVjpupzN-9NoWDYsQ5vgbizFk54uUbufOSZ4butxGC4yBW498wq_mf2CN6dswTK3BElDQujZr6IWCb-Zmt3tsRVrxAJdJJbG0_Cn7fW7u9cbMwzfh3Rc1x-ti63gEPUhC0tTxE");'>
+</div>
+</div>
+<!-- Mobile Menu Icon -->
+<div class="md:hidden text-text-main dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[960px] mx-auto px-4 md:px-6 py-6 md:py-10 flex flex-col gap-6">
+<!-- Progress Bar -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<p class="text-text-main dark:text-white text-sm font-semibold tracking-wide uppercase">Passo 3 de 5: Planejamento</p>
+<span class="text-xs text-text-secondary font-medium">60% Concluído</span>
+</div>
+<div class="h-2 w-full rounded-full bg-[#dbe6e2] dark:bg-gray-700 overflow-hidden">
+<div class="h-full rounded-full bg-primary transition-all duration-500 ease-out" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-col gap-3 pt-2">
+<h1 class="text-text-main dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">
+                Revisão Guiada Mensal
+            </h1>
+<p class="text-text-secondary dark:text-gray-400 text-lg font-normal leading-relaxed max-w-[720px]">
+                Vamos planejar o próximo mês? Reveja o que passou e ajuste suas metas para continuarem crescendo juntos.
+            </p>
+</div>
+<!-- CTA Copy Goals (Compact Version) -->
+<div class="bg-gradient-to-r from-background-light to-[#e8fbf6] dark:from-surface-dark dark:to-gray-800 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-[#f0f4f3] dark:border-gray-700 shadow-sm">
+<div class="flex flex-col gap-2 text-center md:text-left">
+<h3 class="text-text-main dark:text-white text-xl font-bold">Quer manter o ritmo?</h3>
+<p class="text-text-secondary dark:text-gray-400 text-sm md:text-base">
+                    Copie as metas de Outubro e ajuste apenas o necessário.
+                </p>
+</div>
+<button class="bg-primary hover:bg-primary-dark text-[#111816] px-6 py-3 rounded-xl font-bold text-sm transition-all transform active:scale-95 shadow-lg shadow-primary/20 flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+                Copiar Metas de Outubro
+            </button>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-5 py-2 rounded-full bg-primary text-[#111816] text-sm font-bold whitespace-nowrap shadow-sm">
+                Todas
+            </button>
+<button class="px-5 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-text-main dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm font-medium whitespace-nowrap transition-colors">
+                Essenciais
+            </button>
+<button class="px-5 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-text-main dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm font-medium whitespace-nowrap transition-colors">
+                Estilo de Vida
+            </button>
+<button class="px-5 py-2 rounded-full bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-text-main dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm font-medium whitespace-nowrap transition-colors">
+                Investimentos
+            </button>
+</div>
+<!-- Content Grid: Review & Input -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Column 1: Last Month Review -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-text-secondary">history</span>
+<h3 class="text-lg font-bold text-text-main dark:text-white">Outubro (Realizado)</h3>
+</div>
+<!-- Card 1 Review -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col gap-3 group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div>
+<p class="font-bold text-text-main dark:text-white">Supermercado</p>
+<p class="text-xs text-text-secondary">Essenciais</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-text-main dark:text-white">€ 450,00</p>
+<p class="text-xs text-text-secondary">de € 500,00</p>
+</div>
+</div>
+<!-- Mini Progress -->
+<div class="space-y-1">
+<div class="h-1.5 w-full rounded-full bg-gray-100 dark:bg-gray-700">
+<div class="h-full rounded-full bg-primary w-[90%]"></div>
+</div>
+<p class="text-[10px] text-primary font-bold text-right">Dentro da meta!</p>
+</div>
+</div>
+<!-- Card 2 Review -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col gap-3 group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<p class="font-bold text-text-main dark:text-white">Restaurantes</p>
+<p class="text-xs text-text-secondary">Lazer</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-red-500">€ 280,00</p>
+<p class="text-xs text-text-secondary">de € 200,00</p>
+</div>
+</div>
+<!-- Mini Progress -->
+<div class="space-y-1">
+<div class="h-1.5 w-full rounded-full bg-gray-100 dark:bg-gray-700">
+<div class="h-full rounded-full bg-red-500 w-full"></div>
+</div>
+<p class="text-[10px] text-red-500 font-bold text-right">Ultrapassou € 80,00</p>
+</div>
+</div>
+<!-- Card 3 Review -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col gap-3 group">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div>
+<p class="font-bold text-text-main dark:text-white">Transporte</p>
+<p class="text-xs text-text-secondary">Essenciais</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-text-main dark:text-white">€ 120,00</p>
+<p class="text-xs text-text-secondary">de € 150,00</p>
+</div>
+</div>
+<!-- Mini Progress -->
+<div class="space-y-1">
+<div class="h-1.5 w-full rounded-full bg-gray-100 dark:bg-gray-700">
+<div class="h-full rounded-full bg-primary w-[80%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: Next Month Planning -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary">edit_calendar</span>
+<h3 class="text-lg font-bold text-text-main dark:text-white">Novembro (Planejado)</h3>
+</div>
+<!-- Input Card 1 -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-gray-100 dark:border-gray-800 shadow-md shadow-gray-200/50 dark:shadow-none flex flex-col justify-center gap-2 h-[132px]">
+<label class="text-xs font-bold text-text-secondary uppercase tracking-wider">Meta para Supermercado</label>
+<div class="relative flex items-center">
+<span class="absolute left-4 text-text-secondary dark:text-gray-400 font-medium">€</span>
+<input class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-background-dark border border-gray-200 dark:border-gray-700 rounded-lg text-lg font-bold text-text-main dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400" placeholder="0,00" type="text" value="500,00"/>
+</div>
+</div>
+<!-- Input Card 2 -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-gray-100 dark:border-gray-800 shadow-md shadow-gray-200/50 dark:shadow-none flex flex-col justify-center gap-2 h-[132px]">
+<div class="flex justify-between">
+<label class="text-xs font-bold text-text-secondary uppercase tracking-wider">Meta para Restaurantes</label>
+<span class="text-[10px] text-primary font-bold bg-primary/10 px-2 py-0.5 rounded">Sugestão: Aumentar?</span>
+</div>
+<div class="relative flex items-center">
+<span class="absolute left-4 text-text-secondary dark:text-gray-400 font-medium">€</span>
+<input class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-background-dark border border-gray-200 dark:border-gray-700 rounded-lg text-lg font-bold text-text-main dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400" placeholder="0,00" type="text" value="250,00"/>
+</div>
+</div>
+<!-- Input Card 3 -->
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-gray-100 dark:border-gray-800 shadow-md shadow-gray-200/50 dark:shadow-none flex flex-col justify-center gap-2 h-[132px]">
+<label class="text-xs font-bold text-text-secondary uppercase tracking-wider">Meta para Transporte</label>
+<div class="relative flex items-center">
+<span class="absolute left-4 text-text-secondary dark:text-gray-400 font-medium">€</span>
+<input class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-background-dark border border-gray-200 dark:border-gray-700 rounded-lg text-lg font-bold text-text-main dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400" placeholder="0,00" type="text" value="150,00"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Add New Category Button -->
+<button class="w-full border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-4 flex items-center justify-center gap-2 text-text-secondary hover:text-primary hover:border-primary transition-colors group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">add_circle</span>
+<span class="font-bold">Adicionar nova categoria de meta</span>
+</button>
+<!-- Summary Footer / Action Bar -->
+<div class="sticky bottom-6 mt-4 z-40">
+<div class="bg-[#111816] dark:bg-black text-white rounded-2xl p-4 md:p-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-lg bg-opacity-95">
+<div class="flex flex-col gap-1 w-full md:w-auto">
+<p class="text-gray-400 text-xs font-medium uppercase tracking-wider">Total Planejado para Novembro</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black tracking-tight">€ 900,00</span>
+<span class="text-primary text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-base">trending_up</span> 
+                            +5% vs Outubro
+                        </span>
+</div>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 rounded-xl border border-gray-600 hover:bg-gray-800 text-white font-bold transition-colors">
+                        Voltar
+                    </button>
+<button class="flex-1 md:flex-none px-8 py-3 rounded-xl bg-primary hover:bg-primary-dark text-[#111816] font-extrabold shadow-lg shadow-primary/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2">
+                        Confirmar
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

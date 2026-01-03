@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Couple Budget Coach - Revisar OCR</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1c2e28",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#2d453b",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-hidden">
+<div class="flex h-screen w-full relative">
+<!-- Sidebar Navigation (Background Context) -->
+<aside class="hidden lg:flex w-72 flex-col border-r border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark h-full z-10 relative">
+<div class="flex items-center gap-3 px-8 py-8">
+<div class="bg-primary/20 flex items-center justify-center rounded-full size-10">
+<span class="material-symbols-outlined text-primary text-2xl">savings</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Couple Budget</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium">Plano Premium</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 px-4 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-background-light dark:hover:bg-background-dark transition-colors" href="#">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary-dark dark:text-primary font-semibold" href="#">
+<span class="material-symbols-outlined fill-1">compare_arrows</span>
+<span class="font-medium text-slate-900 dark:text-white">Transações</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-background-light dark:hover:bg-background-dark transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-medium">Orçamento</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-background-light dark:hover:bg-background-dark transition-colors" href="#">
+<span class="material-symbols-outlined">track_changes</span>
+<span class="font-medium">Metas</span>
+</a>
+</nav>
+<div class="mt-auto px-4 py-6">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-background-light dark:hover:bg-background-dark transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Configurações</span>
+</a>
+<div class="flex items-center gap-3 mt-4 px-4 py-3 border-t border-border-light dark:border-border-dark pt-6">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Avatar do usuário" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6-bbX1DdZR329erac9p3tMlir4O4-nbpPwOlr5pucATZ9PIlpv1Wh3dhz1fZ2kwGmk3xSRIXLUCEOxLcUlIoIK4-W0E4IHaUDF58SPwHlQpso9J_jStimeZmGk9Apc_B9cyRcF1RfG9y1jwCBy9kk7_b4md1p5fpX8OpReYYASZ9iVmlHc45GfvApOQ31Lh-qBEpAfsGgbf8yN5pgv-Uh16Y40nIvpKlYtVP-zMwYsmO3Q72wwlx1U25RgsRO6C0umSjkVJOMNa8');"></div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Ana Silva</p>
+<p class="text-xs text-slate-500">ana@email.com</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content (Blurred Background) -->
+<main class="flex-1 flex flex-col h-full relative overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Header Mobile -->
+<div class="lg:hidden flex items-center justify-between p-4 bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark">
+<span class="material-symbols-outlined text-slate-700 dark:text-slate-200">menu</span>
+<span class="font-bold text-slate-900 dark:text-white">Transações</span>
+<div class="size-8 rounded-full bg-gray-300"></div>
+</div>
+<div class="flex-1 p-6 lg:p-10 opacity-30 blur-[2px] pointer-events-none select-none overflow-y-auto">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">Suas Transações</h2>
+<p class="text-slate-500 dark:text-slate-400">Gerencie e categorize seus gastos mensais.</p>
+</div>
+<button class="bg-primary text-slate-900 px-6 py-3 rounded-xl font-bold shadow-lg shadow-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                        Nova Despesa
+                    </button>
+</div>
+<div class="space-y-4">
+<!-- Fake transaction list for background context -->
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl flex items-center justify-between border border-border-light dark:border-border-dark">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Supermercado ABC</p>
+<p class="text-sm text-slate-500">Hoje, 14:30</p>
+</div>
+</div>
+<p class="font-bold text-red-500">- R$ 450,20</p>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl flex items-center justify-between border border-border-light dark:border-border-dark">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Posto Shell</p>
+<p class="text-sm text-slate-500">Ontem, 18:15</p>
+</div>
+</div>
+<p class="font-bold text-red-500">- R$ 210,00</p>
+</div>
+</div>
+</div>
+</main>
+<!-- MODAL OVERLAY -->
+<div class="absolute inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-900/40 backdrop-blur-sm">
+<!-- Modal Container -->
+<div class="bg-surface-light dark:bg-surface-dark w-full max-w-[1100px] h-[90vh] md:h-auto md:max-h-[85vh] rounded-3xl shadow-2xl flex flex-col md:flex-row overflow-hidden ring-1 ring-slate-900/5 dark:ring-white/10">
+<!-- Left Panel: Image Preview -->
+<div class="w-full md:w-5/12 lg:w-1/2 bg-slate-100 dark:bg-slate-900/50 p-6 flex flex-col relative group">
+<div class="flex items-center justify-between mb-4">
+<span class="bg-slate-900/80 text-white text-xs font-medium px-3 py-1.5 rounded-full backdrop-blur-md">Comprovante Original</span>
+<div class="flex gap-2">
+<button class="size-8 rounded-lg bg-white dark:bg-surface-dark shadow-sm flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">zoom_in</span>
+</button>
+<button class="size-8 rounded-lg bg-white dark:bg-surface-dark shadow-sm flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">zoom_out</span>
+</button>
+</div>
+</div>
+<div class="flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 relative shadow-inner">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-300 hover:scale-110 cursor-zoom-in" data-alt="Imagem do recibo fiscal digitalizado mostrando itens de consumo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD3wd_TdQsPBsLmn9mXIiVFARYI_olkgyiFrI6jrPeSHaPZ8QdEhw-fuIJ8yQyMXTDarUm252O6xNP_KmILqlety7FtobT1swQLe46U2x8dMqeqr086FJ7AjKXoxMKvqCEwugYp4h0Xep7Du4WUS2AJzQEbS3lr63eN9qNBUowkdOFAAZCA1ckOy5HQtMfC-milbHi4E1iC3wnLbvstrrh8lfQtOkv6S_SCf0RL81fIsWn9zy7KyvY-ClMRXbEjzFkATXBFvxWXQ70');">
+</div>
+<!-- Overlay Highlight simulation -->
+<div class="absolute top-[30%] left-[20%] w-[60%] h-[10%] border-2 border-primary/50 bg-primary/10 rounded pointer-events-none animate-pulse"></div>
+</div>
+<p class="text-center text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">info</span>
+                        Toque na imagem para ampliar detalhes
+                    </p>
+</div>
+<!-- Right Panel: Form & Actions -->
+<div class="w-full md:w-7/12 lg:w-1/2 flex flex-col h-full bg-surface-light dark:bg-surface-dark">
+<!-- Header -->
+<div class="px-6 py-6 md:px-8 border-b border-border-light dark:border-border-dark">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Revisar Leitura OCR</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">A IA detectou baixa precisão em alguns campos.</p>
+</div>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Form Area -->
+<div class="flex-1 overflow-y-auto p-6 md:px-8 custom-scrollbar">
+<!-- Confidence Alert -->
+<div class="bg-orange-50 dark:bg-orange-900/10 border border-orange-100 dark:border-orange-900/30 rounded-xl p-4 mb-8">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-500">warning</span>
+<p class="text-slate-900 dark:text-orange-100 text-sm font-semibold">Nível de Confiança da IA</p>
+</div>
+<p class="text-orange-600 dark:text-orange-400 text-sm font-bold">65%</p>
+</div>
+<div class="w-full bg-orange-200 dark:bg-orange-900/40 rounded-full h-2">
+<div class="bg-orange-500 h-2 rounded-full transition-all duration-1000" style="width: 65%"></div>
+</div>
+<p class="text-orange-700/70 dark:text-orange-300/70 text-xs mt-2">Por favor, verifique especialmente o campo <strong>Estabelecimento</strong>.</p>
+</div>
+<!-- Form Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Merchant (Low Confidence) -->
+<div class="col-span-1 md:col-span-2 space-y-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Estabelecimento</label>
+<div class="relative group">
+<input class="w-full bg-white dark:bg-slate-800 border-2 border-orange-300 dark:border-orange-500/50 rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all placeholder:text-slate-400" placeholder="Nome do local" type="text" value="Starbcks Cffee"/>
+<div class="absolute right-3 top-3 text-orange-500" title="Confiança baixa neste campo">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<p class="absolute -bottom-5 left-0 text-xs text-orange-500 font-medium">Correção sugerida: Starbucks Coffee</p>
+</div>
+</div>
+<!-- Amount -->
+<div class="space-y-2 mt-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Valor Total</label>
+<div class="relative">
+<span class="absolute left-4 top-3.5 text-slate-500 font-semibold">R$</span>
+<input class="w-full bg-white dark:bg-slate-800 border border-border-light dark:border-border-dark rounded-xl pl-12 pr-4 py-3 text-slate-900 dark:text-white font-mono font-medium focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" type="text" value="45,90"/>
+</div>
+</div>
+<!-- Date -->
+<div class="space-y-2 mt-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Data</label>
+<div class="relative">
+<input class="w-full bg-white dark:bg-slate-800 border border-border-light dark:border-border-dark rounded-xl px-4 py-3 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all [color-scheme:light] dark:[color-scheme:dark]" type="date" value="2023-10-24"/>
+</div>
+</div>
+<!-- Category -->
+<div class="col-span-1 md:col-span-2 space-y-2">
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Categoria</label>
+<div class="relative">
+<select class="w-full bg-white dark:bg-slate-800 border border-border-light dark:border-border-dark rounded-xl px-4 py-3 text-slate-900 dark:text-white appearance-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all cursor-pointer">
+<option value="food">Alimentação &amp; Bebidas</option>
+<option value="transport">Transporte</option>
+<option value="shopping">Compras</option>
+<option value="entertainment">Lazer</option>
+</select>
+<div class="absolute right-4 top-3.5 text-slate-500 pointer-events-none">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-6 md:px-8 border-t border-border-light dark:border-border-dark bg-slate-50/50 dark:bg-slate-900/30">
+<div class="flex flex-col sm:flex-row gap-3 items-center justify-end">
+<button class="w-full sm:w-auto px-6 py-3 rounded-xl text-slate-600 dark:text-slate-300 font-bold hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-sm">
+                                Descartar Imagem
+                            </button>
+<button class="w-full sm:w-auto bg-primary text-slate-900 px-8 py-3 rounded-xl font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">check</span>
+                                Confirmar Dados
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

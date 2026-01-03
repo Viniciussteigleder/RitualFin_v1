@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Ritual do Casal</title>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ec5b13",
+              "background-light": "#f8f6f6",
+              "background-dark": "#221610",
+              "surface-light": "#ffffff",
+              "surface-dark": "#2d1e17",
+            },
+            fontFamily: {
+              "display": ["Public Sans", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem", 
+              "lg": "0.5rem", 
+              "xl": "0.75rem", 
+              "2xl": "1rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-50 antialiased transition-colors duration-200">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Side Navigation (Desktop) -->
+<aside class="hidden w-72 flex-col border-r border-gray-200 dark:border-white/10 bg-surface-light dark:bg-surface-dark lg:flex">
+<div class="flex h-full flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<!-- User Profile / App Header -->
+<div class="flex items-center gap-3">
+<div class="h-12 w-12 rounded-full bg-cover bg-center shadow-sm" data-alt="Portrait of a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLIhvUPKWXxgIaUanM6pm5nVxEuDPAb1-7yybpSECskuAGjuBBL0jXlx74IgNzJ5qPaPVwc4T-_HWrA9ahAq94dkHZB-cs5S5o1e2vPEuc9Hk68zM0hWla-mEo7-_hhXAhKx8sVocY_-vni2FpKM1CHPOlFql9XpLKw44i-mXNmca_0ns2q_DY8JJLevSw-j2iSdVE476On4EJ4cRdu7jnFxm4q-S6TI40-ex9ytpn4qnL7xi_LaRozfOcCMH7z0NNtr_VDYftDbU");'></div>
+<div class="flex flex-col">
+<h1 class="text-base font-bold text-gray-900 dark:text-white">Lucas Silva</h1>
+<p class="text-xs font-medium text-primary">Conta Premium</p>
+</div>
+</div>
+<!-- Navigation Items -->
+<nav class="flex flex-col gap-2">
+<a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary" style="font-size: 24px;">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 rounded-xl bg-primary/10 px-4 py-3 text-primary dark:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1; font-size: 24px;">spa</span>
+<span class="text-sm font-bold">Ritual</span>
+</a>
+<a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary" style="font-size: 24px;">account_balance_wallet</span>
+<span class="text-sm font-medium">Orçamento</span>
+</a>
+<a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary" style="font-size: 24px;">flag</span>
+<span class="text-sm font-medium">Metas</span>
+</a>
+<a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary" style="font-size: 24px;">settings</span>
+<span class="text-sm font-medium">Configurações</span>
+</a>
+</nav>
+</div>
+<!-- Footer/Logout -->
+<div class="flex items-center gap-3 px-4 py-2 opacity-60 hover:opacity-100 cursor-pointer transition-opacity">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-400">logout</span>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400">Sair</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Mobile Header -->
+<div class="flex items-center justify-between p-4 lg:hidden">
+<span class="material-symbols-outlined text-gray-900 dark:text-white">menu</span>
+<h1 class="font-bold text-gray-900 dark:text-white">Couple Budget</h1>
+<div class="h-8 w-8 rounded-full bg-cover bg-center" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACx18rk0XurwQLWKt9-L5bcDq0RBK1M2KP0HHf7ZkcPNd2Qc5hCYp9TpMKUGnz4zHdxZv2mhICBTsP2C9OoPFDw4-uFHuu1CSjLj-bjmWgsvRzfx8ZzhK4LNTTd6K1fdCkSnZrzzux5CSZZFdYVvAaWXiNaQaktwVGckgXqB2mkMxXKs3FQgJJAl6ezelfItST-xJp9aYOWoOoTDmA1wGQCF4nIJLAmfs7eXWk6UjeXSdTCve_72o_PQHjG2SZ1fzQI1JTRtnTwys");'></div>
+</div>
+<div class="flex flex-1 justify-center py-6 md:py-10">
+<div class="layout-content-container flex w-full max-w-[800px] flex-col px-4 md:px-6">
+<!-- Progress Bar -->
+<div class="mb-8 flex flex-col gap-3">
+<div class="flex justify-between">
+<p class="text-sm font-semibold text-primary">Passo 4 de 5</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">80% completo</p>
+</div>
+<div class="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-white/10">
+<div class="h-full rounded-full bg-primary transition-all duration-500 ease-out" style="width: 80%;"></div>
+</div>
+</div>
+<!-- Page Header -->
+<div class="mb-8">
+<h1 class="mb-3 text-3xl font-black leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
+                                O Ritual do Casal
+                            </h1>
+<p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+                                Escolha um momento tranquilo na semana para revisarem as finanças juntos sem estresse. A consistência é a chave!
+                            </p>
+</div>
+<!-- Main Card -->
+<div class="flex flex-col gap-8 rounded-2xl bg-surface-light p-6 shadow-sm ring-1 ring-black/5 dark:bg-surface-dark dark:ring-white/10 md:p-8">
+<!-- Ritual Settings Section -->
+<section class="flex flex-col gap-6">
+<div class="flex items-center gap-2 border-b border-gray-100 pb-2 dark:border-white/5">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Quando será o encontro?</h3>
+</div>
+<!-- Day Selection -->
+<div class="flex flex-col gap-3">
+<label class="text-sm font-medium text-gray-700 dark:text-gray-300">Dia da Semana Ideal</label>
+<div class="flex flex-wrap gap-2">
+<button class="flex h-10 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:border-primary hover:text-primary dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:border-primary">Seg</button>
+<button class="flex h-10 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:border-primary hover:text-primary dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:border-primary">Ter</button>
+<button class="flex h-10 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:border-primary hover:text-primary dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:border-primary">Qua</button>
+<button class="flex h-10 w-12 items-center justify-center rounded-xl bg-primary text-sm font-bold text-white shadow-md shadow-primary/20">Qui</button>
+<button class="flex h-10 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:border-primary hover:text-primary dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:border-primary">Sex</button>
+<button class="flex h-10 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:border-primary hover:text-primary dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:border-primary">Sáb</button>
+<button class="flex h-10 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:border-primary hover:text-primary dark:border-white/10 dark:bg-white/5 dark:text-gray-400 dark:hover:border-primary">Dom</button>
+</div>
+</div>
+<!-- Time & Duration -->
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+<div class="flex flex-col gap-3">
+<label class="text-sm font-medium text-gray-700 dark:text-gray-300">Horário Preferido</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-xl border-gray-200 bg-gray-50 px-4 py-3 text-sm font-medium text-gray-900 focus:border-primary focus:ring-primary dark:border-white/10 dark:bg-white/5 dark:text-white">
+<option>18:00</option>
+<option>19:00</option>
+<option selected="">20:00</option>
+<option>21:00</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-gray-500">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<label class="text-sm font-medium text-gray-700 dark:text-gray-300">Duração Estimada</label>
+<div class="flex gap-2 rounded-xl bg-gray-50 p-1 dark:bg-white/5">
+<button class="flex-1 rounded-lg py-2 text-sm font-medium text-gray-500 hover:bg-white hover:text-gray-900 hover:shadow-sm dark:hover:bg-white/10 dark:hover:text-white">15 min</button>
+<button class="flex-1 rounded-lg bg-white py-2 text-sm font-bold text-primary shadow-sm dark:bg-primary dark:text-white">30 min</button>
+<button class="flex-1 rounded-lg py-2 text-sm font-medium text-gray-500 hover:bg-white hover:text-gray-900 hover:shadow-sm dark:hover:bg-white/10 dark:hover:text-white">60 min</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Divider -->
+<hr class="border-gray-100 dark:border-white/5"/>
+<!-- Invite Section -->
+<section class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">favorite</span>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Convide seu amor</h3>
+</div>
+<span class="rounded-full bg-green-100 px-2 py-1 text-xs font-bold text-green-700 dark:bg-green-900/30 dark:text-green-400">Recomendado</span>
+</div>
+<div class="rounded-xl bg-gradient-to-r from-orange-50 to-pink-50 p-4 dark:from-primary/10 dark:to-purple-900/20">
+<p class="text-sm text-gray-700 dark:text-gray-300">
+<span class="font-bold">Finanças a dois funcionam melhor em equipe!</span> Seu parceiro(a) receberá um convite especial para sincronizar contas e metas.
+                                    </p>
+</div>
+<div class="flex flex-col gap-4 md:flex-row">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-3.5 text-gray-400">mail</span>
+<input class="w-full rounded-xl border-gray-200 bg-white pl-10 py-3 text-sm focus:border-primary focus:ring-primary dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-gray-500" placeholder="E-mail do parceiro(a)" type="email"/>
+</div>
+<button class="flex shrink-0 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-3 font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-lg">content_copy</span>
+<span class="hidden md:inline">Copiar Link</span>
+</button>
+</div>
+</section>
+<!-- Actions Footer -->
+<div class="mt-4 flex flex-col gap-3 pt-2 md:flex-row md:justify-end">
+<button class="order-2 flex w-full items-center justify-center rounded-xl px-6 py-3 font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white md:order-1 md:w-auto">
+                                    Pular por enquanto
+                                </button>
+<button class="order-1 flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-8 py-3 font-bold text-white shadow-lg shadow-primary/20 hover:bg-orange-600 transition-all active:scale-95 md:order-2 md:w-auto">
+                                    Definir e Convidar
+                                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

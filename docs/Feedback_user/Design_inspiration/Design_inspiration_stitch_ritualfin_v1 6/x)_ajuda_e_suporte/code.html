@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Ajuda e Suporte</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "text-main": "#111816",
+                        "text-subtle": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-white antialiased overflow-x-hidden">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e8e7] dark:border-[#1e2f29] bg-white/80 dark:bg-[#10221c]/90 backdrop-blur-md px-10 py-3">
+<div class="flex items-center gap-4 text-text-main dark:text-white">
+<div class="size-8 flex items-center justify-center rounded bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[24px]">account_balance_wallet</span>
+</div>
+<h2 class="text-text-main dark:text-white text-xl font-extrabold leading-tight tracking-[-0.015em]">CasalFin</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-6 lg:gap-9">
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors leading-normal" href="#">Dashboard</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors leading-normal" href="#">Transações</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors leading-normal" href="#">Orçamento</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors leading-normal" href="#">Objetivos</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Ajuda</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex h-10 cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary px-4 text-[#111816] text-sm font-bold shadow-sm hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span>Perfil</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-white dark:ring-[#10221c] shadow-sm cursor-pointer" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAn95WgxBOCQ1oEYiyIuvLztSrFpjWJ3qNcnziiZOsYZUpjKG6swxRbXO73UkRkb6uinUGY4JDRm4RkbRtg6vH6WawRs1O8knOfi3UGgtVxXcj7HnBa38xfMlT8szNV_O_bf_ZDR36mj3x73X6Mad1hMuLyjKt-XxOANFZ-srGtEbsMvt7ZVMaZ4OuNl1mFBQiFnItTohgNER77_UiB9PMvQ2iN1i452RwYIPKATE6idCs4gI2Y-eAJj8Eh5ujj8vVooqHgNcKmZYs");'>
+</div>
+</div>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-text-main dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col items-center w-full px-4 md:px-10 py-8 md:py-12">
+<div class="flex flex-col w-full max-w-[1024px] gap-10">
+<!-- Hero Section: Heading & Search -->
+<div class="flex flex-col items-center text-center gap-6 py-6">
+<div class="flex flex-col gap-3 max-w-2xl">
+<h1 class="text-text-main dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-tight">
+                            Central de Ajuda
+                        </h1>
+<p class="text-text-subtle dark:text-gray-400 text-lg font-normal leading-relaxed">
+                            Encontre respostas rápidas ou fale com a gente. Estamos aqui para você.
+                        </p>
+</div>
+<div class="w-full max-w-xl mt-2">
+<div class="relative flex w-full items-center h-14 rounded-xl shadow-sm bg-white dark:bg-[#1a2e28] border border-gray-100 dark:border-[#2a3e38] hover:border-primary/50 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<div class="absolute left-4 flex items-center justify-center text-text-subtle dark:text-gray-400">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="w-full h-full bg-transparent border-none outline-none focus:ring-0 pl-12 pr-4 text-text-main dark:text-white placeholder:text-text-subtle/70 text-base" placeholder="Busque por dúvidas, ex: como convidar parceiro..."/>
+</div>
+<div class="flex flex-wrap gap-2 justify-center mt-3 text-sm text-text-subtle dark:text-gray-500">
+<span>Sugestões:</span>
+<button class="hover:text-primary transition-colors underline decoration-dotted">Categorias</button>
+<button class="hover:text-primary transition-colors underline decoration-dotted">Convite</button>
+<button class="hover:text-primary transition-colors underline decoration-dotted">Senha</button>
+</div>
+</div>
+</div>
+<!-- Section: Quick Guides (Guias Rápidos) -->
+<section>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">school</span>
+<h2 class="text-text-main dark:text-white text-2xl font-bold tracking-tight">Guias Rápidos</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Guide Card 1 -->
+<div class="group flex flex-col overflow-hidden rounded-xl bg-white dark:bg-[#1a2e28] border border-gray-100 dark:border-[#2a3e38] shadow-sm hover:shadow-md hover:border-primary/30 transition-all cursor-pointer">
+<div class="h-40 w-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Abstract green pattern representing growth" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCYTqkw1iB2AJZaA7W8E8AgeBSZ95xrZi0x7chlO-RkMipTJkwO7PXqBPPVq9vZQ7BUje8dyu_foUnXc6ei5QbU3eawS-zSOMctiUoZUZL8lehz5jGCrjBRe6Y9j4lrjXYuoZXJJH8ozAQTvldhZ0yomsagY1wII_j7uExeUiYz7wxiFknC7LpJKHbGNEMohfhU6V2wwAuY_5Tb-1WK1DfOO2xb-sCrJLrMWduFHdHIdPvfRnYMzhnY8Nihr5D7k_byrGUr2fCPS_E");'>
+</div>
+<div class="flex flex-col flex-1 p-5 gap-3">
+<div class="flex-1">
+<h3 class="text-text-main dark:text-white text-lg font-bold mb-1">Primeiros Passos</h3>
+<p class="text-text-subtle dark:text-gray-400 text-sm">Configure sua conta, conecte seus bancos e convide seu amor.</p>
+</div>
+<div class="flex items-center text-primary text-sm font-bold mt-2">
+<span>Ler Guia</span>
+<span class="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Guide Card 2 -->
+<div class="group flex flex-col overflow-hidden rounded-xl bg-white dark:bg-[#1a2e28] border border-gray-100 dark:border-[#2a3e38] shadow-sm hover:shadow-md hover:border-primary/30 transition-all cursor-pointer">
+<div class="h-40 w-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Clean desk with calculator and notebook" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBARTClEQXd4A8D7H6q6rEWz3H-0oZVIm90FoRqlN2m8S1FPOtxHMYxNtpkCGxG8K2dZiSJ4iRp_FNgY9-5MIg6J2lCAYp3MigkcIrHm-zA08P0hJkJsBnCQNoG1JRHtDHJZWR-eMuAN9axgfmayYwSE3m7sPSlSjmHngHCR9JWxVgdD29rIcq4etgat8ke7UTwIf45fIMOWiXDR11B33df48MoFqK4Ca_XlkSUI7PaRWwlIpBcoIUTJB2eNSxZc6fRYTLmQVEsUPY");'>
+</div>
+<div class="flex flex-col flex-1 p-5 gap-3">
+<div class="flex-1">
+<h3 class="text-text-main dark:text-white text-lg font-bold mb-1">Gestão a Dois</h3>
+<p class="text-text-subtle dark:text-gray-400 text-sm">Como funcionam os espaços: Pessoal vs. Casal.</p>
+</div>
+<div class="flex items-center text-primary text-sm font-bold mt-2">
+<span>Ler Guia</span>
+<span class="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Guide Card 3 -->
+<div class="group flex flex-col overflow-hidden rounded-xl bg-white dark:bg-[#1a2e28] border border-gray-100 dark:border-[#2a3e38] shadow-sm hover:shadow-md hover:border-primary/30 transition-all cursor-pointer">
+<div class="h-40 w-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Charts and graphs on a tablet screen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCmOqs8lc5ZGJ_ShKlyDACqATlUxiS7EWRe0gfH0QgRG4Tj7SM4DCJ8Pqypn1__o9VSzBEKayxVnvBuHX9rrVJx0RRYXtV1Uz9GD4DWdPSgEdhIOEWDpeNjlRH9mZMEvZwBGnhRvHYoZwN-uSCh8KIxSlE3yGhMgVfiMVy5R_bbVq4MnQHDsyckb2WfSIuK6hi4kf89wXp_6ARJkH6o4HaHJYIPczFp7yy9MB1oAqEP2rAAwQFFxdbDhb64jwQ4UxK7xveJfGcOCto");'>
+</div>
+<div class="flex flex-col flex-1 p-5 gap-3">
+<div class="flex-1">
+<h3 class="text-text-main dark:text-white text-lg font-bold mb-1">Metas e Orçamento</h3>
+<p class="text-text-subtle dark:text-gray-400 text-sm">Defina objetivos financeiros e acompanhe o progresso juntos.</p>
+</div>
+<div class="flex items-center text-primary text-sm font-bold mt-2">
+<span>Ler Guia</span>
+<span class="material-symbols-outlined text-[18px] ml-1 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: FAQ & Contact Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<!-- FAQ Column (Takes 2/3 width on large screens) -->
+<section class="lg:col-span-2 flex flex-col gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">quiz</span>
+<h2 class="text-text-main dark:text-white text-2xl font-bold tracking-tight">Perguntas Frequentes</h2>
+</div>
+<div class="flex flex-col gap-3">
+<!-- FAQ Item 1 -->
+<details class="group rounded-lg bg-white dark:bg-[#1a2e28] border border-gray-100 dark:border-[#2a3e38] shadow-sm open:ring-1 open:ring-primary/50">
+<summary class="flex cursor-pointer items-center justify-between p-5 font-bold text-text-main dark:text-white list-none select-none">
+<span>Como convidar meu parceiro?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-text-subtle">expand_more</span>
+</summary>
+<div class="px-5 pb-5 pt-0 text-text-subtle dark:text-gray-300 leading-relaxed text-sm">
+                                    Vá até o menu <strong>Perfil</strong> &gt; <strong>Configurações do Casal</strong>. Clique em "Convidar Parceiro" e insira o e-mail dele(a). Assim que o convite for aceito, o espaço compartilhado será ativado.
+                                </div>
+</details>
+<!-- FAQ Item 2 -->
+<details class="group rounded-lg bg-white dark:bg-[#1a2e28] border border-gray-100 dark:border-[#2a3e38] shadow-sm open:ring-1 open:ring-primary/50">
+<summary class="flex cursor-pointer items-center justify-between p-5 font-bold text-text-main dark:text-white list-none select-none">
+<span>Minha conta bancária não sincroniza. O que fazer?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-text-subtle">expand_more</span>
+</summary>
+<div class="px-5 pb-5 pt-0 text-text-subtle dark:text-gray-300 leading-relaxed text-sm">
+                                    Primeiro, verifique se suas credenciais no internet banking estão atualizadas. Se o erro persistir, tente desconectar e reconectar a conta na aba "Contas". Nossa equipe de segurança monitora as conexões 24h.
+                                </div>
+</details>
+<!-- FAQ Item 3 -->
+<details class="group rounded-lg bg-white dark:bg-[#1a2e28] border border-gray-100 dark:border-[#2a3e38] shadow-sm open:ring-1 open:ring-primary/50">
+<summary class="flex cursor-pointer items-center justify-between p-5 font-bold text-text-main dark:text-white list-none select-none">
+<span>Como funcionam as categorias personalizadas?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-text-subtle">expand_more</span>
+</summary>
+<div class="px-5 pb-5 pt-0 text-text-subtle dark:text-gray-300 leading-relaxed text-sm">
+                                    Você pode criar quantas categorias quiser em Configurações &gt; Categorias. Elas podem ser exclusivas para você ou compartilhadas com o casal, ajudando a organizar melhor o orçamento familiar.
+                                </div>
+</details>
+<!-- FAQ Item 4 -->
+<details class="group rounded-lg bg-white dark:bg-[#1a2e28] border border-gray-100 dark:border-[#2a3e38] shadow-sm open:ring-1 open:ring-primary/50">
+<summary class="flex cursor-pointer items-center justify-between p-5 font-bold text-text-main dark:text-white list-none select-none">
+<span>É seguro compartilhar meus dados?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-text-subtle">expand_more</span>
+</summary>
+<div class="px-5 pb-5 pt-0 text-text-subtle dark:text-gray-300 leading-relaxed text-sm">
+                                    Absolutamente. Utilizamos criptografia de ponta a ponta (nível bancário) e nunca vendemos seus dados. Seu parceiro só vê o que está no espaço compartilhado; suas contas individuais permanecem privadas a menos que você decida mostrá-las.
+                                </div>
+</details>
+</div>
+</section>
+<!-- Contact/Support Column (Takes 1/3 width) -->
+<aside class="flex flex-col gap-6 sticky top-24">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">support_agent</span>
+<h2 class="text-text-main dark:text-white text-2xl font-bold tracking-tight">Fale Conosco</h2>
+</div>
+<div class="flex flex-col rounded-xl bg-white dark:bg-[#1a2e28] border border-gray-100 dark:border-[#2a3e38] shadow-lg p-6">
+<p class="text-text-main dark:text-white font-bold text-lg mb-2">Ainda precisa de ajuda?</p>
+<p class="text-text-subtle dark:text-gray-400 text-sm mb-6 leading-normal">
+                                Nossa equipe de especialistas em finanças está pronta para ajudar você e seu parceiro.
+                            </p>
+<form class="flex flex-col gap-4">
+<label class="flex flex-col gap-1.5">
+<span class="text-xs font-bold text-text-main dark:text-gray-300 uppercase tracking-wider">Assunto</span>
+<select class="form-select w-full rounded-lg bg-[#f6f8f7] dark:bg-[#10221c] border-transparent focus:border-primary focus:ring-0 text-text-main dark:text-white text-sm h-10">
+<option>Dúvida Geral</option>
+<option>Problema Técnico</option>
+<option>Financeiro</option>
+<option>Outro</option>
+</select>
+</label>
+<label class="flex flex-col gap-1.5">
+<span class="text-xs font-bold text-text-main dark:text-gray-300 uppercase tracking-wider">Mensagem</span>
+<textarea class="form-textarea w-full rounded-lg bg-[#f6f8f7] dark:bg-[#10221c] border-transparent focus:border-primary focus:ring-0 text-text-main dark:text-white text-sm resize-none h-24 p-3" placeholder="Descreva como podemos ajudar..."></textarea>
+</label>
+<button class="w-full mt-2 h-10 bg-primary hover:bg-primary/90 text-[#111816] font-bold rounded-lg transition-colors flex items-center justify-center gap-2" type="button">
+<span>Enviar Mensagem</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</form>
+<div class="my-4 border-t border-gray-100 dark:border-[#2a3e38]"></div>
+<button class="w-full h-10 bg-[#f0f4f3] dark:bg-[#2a3e38] hover:bg-gray-200 dark:hover:bg-[#344d45] text-text-main dark:text-white font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>Iniciar Chat Ao Vivo</span>
+</button>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#e5e8e7] dark:border-[#1e2f29] bg-white dark:bg-[#10221c] py-8 mt-12">
+<div class="px-10 flex flex-col md:flex-row items-center justify-between gap-6 max-w-[1024px] mx-auto w-full">
+<div class="flex items-center gap-2 text-text-subtle dark:text-gray-500 text-sm">
+<span>© 2024 CasalFin. Finanças claras, riqueza a dois.</span>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-text-subtle dark:text-gray-400 hover:text-primary text-sm font-medium transition-colors" href="#">Termos de Uso</a>
+<a class="text-text-subtle dark:text-gray-400 hover:text-primary text-sm font-medium transition-colors" href="#">Política de Privacidade</a>
+<div class="flex items-center gap-2 text-text-subtle dark:text-gray-400 text-sm">
+<span class="material-symbols-outlined text-[16px]">language</span>
+<span>Português (BR)</span>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

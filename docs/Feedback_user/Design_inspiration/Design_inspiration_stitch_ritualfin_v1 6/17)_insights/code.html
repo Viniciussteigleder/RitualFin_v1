@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Couple Budget Coach - Insights</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-dark": "#0fb37c",
+                        "background-light": "#ffffff","background-dark": "#10221c",
+                        "surface-light": "#f8faf9","surface-dark": "#1a2c26",
+                        "text-main": "#111816",
+                        "text-muted": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'soft-gradient': 'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(246,248,247,1) 100%)',
+                        'card-gradient': 'linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main h-screen overflow-hidden flex selection:bg-primary selection:text-background-dark">
+<aside class="hidden lg:flex w-72 flex-col bg-white dark:bg-surface-dark border-r border-gray-100 dark:border-gray-800 h-full z-20 shadow-[2px_0_20px_rgba(0,0,0,0.02)] relative">
+<div class="p-6 flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary-dark">savings</span>
+</div>
+<div>
+<h1 class="text-lg font-bold tracking-tight text-text-main dark:text-white">Couple Budget</h1>
+<p class="text-xs text-text-muted font-medium">Plano Premium</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-text-main dark:text-gray-400 dark:group-hover:text-white">dashboard</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:text-gray-300 dark:group-hover:text-white">Visão Geral</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-text-main dark:text-gray-400 dark:group-hover:text-white">receipt_long</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:text-gray-300 dark:group-hover:text-white">Transações</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-text-main dark:text-gray-400 dark:group-hover:text-white">pie_chart</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:text-gray-300 dark:group-hover:text-white">Orçamento</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-text-main shadow-md shadow-primary/20 transition-all" href="#">
+<span class="material-symbols-outlined icon-filled">lightbulb</span>
+<span class="text-sm font-bold">Insights</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-text-main dark:text-gray-400 dark:group-hover:text-white">settings</span>
+<span class="text-sm font-medium group-hover:text-text-main dark:text-gray-300 dark:group-hover:text-white">Configurações</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-3 p-2 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+<div class="h-10 w-10 rounded-full bg-cover bg-center border-2 border-white dark:border-gray-700 shadow-sm" data-alt="User profile picture of a woman" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAbfxnINVf21Fp92RyJlcZ_F_3D2plGQX8ssvWMvLmoAXnWa20vgvRw1YqijjGr0BTO9HBdlExF2JEE66zlYCvABkU6nzCWqJf8d0b9L9LZ-S3vKXl3OSvPtkvrquUVFtI4ZGJK8mXuVdjgk63JSCvjscI891T78sHJjKGv7zXawHEe3ZWdNpeJWwTXT7mkjUgH069RgFKNt01PMViKYYxQshfTh1egDlCTEqY2xHtuHcZEx8fjrQISwh-Cq8PfuGo0SM66JtdLYTA');"></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold text-text-main dark:text-white">Ana &amp; João</p>
+<p class="text-xs text-text-muted">ana.silva@email.com</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full relative overflow-hidden bg-white dark:bg-background-dark">
+<div class="flex-1 overflow-y-auto w-full p-6 md:p-10 lg:px-16 scroll-smooth">
+<div class="max-w-5xl mx-auto flex flex-col gap-8 pb-20">
+<header class="flex flex-col gap-6 pt-4 animate-fade-in-up">
+<div class="flex flex-wrap justify-between items-start gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl md:text-4xl font-black tracking-tight text-text-main dark:text-white">Insights</h1>
+<p class="text-text-muted dark:text-gray-400 text-lg max-w-2xl">
+                                Análise inteligente das finanças de vocês em <span class="text-primary-dark dark:text-primary font-semibold">Outubro</span>.
+                            </p>
+</div>
+<div class="flex gap-4 items-center">
+<div class="hidden md:flex bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-gray-700 p-1 rounded-full items-center">
+<button class="px-5 py-2 rounded-full text-sm font-medium text-text-muted hover:text-text-main transition-colors">
+                                    Resumo
+                                </button>
+<button class="px-5 py-2 rounded-full text-sm font-bold bg-primary text-text-main shadow-sm transition-colors">
+                                    Detalhado
+                                </button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm text-text-main dark:text-white">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+                                Outubro 2023
+                            </button>
+</div>
+</div>
+</header>
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex items-center gap-4">
+<div class="bg-red-50 dark:bg-red-900/20 p-2.5 rounded-full shrink-0">
+<span class="material-symbols-outlined text-red-600 dark:text-red-400 text-[20px]">shopping_cart</span>
+</div>
+<div>
+<p class="text-xs text-text-muted font-bold uppercase tracking-wide mb-0.5">Supermercado</p>
+<p class="text-sm font-bold text-text-main dark:text-white">Você gastou <span class="text-red-600 dark:text-red-400">12% a mais</span></p>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex items-center gap-4">
+<div class="bg-emerald-50 dark:bg-emerald-900/20 p-2.5 rounded-full shrink-0">
+<span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-[20px]">trending_down</span>
+</div>
+<div>
+<p class="text-xs text-text-muted font-bold uppercase tracking-wide mb-0.5">Gastos Fixos</p>
+<p class="text-sm font-bold text-text-main dark:text-white">Redução de <span class="text-emerald-600 dark:text-emerald-400">€ 40,00</span> este mês</p>
+</div>
+</div>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex items-center gap-4">
+<div class="bg-blue-50 dark:bg-blue-900/20 p-2.5 rounded-full shrink-0">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-[20px]">calendar_month</span>
+</div>
+<div>
+<p class="text-xs text-text-muted font-bold uppercase tracking-wide mb-0.5">Previsão</p>
+<p class="text-sm font-bold text-text-main dark:text-white">Próxima semana será mais leve</p>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-6">
+<article class="group relative flex flex-col md:flex-row items-stretch bg-surface-light dark:bg-surface-dark rounded-2xl shadow-[0_2px_15px_-4px_rgba(0,0,0,0.03)] border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300">
+<div class="absolute inset-0 bg-card-gradient opacity-50 pointer-events-none"></div>
+<div class="flex-1 p-6 md:p-8 flex flex-col justify-center gap-6 z-10">
+<div class="flex flex-col gap-3">
+<div class="inline-flex items-center gap-1.5 w-fit px-3 py-1.5 rounded-md bg-emerald-600 text-white text-[11px] font-bold uppercase tracking-wider shadow-sm">
+<span class="material-symbols-outlined text-[16px] icon-filled">trending_up</span>
+                                    Economia
+                                </div>
+<h2 class="text-2xl font-bold text-text-main dark:text-white leading-tight">Parabéns! Economia em Alimentação</h2>
+<p class="text-text-muted dark:text-gray-300 text-base leading-relaxed">
+                                    Vocês gastaram <span class="font-bold text-emerald-600 dark:text-emerald-400">12% a menos</span> em mercados e restaurantes comparado à média dos últimos 3 meses. O planejamento de marmitas está funcionando!
+                                </p>
+</div>
+<button class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary-dark text-text-main font-bold rounded-xl transition-colors w-fit shadow-lg shadow-primary/20 group-hover:translate-x-1 duration-200">
+<span>Ver Extrato Detalhado</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<div class="w-full md:w-1/3 min-h-[200px] md:min-h-full bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Abstract cheerful composition representing savings with green tones" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC__0SJxyD1M6foVILJHd8XHP83dt3td20C2VB9RrLMf2NzFln1KKa9Xj6cVgwWOkFjOTdfk8ParTHgrDuN8M0Bl5x3IWu88S7FLZSt3_b2BbMvYPEPhx2b7geXLkLpRfMXy1qB7J6pYLesEQv3cO0nHg_3Vr6F2yIpkiTIQBwzLyjvN5Vq-uXPjpRY0cvq-Mpqx5ZuiGiIL_fYK6tBR_jb653yltlQpDuVgxkDsVN3d_CGBlZc-fn08BOxU76JgkLtqXIoBG8sQcg');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+</div>
+</article>
+<article class="group relative flex flex-col md:flex-row items-stretch bg-surface-light dark:bg-surface-dark rounded-2xl shadow-[0_2px_15px_-4px_rgba(0,0,0,0.03)] border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white to-orange-50/50 dark:from-surface-dark dark:via-surface-dark dark:to-orange-900/10 opacity-70 pointer-events-none"></div>
+<div class="flex-1 p-6 md:p-8 flex flex-col justify-center gap-6 z-10">
+<div class="flex flex-col gap-3">
+<div class="inline-flex items-center gap-1.5 w-fit px-3 py-1.5 rounded-md bg-amber-500 text-white text-[11px] font-bold uppercase tracking-wider shadow-sm">
+<span class="material-symbols-outlined text-[16px] icon-filled">warning</span>
+                                    Alerta
+                                </div>
+<h2 class="text-2xl font-bold text-text-main dark:text-white leading-tight">Atenção: Categoria Lazer</h2>
+<p class="text-text-muted dark:text-gray-300 text-base leading-relaxed">
+                                    Cuidado! Vocês já consumiram <span class="font-bold text-amber-600 dark:text-amber-400">85% do orçamento</span> planejado para Lazer e ainda restam 12 dias no mês.
+                                </p>
+</div>
+<div class="flex gap-3 flex-wrap">
+<button class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white dark:bg-surface-dark border-2 border-primary text-text-main font-bold rounded-xl hover:bg-primary/5 transition-colors w-fit">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+<span>Revisar Limites</span>
+</button>
+<button class="inline-flex items-center justify-center gap-2 px-4 py-3 text-text-muted hover:text-text-main font-medium rounded-xl transition-colors w-fit">
+<span>Ignorar alerta</span>
+</button>
+</div>
+</div>
+<div class="w-full md:w-1/3 min-h-[200px] md:min-h-full bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a receipt or calculator signifying budget calculation" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBDmW4Rdfo69BYd7LyaO6jU588BDvZWEcFvXDKXtMi-rDI4BGR4A9MNuMmVD0lsJzp3ESPQ5QVk0GJBOaIqYPIEeBEStEPg6MOndCrZBPFIFuneSQtYtuobzfUlaDIP6SYoIWUb2KwYzDcgTPXu5eQJxoz4ntXXQpKLmT4M4bK9ZUEfvGtPiKAkglUiFBTlbHTWdRMh6uGjD-I6h9K2vBDCrcIanQcCjUVBZjhjSJ11UDb_sBuhLxc08boGCZMfL64follzbOj7Va0');"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-light via-transparent to-transparent md:bg-gradient-to-l dark:from-surface-dark"></div>
+</div>
+</article>
+<article class="group relative flex flex-col md:flex-row items-stretch bg-surface-light dark:bg-surface-dark rounded-2xl shadow-[0_2px_15px_-4px_rgba(0,0,0,0.03)] border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-all duration-300">
+<div class="absolute inset-0 bg-gradient-to-br from-white to-blue-50/50 dark:from-surface-dark dark:to-blue-900/10 opacity-60 pointer-events-none"></div>
+<div class="flex-1 p-6 md:p-8 flex flex-col justify-center gap-6 z-10">
+<div class="flex flex-col gap-3">
+<div class="inline-flex items-center gap-1.5 w-fit px-3 py-1.5 rounded-md bg-blue-600 text-white text-[11px] font-bold uppercase tracking-wider shadow-sm">
+<span class="material-symbols-outlined text-[16px]">search</span>
+                                    Assinaturas
+                                </div>
+<h2 class="text-2xl font-bold text-text-main dark:text-white leading-tight">Nova Assinatura Detectada</h2>
+<p class="text-text-muted dark:text-gray-300 text-base leading-relaxed">
+                                    Identificamos uma cobrança recorrente de <span class="font-bold text-text-main dark:text-white">€ 14,90 (Spotify Family)</span> no dia 15. Deseja categorizar este gasto como despesa fixa mensal?
+                                </p>
+</div>
+<button class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary-dark text-text-main font-bold rounded-xl transition-colors w-fit shadow-lg shadow-primary/20 group-hover:translate-x-1 duration-200">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span>Confirmar Assinatura</span>
+</button>
+</div>
+<div class="w-full md:w-1/3 min-h-[200px] md:min-h-full bg-gray-100 dark:bg-gray-800 relative overflow-hidden flex items-center justify-center p-8">
+<div class="absolute inset-0 bg-cover bg-center blur-sm opacity-30" data-alt="Abstract music waves background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZxys3D9tx8gJWUXaEK50mrYBpWsO31DHSJAx7uQoWSV50GkbwCrSKeB16ilZx-zXG89RvP22G47_4SzjUSANTfHxl8aaaBCeFokzk_QcZaGCOD2tZQLzX9TO50RkqrFy_vzrHfasb6VVH0Lp_l-THdQHM6wlRUH2G-eBMEG76Mn80tMrsD2aM0IFL5yfmQma5Rt-_nJl9MJhSRMUt29XRvLlw_5XO5V562RehaLh9r7DzMRhgvMv0gYt1zwIgnXKyZbkE7OOX6rg');"></div>
+<div class="relative z-10 bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-xl flex flex-col items-center gap-3 w-48 text-center transform group-hover:scale-105 transition-transform duration-300 border border-gray-100 dark:border-gray-600">
+<div class="h-12 w-12 rounded-full bg-black flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[28px]">graphic_eq</span>
+</div>
+<div>
+<p class="font-bold text-text-main dark:text-white">Spotify</p>
+<p class="text-xs text-text-muted">Plano Family</p>
+</div>
+<p class="font-bold text-primary-dark dark:text-primary mt-1">€ 14,90</p>
+</div>
+</div>
+</article>
+</section>
+<section class="mt-4 p-6 rounded-2xl bg-gradient-to-r from-surface-light to-white dark:from-gray-800 dark:to-surface-dark border border-gray-100 dark:border-gray-700">
+<div class="flex items-start gap-4">
+<div class="bg-primary/20 p-3 rounded-full shrink-0">
+<span class="material-symbols-outlined text-primary-dark">tips_and_updates</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-lg font-bold text-text-main dark:text-white">Dica do Coach</h3>
+<p class="text-text-muted dark:text-gray-300 text-sm max-w-3xl">
+                                Com base nos seus gastos, sugerimos ativar o recurso de "Arredondar Centavos" para a poupança. Casais com perfil similar ao de vocês economizam em média <span class="font-bold">€ 30,00</span> extras por mês com essa função.
+                            </p>
+<a class="text-primary-dark dark:text-primary font-bold text-sm hover:underline mt-1 w-fit flex items-center gap-1" href="#">
+                                Ativar Poupança Automática 
+                                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+
+</body></html>

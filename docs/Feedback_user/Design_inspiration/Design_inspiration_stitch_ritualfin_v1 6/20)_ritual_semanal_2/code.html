@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Minhas Regras - CasalFin</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-dark": "#0eb57d",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e26",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="hidden md:flex flex-col w-72 h-full bg-surface-light dark:bg-surface-dark border-r border-gray-200 dark:border-gray-800 shrink-0 z-20">
+<div class="p-6 pb-2">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-primary/20 p-2 rounded-xl text-primary">
+<span class="material-symbols-outlined text-3xl">favorite</span>
+</div>
+<span class="text-xl font-bold tracking-tight">CasalFin</span>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-background-light dark:bg-background-dark mb-6">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-primary" data-alt="Profile picture of a couple smiling together" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBh7XcIz0S5-bhUHGwAv3a3IMIHnKFLN97V2ja3s7Rk6s26btUlybJ7tWR5hsK7su5Ln6R46LbWlyL_KGqP3PB4hAJXbhf45CZ8eDs7XHfQOOmGZso9DtgCQ2e5NQ9TRJckIuCmYBaos4OtPo2K_R2t1Msr_jvELWNTJm9gYNw1YRADLmUkdQAHHuVRL-4qTsrZuk98Xj96OWFEXyZLIOe7bhEWtn-YBDtxZIOtD2sw-EiUrlEA9RCsd695FoZNSsA_nT-Giy4p_B4");'>
+</div>
+<div class="flex flex-col">
+<h1 class="text-sm font-bold leading-tight">Casal Silva</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Plano Premium</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 flex flex-col gap-2 overflow-y-auto no-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">grid_view</span>
+<span class="font-medium text-sm">Visão Geral</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">receipt_long</span>
+<span class="font-medium text-sm">Transações</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">check_circle</span>
+<span class="font-medium text-sm">Ritual Semanal</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">ads_click</span>
+<span class="font-medium text-sm">Metas a Dois</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-slate-900 dark:text-white font-semibold" href="#">
+<span class="material-symbols-outlined text-primary icon-filled">settings</span>
+<span class="text-sm">Configurações</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-100 dark:border-gray-800">
+<button class="flex items-center gap-3 px-4 py-3 w-full text-left text-slate-500 dark:text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-medium text-sm">Sair</span>
+</button>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-y-auto bg-background-light dark:bg-background-dark relative">
+<div class="sticky top-0 z-10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 px-6 py-4 md:px-10 lg:px-20">
+<div class="max-w-5xl mx-auto w-full flex items-center justify-between">
+<div>
+<h2 class="text-xs md:text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Finanças claras, riqueza a dois</h2>
+<h1 class="text-xl md:text-2xl font-black text-slate-900 dark:text-white">Minhas Regras</h1>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary-dark text-slate-900 text-sm font-bold shadow-sm transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+<span class="hidden sm:inline">Nova Regra</span>
+</button>
+</div>
+</div>
+<div class="flex-1 px-6 py-8 md:px-10 lg:px-20">
+<div class="max-w-5xl mx-auto flex flex-col gap-10 pb-20">
+<section class="flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-primary">rule_settings</span>
+<h2 class="text-xl font-bold">Lista de Regras</h2>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-bold text-slate-500">3 ativas</span>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+<div class="divide-y divide-gray-100 dark:divide-gray-800">
+<div class="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex gap-4">
+<div class="flex-shrink-0 mt-1 md:mt-0">
+<div class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 p-2 rounded-lg">
+<span class="material-symbols-outlined">text_fields</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-bold text-slate-900 dark:text-white">Ifood*</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">arrow_right_alt</span>
+<span class="flex items-center gap-1 text-sm font-medium text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 px-2 py-0.5 rounded-md border border-orange-100 dark:border-orange-800">
+<span class="size-1.5 rounded-full bg-orange-500"></span>
+                                                    Alimentação
+                                                </span>
+</div>
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1" title="Prioridade: Usuário (Alta)">
+<span class="material-symbols-outlined text-[16px] text-primary">person</span>
+                                                    Prioridade: Usuário
+                                                </span>
+<span class="text-slate-300 dark:text-slate-700">•</span>
+<span>Afeta 42 transações</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity self-end md:self-center">
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Editar Regra">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors" title="Desativar Regra">
+<span class="material-symbols-outlined text-[20px]">pause_circle</span>
+</button>
+</div>
+</div>
+<div class="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group">
+<div class="flex gap-4">
+<div class="flex-shrink-0 mt-1 md:mt-0">
+<div class="bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 p-2 rounded-lg">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-bold text-slate-900 dark:text-white">Valor &gt; € 1.000,00</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">arrow_right_alt</span>
+<span class="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">
+<span class="size-1.5 rounded-full bg-slate-500"></span>
+                                                    Revisar Manualmente
+                                                </span>
+</div>
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1" title="Prioridade: Usuário (Alta)">
+<span class="material-symbols-outlined text-[16px] text-primary">person</span>
+                                                    Prioridade: Usuário
+                                                </span>
+<span class="text-slate-300 dark:text-slate-700">•</span>
+<span>Afeta 5 transações</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity self-end md:self-center">
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Editar Regra">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-slate-400 hover:text-orange-500 hover:bg-orange-50 dark:hover:bg-orange-900/20 rounded-lg transition-colors" title="Desativar Regra">
+<span class="material-symbols-outlined text-[20px]">pause_circle</span>
+</button>
+</div>
+</div>
+<div class="p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors group opacity-75">
+<div class="flex gap-4">
+<div class="flex-shrink-0 mt-1 md:mt-0">
+<div class="bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 p-2 rounded-lg">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-bold text-slate-700 dark:text-slate-300">Uber*</span>
+<span class="material-symbols-outlined text-slate-400 text-sm">arrow_right_alt</span>
+<span class="flex items-center gap-1 text-sm font-medium text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 px-2 py-0.5 rounded-md border border-red-100 dark:border-red-800">
+<span class="size-1.5 rounded-full bg-red-500"></span>
+                                                    Transporte
+                                                </span>
+</div>
+<div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+<span class="flex items-center gap-1" title="Prioridade: Sistema (Baixa)">
+<span class="material-symbols-outlined text-[16px]">cloud</span>
+                                                    Prioridade: Padrão
+                                                </span>
+<span class="text-slate-300 dark:text-slate-700">•</span>
+<span>Afeta 128 transações</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity self-end md:self-center">
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-gray-100 dark:hover:bg-white/10 rounded-lg transition-colors" title="Editar Regra (Clona e Substitui)">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-2 text-slate-400 cursor-not-allowed opacity-50" disabled="" title="Regra padrão não pode ser desativada">
+<span class="material-symbols-outlined text-[20px]">pause_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr class="border-gray-200 dark:border-gray-800 border-dashed"/>
+<section class="flex flex-col gap-5">
+<div class="flex items-center gap-2 text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-slate-400">dashboard_customize</span>
+<h2 class="text-xl font-bold text-slate-400">Estado Vazio</h2>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl border border-gray-200 dark:border-gray-800 p-12 flex flex-col items-center text-center">
+<div class="bg-gray-50 dark:bg-white/5 p-6 rounded-full mb-6">
+<span class="material-symbols-outlined text-6xl text-slate-300 dark:text-slate-600">playlist_add</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                                Nenhuma regra de categorização personalizada criada.
+                            </h3>
+<p class="text-slate-500 dark:text-slate-400 max-w-md mb-8">
+                                O sistema usa regras padrão.
+                            </p>
+<button class="px-6 py-3 rounded-xl bg-primary hover:bg-primary-dark text-slate-900 font-bold shadow-lg shadow-primary/30 transition-all hover:scale-105 flex items-center gap-2">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Criar sua primeira regra</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

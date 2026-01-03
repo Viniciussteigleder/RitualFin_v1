@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Criar Regra Automática - CasalFin</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "text-main": "#111816",
+                        "text-muted": "#61897c",
+                        "border-color": "#dbe6e2",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>.custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #dbe6e2;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #61897c;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased overflow-hidden">
+<div class="relative flex h-screen w-full overflow-hidden">
+<aside aria-hidden="true" class="flex w-72 flex-col justify-between border-r border-border-color bg-white p-6 hidden lg:flex opacity-40 pointer-events-none select-none">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-cover bg-center" data-alt="Profile picture of a user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwLA22nrAej0NLZUsu_TF_fVQAEgu_hMPh6HncKw0_Eg_0tYmTKKhyS92I5Lt9G9FB2fTcfz5wzQzRRMr32cXEK0xt1iDOXTTN0ab-thAwgAECEApZg8f_UfSdTCz7S4gZAKZOEckjxsKs19h7scWeMYa0ZhEpyE52S_YiHlFLmpKKnT7sf-pTonzOuXF0324vMM-YeNWQtkp4c7ud3yk_-_eyVuaTAgdbMAC9wyYyM68U_hj0b8mZBO51OH1mwjH0AGGQOHWQ6hg");'></div>
+<div class="flex flex-col">
+<h1 class="text-base font-bold text-text-main">CasalFin</h1>
+<p class="text-xs font-medium text-text-muted">Finanças claras, riqueza a dois</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<div class="flex items-center gap-3 rounded-lg px-3 py-2 text-text-muted hover:bg-background-light">
+<span class="material-symbols-outlined">donut_small</span>
+<span class="text-sm font-medium">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 rounded-lg px-3 py-2 text-text-muted hover:bg-background-light">
+<span class="material-symbols-outlined">sync_alt</span>
+<span class="text-sm font-medium">Transações</span>
+</div>
+<div class="flex items-center gap-3 rounded-lg px-3 py-2 text-text-muted hover:bg-background-light">
+<span class="material-symbols-outlined">savings</span>
+<span class="text-sm font-medium">Orçamento</span>
+</div>
+<div class="flex items-center gap-3 rounded-lg bg-[#f0f4f3] px-3 py-2 text-text-main">
+<span class="material-symbols-outlined fill-1">rule</span>
+<span class="text-sm font-bold">Regras</span>
+</div>
+<div class="flex items-center gap-3 rounded-lg px-3 py-2 text-text-muted hover:bg-background-light">
+<span class="material-symbols-outlined">person</span>
+<span class="text-sm font-medium">Perfil</span>
+</div>
+</nav>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-text-muted">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Sair</span>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-background-light/50 relative">
+<div aria-hidden="true" class="flex-1 p-8 opacity-40 blur-[2px] pointer-events-none select-none">
+<div class="mb-6 flex items-center justify-between">
+<h2 class="text-2xl font-bold text-text-main">Regras de Automação</h2>
+<button class="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-text-main">Nova Regra</button>
+</div>
+<div class="grid gap-4">
+<div class="h-20 w-full rounded-xl bg-white shadow-sm border border-border-color"></div>
+<div class="h-20 w-full rounded-xl bg-white shadow-sm border border-border-color"></div>
+<div class="h-20 w-full rounded-xl bg-white shadow-sm border border-border-color"></div>
+<div class="h-20 w-full rounded-xl bg-white shadow-sm border border-border-color"></div>
+</div>
+</div>
+<div class="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+<div class="w-full max-w-[640px] flex flex-col rounded-2xl bg-white shadow-2xl max-h-[90vh] overflow-hidden animate-in fade-in zoom-in duration-300">
+<div class="flex items-center justify-between border-b border-border-color px-6 py-5">
+<h3 class="text-xl font-bold text-text-main">Criar Regra Automática</h3>
+<button class="flex items-center justify-center rounded-full p-2 text-text-muted hover:bg-background-light hover:text-text-main transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-6">
+<div class="mb-6">
+<label class="mb-3 block text-sm font-medium text-text-muted">Tipo de Regra</label>
+<div class="flex w-full border-b border-border-color">
+<button class="flex flex-1 items-center justify-center gap-2 border-b-[3px] border-text-main pb-3 pt-2 text-text-main transition-all">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+<span class="text-sm font-bold">Comerciante</span>
+</button>
+<button class="flex flex-1 items-center justify-center gap-2 border-b-[3px] border-transparent pb-3 pt-2 text-text-muted hover:text-text-main transition-all">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span class="text-sm font-bold">Palavra-chave</span>
+</button>
+<button class="flex flex-1 items-center justify-center gap-2 border-b-[3px] border-transparent pb-3 pt-2 text-text-muted hover:text-text-main transition-all group relative">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+<span class="text-sm font-bold">Agregador</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-text-main" for="term">Termo exato do comerciante</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">edit</span>
+<input class="w-full rounded-xl border border-border-color bg-white py-3 pl-12 pr-4 text-base text-text-main placeholder-text-muted/70 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" id="term" placeholder="Ex: Uber, Netflix, Starbucks" type="text" value="Uber"/>
+</div>
+<p class="text-xs text-text-muted">A regra será aplicada quando o nome da transação for exatamente igual a este termo.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-text-main" for="category">Categoria</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-xl border border-border-color bg-white py-3 pl-4 pr-10 text-base text-text-main focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" id="category">
+<option disabled="" value="">Selecione</option>
+<option selected="" value="transport">Transporte</option>
+<option value="food">Alimentação</option>
+<option value="bills">Contas Fixas</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-bold text-text-main" for="type">Fixo/Variável</label>
+<div class="relative">
+<select class="w-full appearance-none rounded-xl border border-border-color bg-white py-3 pl-4 pr-10 text-base text-text-main focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary" id="type">
+<option selected="" value="variable">Variável</option>
+<option value="fixed">Fixo</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted">expand_more</span>
+</div>
+</div>
+</div>
+<label class="flex items-center gap-3 cursor-pointer group">
+<div class="relative flex items-center">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="h-6 w-11 rounded-full bg-gray-200 peer-checked:bg-primary transition-colors after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full"></div>
+</div>
+<span class="text-sm font-medium text-text-main group-hover:text-primary transition-colors">Incluir no Orçamento</span>
+</label>
+<hr class="border-border-color border-dashed"/>
+<div class="rounded-xl bg-background-light p-5 border border-border-color/50">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+<div class="flex items-center gap-3">
+<div class="rounded-full bg-primary/20 p-2 text-primary-dark">
+<span class="material-symbols-outlined text-primary text-xl">history</span>
+</div>
+<div>
+<p class="text-sm font-bold text-text-main">Aplicar também a transações anteriores</p>
+<p class="text-xs text-text-muted">Classificar transações antigas</p>
+</div>
+</div>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="peer sr-only" type="checkbox"/>
+<div class="h-6 w-11 rounded-full bg-gray-200 peer-checked:bg-primary transition-colors after:absolute after:ml-[2px] after:mt-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full"></div>
+</label>
+</div>
+<div class="animate-in fade-in slide-in-from-top-2 duration-300">
+<div class="flex items-center justify-between mb-3 px-1">
+<p class="text-xs font-bold text-text-muted uppercase tracking-wider">Afeta 3 Transações</p>
+<span class="text-xs text-primary font-bold cursor-pointer hover:underline">Ver todas</span>
+</div>
+<div class="flex flex-col gap-2 max-h-40 overflow-y-auto custom-scrollbar pr-1">
+<div class="flex items-center justify-between rounded-lg bg-white p-3 shadow-sm border border-transparent hover:border-border-color transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-xs font-bold text-text-muted">
+                                                    12
+                                                </div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main">Uber do Brasil</span>
+<span class="text-xs text-text-muted">Cartão Nubank • 12 Mai</span>
+</div>
+</div>
+<span class="text-sm font-bold text-text-main">- € 24,90</span>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-white p-3 shadow-sm border border-transparent hover:border-border-color transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-xs font-bold text-text-muted">
+                                                    10
+                                                </div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main">Uber Trip Help</span>
+<span class="text-xs text-text-muted">Cartão Nubank • 10 Mai</span>
+</div>
+</div>
+<span class="text-sm font-bold text-text-main">- € 14,20</span>
+</div>
+<div class="flex items-center justify-between rounded-lg bg-white p-3 shadow-sm border border-transparent hover:border-border-color transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-xs font-bold text-text-muted">
+                                                    05
+                                                </div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main">Uber Pending</span>
+<span class="text-xs text-text-muted">Cartão Nubank • 05 Mai</span>
+</div>
+</div>
+<span class="text-sm font-bold text-text-main">- € 8,50</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end gap-3 border-t border-border-color bg-gray-50/50 px-6 py-5">
+<button class="rounded-xl border border-transparent px-6 py-3 text-sm font-bold text-text-muted hover:bg-gray-100 hover:text-text-main transition-colors">
+                            Cancelar
+                        </button>
+<button class="rounded-xl bg-primary px-8 py-3 text-sm font-bold text-text-main shadow-lg shadow-primary/20 hover:bg-primary/90 hover:shadow-primary/30 transition-all transform active:scale-95">
+                            Salvar Regra
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Login</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-hover": "#0fd693",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "card-dark": "#162e26",
+                        "input-border": "#dbe6e2",
+                        "input-border-dark": "#2a4038",
+                        "text-main": "#111816",
+                        "text-light": "#f0f4f3",
+                        "text-muted": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-300">
+<!-- Main Container -->
+<main class="w-full max-w-[440px] animate-fade-in-up">
+<!-- Logo Header -->
+<div class="text-center mb-8">
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary mb-4 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-text-main" style="font-size: 32px;">account_balance_wallet</span>
+</div>
+<h1 class="text-3xl font-extrabold text-text-main dark:text-white tracking-tight mb-2">CasalFin</h1>
+<p class="text-text-muted dark:text-gray-400 text-sm font-medium">Finanças claras, riqueza a dois.</p>
+</div>
+<!-- Login Card -->
+<div class="bg-white dark:bg-card-dark rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden">
+<div class="p-8">
+<!-- Social Login Group -->
+<div class="flex flex-col gap-3">
+<button class="group relative flex w-full items-center justify-center gap-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 h-12 text-sm font-bold text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 dark:focus:ring-offset-gray-900">
+<!-- Google SVG -->
+<svg class="h-5 w-5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+<span>Continuar com Google</span>
+</button>
+<button class="group relative flex w-full items-center justify-center gap-3 rounded-lg bg-black dark:bg-white px-4 h-12 text-sm font-bold text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 transition-all focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-1 dark:focus:ring-offset-gray-900">
+<!-- Apple SVG -->
+<svg class="h-5 w-5 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.74 1.18 0 2.45-1.02 4.11-.8 2.87.32 4.03 2.5 4.14 2.62-3.35 1.77-2.73 5.92.51 7.33-.81 1.88-1.92 3.82-3.84 3.08zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.54 4.5-3.74 4.25z"></path>
+</svg>
+<span>Continuar com Apple</span>
+</button>
+</div>
+<!-- Divider -->
+<div class="relative my-6">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-white dark:bg-card-dark px-3 text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">ou use seu email</span>
+</div>
+</div>
+<!-- Email Form -->
+<form action="#" class="space-y-4" method="POST">
+<!-- Email Field -->
+<div class="space-y-1">
+<label class="block text-sm font-semibold text-text-main dark:text-gray-200" for="email">Email</label>
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-[20px]">mail</span>
+</div>
+<input class="block w-full rounded-lg border-input-border dark:border-input-border-dark bg-white dark:bg-background-dark/50 text-text-main dark:text-white shadow-sm placeholder-gray-400 focus:border-primary focus:ring-primary sm:text-sm pl-10 h-11 transition-colors" id="email" name="email" placeholder="seu@email.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1">
+<label class="block text-sm font-semibold text-text-main dark:text-gray-200" for="password">Senha</label>
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-[20px]">lock</span>
+</div>
+<input class="block w-full rounded-lg border-input-border dark:border-input-border-dark bg-white dark:bg-background-dark/50 text-text-main dark:text-white shadow-sm placeholder-gray-400 focus:border-primary focus:ring-primary sm:text-sm pl-10 pr-10 h-11 transition-colors" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex items-center justify-end">
+<a class="text-sm font-medium text-text-muted hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors" href="#">Esqueci minha senha</a>
+</div>
+<!-- Submit Button -->
+<button class="w-full flex items-center justify-center rounded-lg bg-primary hover:bg-primary-hover py-3 px-4 text-sm font-bold text-text-main shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-gray-900 transition-all transform active:scale-[0.99]" type="submit">
+                        Entrar
+                    </button>
+</form>
+</div>
+<!-- Footer Area -->
+<div class="bg-gray-50 dark:bg-[#132822] px-8 py-4 border-t border-gray-100 dark:border-gray-800 text-center">
+<p class="text-sm text-gray-600 dark:text-gray-400">
+                    Ainda não tem conta? 
+                    <a class="font-bold text-primary hover:text-primary-hover dark:hover:text-[#3bf0b4] transition-colors ml-1" href="#">
+                        Criar conta
+                    </a>
+</p>
+</div>
+</div>
+<!-- Meta / Footer Info -->
+<div class="mt-8 text-center space-y-2">
+<div class="flex justify-center gap-4 text-gray-400 dark:text-gray-600">
+<a class="text-xs hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="#">Privacidade</a>
+<span class="text-xs">•</span>
+<a class="text-xs hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="#">Termos</a>
+<span class="text-xs">•</span>
+<a class="text-xs hover:text-gray-600 dark:hover:text-gray-400 transition-colors" href="#">Ajuda</a>
+</div>
+<p class="text-xs text-gray-400 dark:text-gray-600">© 2024 CasalFin. Todos os direitos reservados.</p>
+</div>
+</main>
+<!-- Background Decoration (Optional, for aesthetic) -->
+<div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+<div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute top-[40%] -right-[10%] w-[40%] h-[40%] rounded-full bg-blue-400/5 blur-[120px]"></div>
+</div>
+</body></html>

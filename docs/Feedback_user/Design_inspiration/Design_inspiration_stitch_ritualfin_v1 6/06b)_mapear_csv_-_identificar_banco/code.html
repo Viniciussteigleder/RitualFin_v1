@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Identificar Banco</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-dark": "#0fb880",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e26",
+                        "text-main": "#111816",
+                        "text-secondary": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bank-card-hover:hover {
+            border-color: #13eca4;
+            transform: translateY(-2px);
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="w-full bg-surface-light dark:bg-surface-dark border-b border-[#f0f4f3] dark:border-[#1f3b32] sticky top-0 z-50">
+<div class="px-6 md:px-10 py-3 flex items-center justify-between max-w-[1200px] mx-auto">
+<div class="flex items-center gap-4 text-text-main dark:text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_535)">
+<path clip-rule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs>
+<clippath id="clip0_6_535"><rect fill="white" height="48" width="48"></rect></clippath>
+</defs>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">CasalFin</h2>
+</div>
+<div class="flex items-center gap-6">
+<!-- Step Indicator for Desktop -->
+<div class="hidden md:flex items-center gap-2 text-sm font-medium text-text-secondary dark:text-gray-400">
+<span>Upload</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary font-bold">Identificar</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span>Revisar</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#f0f4f3] dark:bg-[#1f3b32] hover:bg-primary/20 transition-colors text-text-main dark:text-white">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-primary/20" data-alt="User profile avatar showing a smiling person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBlgOZj4LQkyxaFqnrANqCV3cQ0znthso0iZ61EHJ_391GQKO6t3O7F-mrC9__kI81_QavXWuuWhKqNF3GdEWrPskQfkw_BMZq_pjQC0uY_xWWgv9VGb1W5zbODNDjvj8EuKtMWajXhN7P1nzEBBX0-pjw7kE2R3Y0zpDTHw8GqQfg3pCytJwJ-B7FtAJS8JqUcyTDfu4D7_X0Gmwc1J_7EVHZ7O7AG7UTVLx0OshCyZlHExx0Htq7IEQB6cMGTTBr_2b04MlA0gq8");'>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex justify-center py-8 px-4 sm:px-6">
+<div class="w-full max-w-[800px] flex flex-col gap-6">
+<!-- Breadcrumbs / Back Link -->
+<div class="flex items-center gap-2 text-sm font-medium">
+<a class="text-text-secondary hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Voltar para Upload
+                </a>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-col gap-3">
+<h1 class="text-text-main dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight">
+                    Qual é o Seu Banco?
+                </h1>
+<p class="text-text-secondary dark:text-gray-400 text-lg font-normal leading-normal max-w-2xl">
+                    Ajude-nos a reconhecer seu extrato mais rápido. Assim, aprenderemos para as próximas vezes e a importação será automática.
+                </p>
+</div>
+<!-- Auto-Detection Card -->
+<div class="mt-4">
+<div class="relative overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark border-2 border-primary/30 shadow-[0_4px_20px_rgba(19,236,164,0.1)] p-6 transition-all">
+<!-- AI Badge -->
+<div class="absolute top-0 right-0 bg-primary/20 text-primary-dark dark:text-primary px-3 py-1 rounded-bl-lg text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                        Sugestão Inteligente
+                    </div>
+<div class="flex flex-col md:flex-row items-center gap-6">
+<!-- Bank Logo Placeholder -->
+<div class="flex-shrink-0 size-20 rounded-full bg-white flex items-center justify-center shadow-sm border border-gray-100 p-4">
+<img alt="Santander Logo" class="w-full h-auto object-contain" data-alt="Logo of Santander Bank" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCep28N4HaUpAs86x0x7a2pK31i-IzUWex0wqOdx9YsSL4VKrAhbHnUeCPRlJN51b4es0Ickl1Wsn1WkGKIR0GZhzGqkEu7ByPPl7eBT-0d8L9PB_1wYVsiyMI1ZWdUBJE0Vu2HtOM8RuTHmkgTRcgifS5u5PFGBR2gO-aIA9VHXXlwLY647juP8zCHFTlVj_b31ape2q3QXlphD33jdQf-fM9Ut9C_yKecjLO3Yv1bl1FfxxB-q7XED_if3swiA_DyRYsGTUy8Nyg"/>
+</div>
+<div class="flex flex-1 flex-col text-center md:text-left gap-1">
+<h3 class="text-text-main dark:text-white text-xl font-bold leading-tight">
+                                Detectamos Santander
+                            </h3>
+<p class="text-text-secondary dark:text-gray-400 text-sm">
+                                Confiança alta baseada no formato do arquivo CSV (Extrato_Jan_24.csv).
+                            </p>
+</div>
+<button class="group flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-surface-dark font-bold text-base px-6 py-3 rounded-lg transition-all shadow-lg shadow-primary/20 w-full md:w-auto transform hover:scale-105">
+<span class="material-symbols-outlined group-hover:animate-bounce">check_circle</span>
+<span>Sim, confirmar</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Separator -->
+<div class="relative py-6">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-background-light dark:bg-background-dark px-4 text-sm font-semibold text-text-secondary dark:text-gray-400">Ou selecione outro banco popular</span>
+</div>
+</div>
+<!-- Bank Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+<!-- Nubank -->
+<button class="bank-card-hover flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-sm transition-all h-32 group">
+<div class="size-10 bg-[#820AD1] rounded-full flex items-center justify-center text-white font-bold text-xs" data-alt="Nubank purple logo background">
+                        Nu
+                    </div>
+<span class="text-text-main dark:text-white font-medium text-sm group-hover:text-primary transition-colors">Nubank</span>
+</button>
+<!-- Itaú -->
+<button class="bank-card-hover flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-sm transition-all h-32 group">
+<div class="size-10 bg-[#EC7000] rounded-md flex items-center justify-center text-white font-bold" data-alt="Itau orange logo background">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<span class="text-text-main dark:text-white font-medium text-sm group-hover:text-primary transition-colors">Itaú</span>
+</button>
+<!-- Bradesco -->
+<button class="bank-card-hover flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-sm transition-all h-32 group">
+<div class="size-10 bg-[#CC092F] rounded-md flex items-center justify-center text-white font-bold" data-alt="Bradesco red logo background">
+<span class="material-symbols-outlined">savings</span>
+</div>
+<span class="text-text-main dark:text-white font-medium text-sm group-hover:text-primary transition-colors">Bradesco</span>
+</button>
+<!-- Revolut -->
+<button class="bank-card-hover flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-sm transition-all h-32 group">
+<div class="size-10 bg-black rounded-full flex items-center justify-center text-white font-bold text-lg" data-alt="Revolut black logo background">
+                        R
+                    </div>
+<span class="text-text-main dark:text-white font-medium text-sm group-hover:text-primary transition-colors">Revolut</span>
+</button>
+<!-- Millennium BCP -->
+<button class="bank-card-hover flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-sm transition-all h-32 group">
+<div class="size-10 bg-[#D3135A] rounded-md flex items-center justify-center text-white font-bold" data-alt="Millennium pink logo background">
+                        M
+                    </div>
+<span class="text-text-main dark:text-white font-medium text-sm group-hover:text-primary transition-colors">Millennium</span>
+</button>
+<!-- Caixa -->
+<button class="bank-card-hover flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-sm transition-all h-32 group">
+<div class="size-10 bg-[#0060A9] rounded-md flex items-center justify-center text-white font-bold" data-alt="Caixa blue logo background">
+                        X
+                    </div>
+<span class="text-text-main dark:text-white font-medium text-sm group-hover:text-primary transition-colors">Caixa</span>
+</button>
+<!-- ActivoBank -->
+<button class="bank-card-hover flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-700 shadow-sm transition-all h-32 group">
+<div class="size-10 bg-gray-800 rounded-md flex items-center justify-center text-white font-bold" data-alt="ActivoBank dark logo background">
+                        AB
+                    </div>
+<span class="text-text-main dark:text-white font-medium text-sm group-hover:text-primary transition-colors">ActivoBank</span>
+</button>
+<!-- Other -->
+<button class="bank-card-hover flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-transparent border-2 border-dashed border-gray-300 dark:border-gray-600 hover:border-primary dark:hover:border-primary transition-all h-32 group">
+<div class="size-10 rounded-full flex items-center justify-center text-text-secondary dark:text-gray-400 bg-gray-100 dark:bg-gray-800 group-hover:bg-primary/20 group-hover:text-primary-dark transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<span class="text-text-secondary dark:text-gray-400 font-medium text-sm group-hover:text-primary transition-colors">Outro Banco</span>
+</button>
+</div>
+<!-- Footer / Fallback -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-4 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+<button class="text-text-secondary dark:text-gray-400 hover:text-text-main dark:hover:text-white text-sm font-semibold flex items-center gap-1">
+                    Não sei qual é o banco
+                </button>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="hidden md:block px-6 py-2.5 rounded-lg text-text-main dark:text-white font-bold text-sm hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">
+                        Cancelar
+                    </button>
+<!-- CTA Button -->
+<button class="flex-1 md:flex-none justify-center px-8 py-2.5 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed font-bold text-sm flex items-center gap-2" disabled="">
+                        Continuar
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Sticky Footer (if needed for better UX on small screens) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface-light dark:bg-surface-dark border-t border-gray-200 dark:border-gray-700 p-4 z-40">
+<div class="flex gap-3">
+<button class="flex-1 px-4 py-3 rounded-lg text-text-main dark:text-white font-bold text-sm bg-gray-100 dark:bg-gray-800">
+                Voltar
+            </button>
+<button class="flex-[2] px-4 py-3 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-500 font-bold text-sm flex items-center justify-center gap-2">
+                Continuar
+            </button>
+</div>
+</div>
+</body></html>

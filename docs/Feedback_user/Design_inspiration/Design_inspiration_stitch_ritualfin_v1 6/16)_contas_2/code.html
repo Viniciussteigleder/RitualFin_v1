@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Minhas Contas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#13eca4",
+              "primary-dark": "#0fb880",
+              "background-light": "#f6f8f7",
+              "background-dark": "#10221c",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1a332a",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem", 
+              "lg": "0.5rem", 
+              "xl": "0.75rem", 
+              "2xl": "1rem",
+              "full": "9999px"
+            },
+            boxShadow: {
+                'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                'glow': '0 0 15px rgba(19, 236, 164, 0.3)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display min-h-screen flex overflow-hidden">
+<aside class="w-72 bg-surface-light dark:bg-surface-dark border-r border-slate-100 dark:border-slate-800 flex-col justify-between hidden lg:flex shadow-sm z-20">
+<div class="p-6">
+<div class="flex items-center gap-4 mb-10">
+<div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-primary p-0.5">
+<img alt="Profile portrait of a woman" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxzaTKRJLGvMgob3c1N8AwVS3EOFPV6_8UHJo_65p7JMekX1cxYOlRfinlEQ1CJYRRzGwkz7FAqPVUbCQt0kkgnJ44bcZLxzXR_nmikFWpKmvn6ZGjjsttHdTj-K_E7kZyvlvo396wf7CzEfgCZAtru03D_Q_vaFftuHolm5S3o10KMkAvX351YRG6zTJl1jmFlfhSBBJMEpJ3ZR5YTG4cCyngYaV-2n_5IeqP1eQ8cQr6ZE20rsCjKfGP_WF88WOSFh4QDBVdX-c"/>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">CasalFin</h1>
+<p class="text-slate-500 dark:text-slate-400 text-[10px] font-medium leading-tight mt-0.5">Finanças claras, riqueza a dois</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">receipt_long</span>
+<span class="text-sm font-semibold">Transações</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-slate-900 dark:text-white transition-colors relative overflow-hidden" href="#">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-r-full"></div>
+<span class="material-symbols-outlined text-primary filled">credit_card</span>
+<span class="text-sm font-bold">Minhas Contas</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">pie_chart</span>
+<span class="text-sm font-semibold">Orçamentos</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group" href="#">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-semibold">Configurações</span>
+</a>
+</nav>
+</div>
+<div class="p-6">
+<div class="bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-4 text-white relative overflow-hidden">
+<div class="absolute top-0 right-0 -mt-2 -mr-2 w-16 h-16 bg-primary/20 rounded-full blur-xl"></div>
+<p class="text-sm font-bold mb-1">CasalFin Pro</p>
+<p class="text-xs text-slate-300 mb-3 leading-relaxed">Sincronização bancária automática e projeções ilimitadas.</p>
+<button class="w-full py-2 bg-primary text-slate-900 text-xs font-bold rounded-lg hover:bg-primary-dark transition-colors">
+                    Ver Planos
+                </button>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full relative overflow-y-auto">
+<div class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+<div class="flex flex-col">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Minhas Contas</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Visão clara dos gastos, faturas e fluxo de caixa.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-slate-900 text-sm font-bold py-2.5 px-5 rounded-lg transition-all shadow-glow hover:shadow-lg transform hover:-translate-y-0.5">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Nova Conta</span>
+</button>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 py-8 w-full flex flex-col gap-8 pb-20">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-4 bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-soft flex flex-col justify-center border border-slate-100 dark:border-slate-800">
+<label class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+                        Saldo Inicial (Manual)
+                    </label>
+<div class="relative">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 text-slate-400 font-medium text-xl">€</span>
+<input class="w-full bg-transparent border-0 border-b-2 border-slate-200 dark:border-slate-700 focus:border-primary focus:ring-0 text-2xl font-bold text-slate-900 dark:text-white pl-6 py-1 placeholder-slate-300 transition-colors" type="text" value="0,00"/>
+</div>
+</div>
+<div class="md:col-span-5 bg-gradient-to-br from-surface-light to-primary/5 dark:from-surface-dark dark:to-primary/10 rounded-2xl p-6 shadow-soft flex flex-col justify-center border border-slate-100 dark:border-slate-800 relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10 transition-all group-hover:bg-primary/20"></div>
+<div class="relative z-10">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Saldo Projetado</p>
+<div class="flex items-baseline gap-2">
+<h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">€ 2.450,00</h2>
+<span class="text-primary text-sm font-bold bg-primary/10 px-2 py-0.5 rounded-full">+12%</span>
+</div>
+<p class="text-slate-400 dark:text-slate-500 text-xs mt-2">Previsão baseada em entradas e saídas recorrentes.</p>
+</div>
+</div>
+<div class="md:col-span-3 bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-soft flex flex-col justify-center items-center border border-slate-100 dark:border-slate-800">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-4">Projeção</p>
+<div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-xl flex w-full max-w-[200px] relative">
+<div class="w-1/2 h-full absolute left-0 bg-white dark:bg-slate-700 rounded-lg shadow-sm transition-all transform translate-x-0"></div> 
+<button class="flex-1 relative z-10 py-2 text-xs font-bold text-slate-900 dark:text-white text-center">Diária</button>
+<button class="flex-1 relative z-10 py-2 text-xs font-bold text-slate-500 dark:text-slate-400 text-center hover:text-slate-800 dark:hover:text-slate-200">Semanal</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<article class="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-100 to-transparent dark:from-slate-800 dark:to-transparent opacity-50 rounded-bl-full"></div>
+<div class="flex justify-between items-start mb-6 relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-lg">
+                                AMEX
+                            </div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Amex Platinum</h3>
+<p class="text-slate-500 text-xs">Cartão de Crédito</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="space-y-4 mb-6 relative z-10">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-slate-500 text-xs mb-1">Gastos do Mês</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">€ 640,00</p>
+</div>
+<div class="text-right">
+<p class="text-slate-500 text-xs mb-1">Fatura Estimada</p>
+<p class="text-base font-bold text-slate-700 dark:text-slate-300">€ 750,00</p>
+</div>
+</div>
+<div class="w-full">
+<div class="flex justify-between text-xs font-medium mb-1.5">
+<span class="text-slate-500">Limite Utilizado</span>
+<span class="text-slate-900 dark:text-white">45%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-2 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center gap-2">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5" title="Data de Fechamento">
+<span class="material-symbols-outlined text-[16px] text-slate-400">calendar_month</span>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold leading-none">Fech.</span>
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">25/10</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5" title="Data de Vencimento">
+<span class="material-symbols-outlined text-[16px] text-red-400">event_busy</span>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold leading-none">Venc.</span>
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">05/11</span>
+</div>
+</div>
+</div>
+<button class="text-xs font-bold text-primary hover:text-primary-dark transition-colors bg-primary/10 px-3 py-1.5 rounded-lg hover:bg-primary/20">
+                            Detalhes
+                        </button>
+</div>
+</article>
+<article class="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-50 to-transparent dark:from-blue-900/20 dark:to-transparent opacity-50 rounded-bl-full"></div>
+<div class="flex justify-between items-start mb-6 relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-blue-800 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-blue-200 dark:shadow-none">
+                                M
+                            </div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Miles &amp; More</h3>
+<p class="text-slate-500 text-xs">Cartão de Crédito</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="space-y-4 mb-6 relative z-10">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-slate-500 text-xs mb-1">Gastos do Mês</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">€ 1.250,00</p>
+</div>
+<div class="text-right">
+<p class="text-slate-500 text-xs mb-1">Fatura Estimada</p>
+<p class="text-base font-bold text-slate-700 dark:text-slate-300">€ 1.300,00</p>
+</div>
+</div>
+<div class="w-full">
+<div class="flex justify-between text-xs font-medium mb-1.5">
+<span class="text-slate-500">Limite Utilizado</span>
+<span class="text-slate-900 dark:text-white">72%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+<div class="bg-blue-600 h-2 rounded-full" style="width: 72%"></div>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center gap-2">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-slate-400">calendar_month</span>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold leading-none">Fech.</span>
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">12/11</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-red-400">event_busy</span>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold leading-none">Venc.</span>
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">22/11</span>
+</div>
+</div>
+</div>
+<button class="text-xs font-bold text-primary hover:text-primary-dark transition-colors bg-primary/10 px-3 py-1.5 rounded-lg hover:bg-primary/20">
+                            Detalhes
+                        </button>
+</div>
+</article>
+<article class="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-soft border border-slate-100 dark:border-slate-800 hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-purple-50 to-transparent dark:from-purple-900/20 dark:to-transparent opacity-50 rounded-bl-full"></div>
+<div class="flex justify-between items-start mb-6 relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-purple-700 text-white flex items-center justify-center shadow-lg shadow-purple-200 dark:shadow-none">
+<img alt="Nubank Logo" class="w-8 h-8 object-contain invert brightness-0 filter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASc3JeaN1zmdSTd3d2uYIHelQJjaQWnj1Stm-6enzVl0j-i92GJwxAOxzZV0xzBByfo96fgpZQEhjg-4eoLujQDGapjpiLyiQu5shatbLpBXmkpOg0dQZEit1bH54bsW16fhWyDbdBr1OHiDKLkrz1UVKBo1f5KDIyud-cBH6kv5Dt5TX6KSEt1vqx8VBmYFE9sn2gdC78cZKIkXTmr-RFNQlLZbmNxViuAR6takpcZHKygIFGWSqUnsVa3t8_WAlN5ItDOFoe1EI"/>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Nubank</h3>
+<p class="text-slate-500 text-xs">Cartão de Crédito</p>
+</div>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="space-y-4 mb-6 relative z-10">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-slate-500 text-xs mb-1">Gastos do Mês</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">€ 250,90</p>
+</div>
+<div class="text-right">
+<p class="text-slate-500 text-xs mb-1">Fatura Estimada</p>
+<p class="text-base font-bold text-slate-700 dark:text-slate-300">€ 280,00</p>
+</div>
+</div>
+<div class="w-full">
+<div class="flex justify-between text-xs font-medium mb-1.5">
+<span class="text-slate-500">Limite Utilizado</span>
+<span class="text-slate-900 dark:text-white">30%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
+<div class="bg-purple-500 h-2 rounded-full" style="width: 30%"></div>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center gap-2">
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-slate-400">calendar_month</span>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold leading-none">Fech.</span>
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">01/11</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-red-400">event_busy</span>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-400 uppercase font-bold leading-none">Venc.</span>
+<span class="text-xs font-bold text-slate-700 dark:text-slate-300">10/11</span>
+</div>
+</div>
+</div>
+<button class="text-xs font-bold text-primary hover:text-primary-dark transition-colors bg-primary/10 px-3 py-1.5 rounded-lg hover:bg-primary/20">
+                            Detalhes
+                        </button>
+</div>
+</article>
+<button class="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-6 border-2 border-dashed border-slate-200 dark:border-slate-700 hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center justify-center gap-4 group h-full min-h-[280px]">
+<div class="w-16 h-16 rounded-full bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl text-slate-300 group-hover:text-primary transition-colors">add</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 font-bold group-hover:text-primary transition-colors">Conectar nova conta</p>
+</button>
+</div>
+</div>
+</main>
+
+</body></html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Criar Espaço</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-dark": "#0fb982",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162d25",
+                        "text-main": "#111816",
+                        "text-secondary": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.375rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(17, 24, 22, 0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main font-display antialiased transition-colors duration-200">
+<div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#e8f5f1] to-transparent dark:from-[#132a23] dark:to-transparent -z-10 opacity-60"></div>
+<div class="absolute -top-20 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
+<div class="absolute top-40 -left-20 w-72 h-72 bg-blue-400/5 rounded-full blur-3xl -z-10"></div>
+<!-- Main Container -->
+<div class="w-full max-w-lg mx-auto">
+<!-- Header Logo Area -->
+<div class="flex flex-col items-center mb-8 text-center animate-fade-in-down">
+<div class="flex items-center gap-3 mb-2">
+<div class="size-10 bg-primary/20 rounded-xl flex items-center justify-center text-primary-dark dark:text-primary">
+<span class="material-symbols-outlined text-3xl">account_balance_wallet</span>
+</div>
+<h1 class="text-2xl font-extrabold tracking-tight text-text-main dark:text-white">CasalFin</h1>
+</div>
+<p class="text-text-secondary dark:text-gray-400 text-sm font-medium">Finanças claras, riqueza a dois</p>
+</div>
+<!-- Progress Indicator -->
+<div class="mb-8 flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="text-xs font-semibold uppercase tracking-wider text-text-secondary dark:text-gray-400">Passo 2 de 3</span>
+<span class="text-xs font-medium text-primary-dark dark:text-primary">Quase lá</span>
+</div>
+<div class="h-1.5 w-full bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-2/3 rounded-full shadow-[0_0_10px_rgba(19,236,164,0.5)]"></div>
+</div>
+</div>
+<!-- Content Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-soft border border-gray-100 dark:border-gray-800 p-8 md:p-10 relative overflow-hidden">
+<!-- Illustration -->
+<div class="flex justify-center mb-8">
+<div class="relative w-full h-40 bg-gray-50 dark:bg-gray-800/50 rounded-xl overflow-hidden group">
+<!-- Abstract representation of connection/shared space -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-blue-500/5"></div>
+<div class="w-full h-full flex items-center justify-center" data-alt="Abstract illustration of two interlocking rings representing partnership and shared finance">
+<!-- Simple CSS composition for visual -->
+<div class="relative flex items-center justify-center">
+<div class="w-16 h-16 rounded-full border-4 border-primary/30 absolute -translate-x-4 mix-blend-multiply dark:mix-blend-screen"></div>
+<div class="w-16 h-16 rounded-full border-4 border-blue-400/30 absolute translate-x-4 mix-blend-multiply dark:mix-blend-screen"></div>
+<span class="material-symbols-outlined text-4xl text-text-main dark:text-white z-10 bg-white dark:bg-surface-dark p-2 rounded-full shadow-sm">home_work</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Text Content -->
+<div class="text-center mb-8">
+<h2 class="text-2xl md:text-3xl font-bold text-text-main dark:text-white mb-3 leading-tight">Vamos criar o espaço de vocês</h2>
+<p class="text-text-secondary dark:text-gray-300 text-sm md:text-base leading-relaxed">
+                        Defina um nome para as finanças do casal. Ao criar um espaço, vocês desbloqueiam orçamentos compartilhados e visualizam o patrimônio unificado.
+                    </p>
+</div>
+<!-- Form Area -->
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-text-main dark:text-gray-200 ml-1" for="spaceName">
+                            Nome do Espaço
+                        </label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 group-focus-within:text-primary transition-colors">edit</span>
+</div>
+<input class="block w-full pl-11 pr-4 py-4 bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-xl text-text-main dark:text-white placeholder:text-gray-400 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none font-medium" id="spaceName" placeholder="Ex: Nossa Casa, Vida a Dois" type="text"/>
+<!-- Validation Hint -->
+<div class="absolute right-4 top-1/2 -translate-y-1/2 hidden group-focus-within:block">
+<span class="text-[10px] text-gray-400 bg-white dark:bg-gray-800 px-2 py-1 rounded border border-gray-100 dark:border-gray-700 shadow-sm">
+                                    Pressione Enter ↵
+                                </span>
+</div>
+</div>
+<p class="text-xs text-text-secondary dark:text-gray-500 ml-1">
+                            Você poderá alterar este nome a qualquer momento nas configurações.
+                        </p>
+</div>
+<!-- Actions -->
+<div class="pt-4 flex flex-col gap-4">
+<button class="w-full bg-primary hover:bg-primary-dark text-text-main font-bold py-4 px-6 rounded-xl shadow-[0_4px_14px_0_rgba(19,236,164,0.39)] hover:shadow-[0_6px_20px_rgba(19,236,164,0.23)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined text-[20px] group-hover:animate-pulse">person_add</span>
+                            Convidar Parceiro(a)
+                        </button>
+<button class="w-full bg-transparent hover:bg-gray-50 dark:hover:bg-white/5 text-text-secondary dark:text-gray-400 font-medium py-3 px-6 rounded-lg transition-colors text-sm flex items-center justify-center gap-2">
+                            Fazer isso depois (Modo Solo Temporário)
+                            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer/Trust Indicators -->
+<div class="mt-8 flex justify-center items-center gap-6 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+<div class="flex items-center gap-1.5 text-xs font-medium text-text-secondary dark:text-gray-500">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+                    Criptografia de ponta a ponta
+                </div>
+<div class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700"></div>
+<div class="flex items-center gap-1.5 text-xs font-medium text-text-secondary dark:text-gray-500">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+                    Privacidade Garantida
+                </div>
+</div>
+</div>
+</div>
+</body></html>

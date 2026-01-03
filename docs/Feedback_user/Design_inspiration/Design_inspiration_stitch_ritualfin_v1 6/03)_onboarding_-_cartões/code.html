@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Couple Budget Coach - Onboarding Cartões</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "text-dark": "#111816",
+                        "text-muted": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        /* Custom scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-dark dark:text-white transition-colors duration-200">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex w-64 flex-col justify-between border-r border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0d1c17] p-6 shrink-0 transition-colors duration-200">
+<div class="flex flex-col gap-8">
+<!-- Branding -->
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-xl bg-primary/20 text-primary">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-text-dark dark:text-white text-base font-bold leading-tight">Couple Budget</h1>
+<p class="text-text-muted text-xs font-normal">Plano Premium</p>
+</div>
+</div>
+<!-- Navigation Items -->
+<nav class="flex flex-col gap-2">
+<a class="group flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined group-hover:text-text-dark dark:group-hover:text-white transition-colors">pie_chart</span>
+<span class="text-sm font-medium group-hover:text-text-dark dark:group-hover:text-white transition-colors">Visão Geral</span>
+</a>
+<a class="group flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined group-hover:text-text-dark dark:group-hover:text-white transition-colors">sync_alt</span>
+<span class="text-sm font-medium group-hover:text-text-dark dark:group-hover:text-white transition-colors">Transações</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-primary/20 text-text-dark dark:text-primary" href="#">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+<span class="text-sm font-bold">Cartões</span>
+</a>
+<a class="group flex items-center gap-3 px-3 py-2 rounded-lg text-text-muted hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined group-hover:text-text-dark dark:group-hover:text-white transition-colors">calendar_month</span>
+<span class="text-sm font-medium group-hover:text-text-dark dark:group-hover:text-white transition-colors">Planejamento</span>
+</a>
+</nav>
+</div>
+<!-- Bottom User Profile -->
+<div class="flex items-center gap-3 px-3 py-2 mt-auto rounded-lg border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 shrink-0 border border-gray-200" data-alt="Profile picture of user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDARTa9hB_Pxar_mXkKJ1aCkG0jOz9xWKQkXopHQkkLtblqQvQ8e_zelHErALaRFuEhOe_2MFf3N85eR1DBQf87oyhN7V9L8qM2K67TSwE8L8Ta0EG8iliIYRhdH9F4NPX6vyBBvhnmi5db6DNFoinn9wTqOMqNlPgFefOOfEd_TO6EmeGfwHKGG13Ljm6GmvqhgMkGnqXorM3NVWDLK1BYwkEhEkaFslU1699AWFXJ8_DSajszujuGeRN933DJ4gZw1i6GctEzh2s");'>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-text-dark dark:text-white text-sm font-medium truncate">Mariana Silva</p>
+<p class="text-text-muted text-xs truncate">Configurações</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-full overflow-y-auto relative bg-background-light dark:bg-background-dark">
+<!-- Mobile Header (Visible only on small screens) -->
+<div class="md:hidden flex items-center justify-between p-4 bg-white dark:bg-[#0d1c17] border-b border-gray-200 dark:border-gray-800 sticky top-0 z-20">
+<div class="flex items-center gap-2">
+<div class="flex items-center justify-center size-8 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-sm filled" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<span class="font-bold text-text-dark dark:text-white">Couple Budget</span>
+</div>
+<button class="text-text-dark dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="w-full max-w-[960px] mx-auto p-6 md:p-12 lg:px-24 flex flex-col gap-8">
+<!-- Progress Header -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-text-muted text-sm font-medium uppercase tracking-wider mb-1">Passo 3 de 4</p>
+<h2 class="text-text-dark dark:text-white text-lg font-bold">Onboarding</h2>
+</div>
+<p class="text-primary font-bold text-lg">75%</p>
+</div>
+<div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500 ease-out" style="width: 75%;"></div>
+</div>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-col gap-4 mt-4">
+<div class="size-14 rounded-2xl bg-gradient-to-br from-primary/30 to-primary/5 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">credit_score</span>
+</div>
+<h1 class="text-text-dark dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight">
+                        Encontramos seus cartões!
+                    </h1>
+<p class="text-text-muted text-base md:text-lg font-normal leading-relaxed max-w-2xl">
+                        O "modo preguiça" está ativado. Detectamos estes cartões automaticamente via Open Finance. Confirme quais deseja utilizar no planejamento do casal.
+                    </p>
+</div>
+<!-- Cards List Section -->
+<div class="flex flex-col gap-4 mt-2">
+<!-- Card Item 1 -->
+<div class="group flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-[#152a23] p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/30 hover:shadow-md transition-all duration-300">
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<!-- Card Icon/Logo -->
+<div class="flex items-center justify-center w-14 h-10 shrink-0 bg-[#820AD1] rounded-lg shadow-sm text-white font-bold text-[10px] overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
+<span class="relative z-10" data-alt="Nubank logo placeholder">NU</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<p class="text-text-dark dark:text-white text-base font-bold">Nubank Platinum</p>
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-text-muted">Final 8492</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-2 text-sm text-text-muted mt-0.5">
+<span>Fatura atual: <strong class="text-text-dark dark:text-gray-300">R$ 1.250,00</strong></span>
+<span class="hidden sm:inline">•</span>
+<span>Vencimento dia 05</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between w-full sm:w-auto gap-4 pl-18 sm:pl-0">
+<span class="sm:hidden text-sm font-medium text-text-dark dark:text-white">Ativar cartão</span>
+<label class="relative flex h-[32px] w-[52px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-gray-700 p-1 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors duration-200">
+<div class="h-[24px] w-[24px] rounded-full bg-white shadow-md transition-all"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Card Item 2 -->
+<div class="group flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-[#152a23] p-5 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 hover:border-primary/30 hover:shadow-md transition-all duration-300">
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<!-- Card Icon/Logo -->
+<div class="flex items-center justify-center w-14 h-10 shrink-0 bg-[#EC7000] rounded-lg shadow-sm text-white font-bold text-[10px] overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-tr from-yellow-400/30 to-transparent"></div>
+<span class="relative z-10 italic font-serif text-lg" data-alt="Itau logo placeholder">i</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<p class="text-text-dark dark:text-white text-base font-bold">Itaú Click</p>
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-text-muted">Final 1120</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-2 text-sm text-text-muted mt-0.5">
+<span>Fatura atual: <strong class="text-text-dark dark:text-gray-300">R$ 3.400,00</strong></span>
+<span class="hidden sm:inline">•</span>
+<span>Vencimento dia 10</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between w-full sm:w-auto gap-4 pl-18 sm:pl-0">
+<span class="sm:hidden text-sm font-medium text-text-dark dark:text-white">Ativar cartão</span>
+<label class="relative flex h-[32px] w-[52px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-gray-700 p-1 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors duration-200">
+<div class="h-[24px] w-[24px] rounded-full bg-white shadow-md transition-all"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Optional: Inactive/Ignored Card Example -->
+<div class="group flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/50 dark:bg-[#152a23]/50 p-5 rounded-xl border border-dashed border-gray-300 dark:border-gray-700 transition-all duration-300 opacity-75 hover:opacity-100">
+<div class="flex items-center gap-4 w-full sm:w-auto grayscale group-hover:grayscale-0 transition-all">
+<!-- Card Icon/Logo -->
+<div class="flex items-center justify-center w-14 h-10 shrink-0 bg-black rounded-lg shadow-sm text-white font-bold text-[10px] overflow-hidden relative">
+<span class="relative z-10" data-alt="C6 Bank logo placeholder">C6</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<p class="text-text-dark dark:text-white text-base font-medium">C6 Carbon</p>
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-text-muted">Final 5590</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-2 text-sm text-text-muted mt-0.5">
+<span>Sem fatura recente</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between w-full sm:w-auto gap-4 pl-18 sm:pl-0">
+<span class="sm:hidden text-sm font-medium text-text-dark dark:text-white">Ignorar cartão</span>
+<label class="relative flex h-[32px] w-[52px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-gray-700 p-1 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors duration-200">
+<div class="h-[24px] w-[24px] rounded-full bg-white shadow-md transition-all"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Review & Manual Add Links -->
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-sm px-1">
+<button class="flex items-center gap-2 text-text-muted hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-lg group-hover:translate-x-0.5 transition-transform">edit</span>
+<span class="font-medium underline decoration-dashed underline-offset-4">Revisar datas de fechamento</span>
+</button>
+<button class="flex items-center gap-2 text-text-muted hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-lg group-hover:scale-110 transition-transform">add_circle</span>
+<span class="font-medium">Não vejo meu cartão? Adicionar manualmente</span>
+</button>
+</div>
+<!-- Footer Actions -->
+<div class="flex flex-col gap-6 mt-6 pb-12">
+<button class="w-full bg-primary hover:bg-[#0fd693] active:scale-[0.99] text-[#0a2e22] text-lg font-bold py-4 px-8 rounded-xl shadow-lg shadow-primary/20 transition-all duration-200 flex items-center justify-center gap-3">
+<span>Confirmar e Continuar</span>
+<span class="material-symbols-outlined font-bold">arrow_forward</span>
+</button>
+<!-- Trust Indicators -->
+<div class="flex flex-wrap justify-center items-center gap-6 text-text-muted opacity-80">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">lock</span>
+<span class="text-xs font-medium">Conexão criptografada de ponta a ponta</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">verified_user</span>
+<span class="text-xs font-medium">Seus dados estão seguros</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white dark:bg-[#0d1c17] border-t border-gray-200 dark:border-gray-800 z-50 px-6 py-3 flex justify-between items-center safe-area-bottom">
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">pie_chart</span>
+<span class="text-[10px] font-medium">Visão</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">sync_alt</span>
+<span class="text-[10px] font-medium">Transações</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+<span class="text-[10px] font-bold">Cartões</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-medium">Planos</span>
+</a>
+</nav>
+<style>
+        /* Safe area padding for mobile devices with notches/home bars */
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+        }
+    </style>
+</body></html>

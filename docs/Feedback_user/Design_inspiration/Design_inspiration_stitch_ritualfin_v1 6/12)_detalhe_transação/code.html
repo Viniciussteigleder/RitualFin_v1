@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Detalhe da Transação</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-dark": "#0eb57d",
+                        "background-light": "#ffffff",
+                        "background-dark": "#10221c",
+                        "surface-light": "#f8fafc",
+                        "surface-dark": "#1a332d",
+                        "text-main": "#111816",
+                        "text-muted": "#64748b",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-gray-100 antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="hidden lg:flex w-64 flex-col border-r border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark h-full shrink-0 transition-colors duration-200">
+<div class="p-6 pb-2">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shadow-sm shrink-0" data-alt="Abstract green financial growth icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDrabMmAyYc1hZGZK7kRQMoJs0Fwc611aWiHRyFlxcmIwQ8WUSVWnlxesL_GjOitSButrnOOAqN-B6iKnFmZuYRQTl-SiXRnJxG2hWcxVQ0vRgYBeUKQE03mvPYa3BFq-VatrcxMijZUm82m5NBMKWfKms4850KK5FjhIx9dYuxe9-AOn0PsjcHpkunjK1iy_T84OtTo1c5NHWPqx5_-wtFuIfkQ_eGEzWUwUWALcQcF1unoNEJN9aRShtRI6sH1eSPf48rWgiMAQ");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-main dark:text-white text-lg font-bold leading-tight tracking-tight">CasalFin</h1>
+<p class="text-text-muted text-[10px] font-medium leading-tight mt-0.5">Finanças claras, riqueza a dois.</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto px-4 py-6 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors">donut_large</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 dark:bg-primary/20 text-text-main dark:text-white group" href="#">
+<span class="material-symbols-outlined text-primary dark:text-primary fill-1">credit_card</span>
+<span class="text-sm font-bold">Transações</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors">account_balance</span>
+<span class="text-sm font-medium">Orçamento</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors">track_changes</span>
+<span class="text-sm font-medium">Metas</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-main dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors">settings</span>
+<span class="text-sm font-medium">Configurações</span>
+</a>
+</nav>
+<div class="p-4 border-t border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5">
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary text-xs font-bold">JD</div>
+<div class="flex flex-col">
+<p class="text-xs font-bold dark:text-white">João D.</p>
+<p class="text-[10px] text-text-muted">joao@email.com</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden relative bg-white dark:bg-background-dark">
+<div class="lg:hidden flex items-center justify-between p-4 bg-white dark:bg-surface-dark border-b border-gray-100 dark:border-gray-800">
+<span class="font-bold text-lg dark:text-white">CasalFin</span>
+<button class="p-2 text-text-main dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 md:p-8 lg:px-12">
+<div class="max-w-6xl mx-auto flex flex-col gap-6">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-sm">
+<a class="text-text-muted hover:text-primary transition-colors" href="#">Transações</a>
+<span class="text-gray-300 dark:text-gray-600">/</span>
+<span class="text-text-main dark:text-gray-200 font-medium">Detalhe da Transação</span>
+</div>
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div>
+<h1 class="text-2xl md:text-3xl font-bold text-text-main dark:text-white tracking-tight">Detalhe da Transação <span class="text-text-muted font-normal">#4092</span></h1>
+<p class="text-text-muted text-sm mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-base">schedule</span>
+                                    25 de Outubro, 2023 às 19:42
+                                </p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 text-sm font-medium text-text-main dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                                    Voltar
+                                </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+                                    Excluir
+                                </button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-6 md:p-8 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-white via-transparent to-primary/5 dark:from-surface-dark dark:to-primary/10 opacity-50 pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-center gap-4">
+<div class="size-16 rounded-xl bg-gray-100 dark:bg-gray-800 bg-center bg-cover border border-gray-100 dark:border-gray-700 shrink-0" data-alt="Merchant logo placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBgx-UntOgbD65bWOcpRckuZx7GCYfwbKYhvc3qUf-IcvbLgHqAZv-4uu2YpXaHWJX8rCQqJPGEb-hEBOroWb0ZqE5noA2uoYLm8fvtVwNr5Az71uJYilaviGOEj0JxxddJkpCGcaBg6FlpGxI2KkZ11ZKA1pdtrJxKsEfDP0ga9xMjSOIKWlI-MXw1f6hbM7tZNtpENNxJJkAU8Ggqhju4gcTUDsJYpPUGSfisCqPpOcemjF4vNOFm50173aGXuTMCCW5mYMbOQww");'></div>
+<div>
+<h2 class="text-xl md:text-2xl font-bold text-text-main dark:text-white">Uber Eats</h2>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-primary text-sm">verified</span>
+<span class="text-sm text-text-muted">Estabelecimento verificado</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:items-end">
+<span class="text-3xl md:text-4xl font-bold text-text-main dark:text-white tracking-tight">- € 45,90</span>
+<span class="text-sm font-medium text-text-muted bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded mt-2">Pagamento aprovado</span>
+</div>
+</div>
+<hr class="border-gray-200 dark:border-gray-800"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-semibold uppercase tracking-wider text-text-muted">Categoria</label>
+<div class="relative">
+<select class="w-full appearance-none bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 text-text-main dark:text-white rounded-lg px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all font-medium cursor-pointer shadow-sm">
+<option>Alimentação / Delivery</option>
+<option>Transporte</option>
+<option>Lazer</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-text-muted">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-semibold uppercase tracking-wider text-text-muted">Conta de Origem</label>
+<div class="flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark shadow-sm">
+<div class="size-6 rounded-full bg-purple-600 flex items-center justify-center text-white text-[10px] font-bold">C</div>
+<span class="text-sm font-medium text-text-main dark:text-white">Cartão de Crédito</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-xs font-semibold uppercase tracking-wider text-text-muted">Notas / Observações</label>
+<div class="relative">
+<textarea class="w-full bg-white dark:bg-background-dark border border-gray-200 dark:border-gray-700 text-text-main dark:text-white rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none text-sm shadow-sm" placeholder="Adicione uma nota sobre esta compra..." rows="2"></textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div>
+<h3 class="text-base font-bold text-text-main dark:text-white">Automação Inteligente</h3>
+<p class="text-xs text-text-muted">Crie regras para organizar futuras transações automaticamente.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-primary-dark text-text-main font-bold rounded-lg shadow-sm shadow-primary/30 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">key</span>
+                                            Criar Regra por Palavra-chave
+                                        </button>
+<button class="flex items-center justify-center gap-2 px-4 py-3 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700 hover:border-primary dark:hover:border-primary text-text-main dark:text-white font-medium rounded-lg transition-all active:scale-[0.98] shadow-sm">
+<span class="material-symbols-outlined">storefront</span>
+                                            Criar Regra por Comerciante
+                                        </button>
+</div>
+<div class="flex flex-wrap items-center gap-4 mt-2 pt-3 border-t border-gray-200 dark:border-gray-800">
+<button class="text-sm font-medium text-text-muted hover:text-primary transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">select_all</span>
+                                            Aplicar Regra em Lote
+                                        </button>
+<div class="h-4 w-px bg-gray-300 dark:bg-gray-700 hidden md:block"></div>
+<label class="flex items-center gap-2 cursor-pointer group">
+<div class="relative">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</div>
+<span class="text-sm font-medium text-text-muted group-hover:text-text-main dark:group-hover:text-white transition-colors">Marcar como Recorrência</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-5">
+<h3 class="text-sm font-bold text-text-main dark:text-white mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-lg">data_object</span>
+                                    Resumo do Extrato
+                                </h3>
+<div class="bg-white dark:bg-black/30 rounded-lg p-3 border border-gray-200 dark:border-gray-700 shadow-inner">
+<code class="text-xs text-text-muted break-all font-mono leading-relaxed">
+                                        2023-10-25,UBER *EATS,-45.90,EUR,AUTHORIZED,550e8400-e29b
+                                    </code>
+</div>
+<div class="mt-3 flex flex-wrap gap-2">
+<span class="inline-flex items-center px-2 py-1 rounded bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-[10px] font-bold uppercase tracking-wider">
+                                        MCC: 5812
+                                    </span>
+<span class="inline-flex items-center px-2 py-1 rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-[10px] font-bold uppercase tracking-wider">
+                                        CSV Import
+                                    </span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-5">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-bold text-text-main dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-text-muted text-lg">attachment</span>
+                                        Evidência Original
+                                    </h3>
+<button class="text-xs font-bold text-primary hover:text-primary-dark transition-colors">Adicionar</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="group relative aspect-square rounded-lg bg-gray-50 dark:bg-gray-800 overflow-hidden border border-gray-200 dark:border-gray-700 cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Receipt thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeGCDfLmyjnpKC7_lK5yqTCl6e6ixvYCYlMcWoB-Uc2WYwpjNXhS5caBDUk4YDHgDW55TZgUZSZ94Zl3-A2QzutalKIC16oQ_61T7pGLanTPcHprsU2OeoWP9ZByQxDCFmkgwCnilqvOXFtZHaDEEghI4JRIY5HwDGKn1u2zwRu16bsnq7lZu7wAzXDSLvMbfaUiDb0lU9pBieGooYfCDtSSlj0r1unPryNcwul6nC7IN1DWo7avxsRb9rqbEYmznINBV7oNFizy8");'>
+</div>
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">visibility</span>
+</div>
+</div>
+<div class="aspect-square rounded-lg border-2 border-dashed border-gray-200 dark:border-gray-700 flex flex-col items-center justify-center gap-1 cursor-pointer hover:border-primary hover:bg-primary/5 transition-all group text-text-muted hover:text-primary bg-white dark:bg-surface-dark">
+<span class="material-symbols-outlined text-2xl group-hover:scale-110 transition-transform">add_a_photo</span>
+<span class="text-[10px] font-medium">Upload</span>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-primary/10 to-primary/5 rounded-xl p-4 border border-primary/10">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<p class="text-xs text-text-main dark:text-gray-200 leading-relaxed">
+<strong>Dica CasalFin:</strong> Você gastou 15% a mais em Delivery este mês comparado à média. Considere criar uma meta para controlar esses gastos.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="lg:hidden bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800 flex justify-around p-2 pb-safe z-20">
+<a class="flex flex-col items-center gap-1 p-2 text-text-muted hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">donut_large</span>
+<span class="text-[10px]">Dash</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl fill-1">credit_card</span>
+<span class="text-[10px] font-bold">Transações</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-text-muted hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">account_balance</span>
+<span class="text-[10px]">Contas</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-text-muted hover:text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<span class="text-[10px]">Ajustes</span>
+</a>
+</nav>
+</main>
+</div>
+
+</body></html>

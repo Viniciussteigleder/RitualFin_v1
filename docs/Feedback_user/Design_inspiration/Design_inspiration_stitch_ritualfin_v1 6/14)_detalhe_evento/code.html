@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalhes do Evento - CasalFin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "text-main": "#111816",
+                        "text-secondary": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-white antialiased overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="hidden lg:flex w-72 flex-col bg-white dark:bg-[#152a24] border-r border-gray-100 dark:border-[#1e3b32] h-full p-6 justify-between shrink-0 z-20">
+<div class="flex flex-col gap-8">
+<div class="flex gap-3 items-center px-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shadow-sm" data-alt="Abstract geometric logo in green tones representing finance" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBITOCIVNxtwQhjQ3vz8jyguUAceVq9I3aHPDWDA7aBc5ZBM1pvQz7fJt5kGHvQZvWGOOIOQwe4jH3nCZAJ49-kHWxwN_SE04SdwhzZBKp2YL5ZfGmF11aFcSXIeigD6ADzijqTXNNkvhNIBDdGGBHBjzGEUorcD_qD7hZ3zkleS9Wq3iMcNlrFog0crTmPtUn2shnH5KMkVeqIE0JLCA_83NTpiN1qLcrqmJwtZL5qA6s0sbxPbuT8Cb6nPEDSXCgh_GZ53OBNBNQ");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-main dark:text-white text-base font-bold leading-tight">CasalFin</h1>
+<p class="text-text-secondary text-xs font-normal">Finanças claras, riqueza a dois</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 dark:hover:bg-[#1e3b32] transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors">dashboard</span>
+<p class="text-text-main dark:text-gray-200 text-sm font-medium">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl bg-primary/10 dark:bg-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-primary material-symbols-filled">calendar_month</span>
+<p class="text-text-main dark:text-white text-sm font-bold">Calendário</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 dark:hover:bg-[#1e3b32] transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors">track_changes</span>
+<p class="text-text-main dark:text-gray-200 text-sm font-medium">Metas</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 dark:hover:bg-[#1e3b32] transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors">pie_chart</span>
+<p class="text-text-main dark:text-gray-200 text-sm font-medium">Relatórios</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 dark:hover:bg-[#1e3b32] transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors">settings</span>
+<p class="text-text-main dark:text-gray-200 text-sm font-medium">Ajustes</p>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<header class="lg:hidden flex items-center justify-between p-4 bg-white dark:bg-[#152a24] border-b border-gray-100 dark:border-[#1e3b32]">
+<div class="font-bold text-lg">CasalFin</div>
+<button class="p-2"><span class="material-symbols-outlined">menu</span></button>
+</header>
+<div class="flex-1 overflow-y-auto p-4 md:p-8 lg:px-12 lg:py-10 scroll-smooth">
+<div class="max-w-5xl mx-auto flex flex-col gap-6">
+<div class="flex flex-wrap items-center gap-2 text-sm">
+<a class="text-text-secondary hover:text-primary transition-colors font-medium" href="#">Calendário</a>
+<span class="text-text-secondary/50 font-medium">/</span>
+<a class="text-text-secondary hover:text-primary transition-colors font-medium" href="#">Eventos</a>
+<span class="text-text-secondary/50 font-medium">/</span>
+<span class="text-text-main dark:text-white font-semibold">Supermercado</span>
+</div>
+<div class="flex justify-between items-end">
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-text-main dark:text-white">Detalhes do Evento</h1>
+</div>
+<div class="bg-white dark:bg-[#152a24] rounded-2xl p-6 md:p-8 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.05)] border border-gray-100 dark:border-[#1e3b32] relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-primary/10 via-transparent to-transparent opacity-50 pointer-events-none"></div>
+<div class="relative flex flex-col md:flex-row gap-6 md:justify-between md:items-start z-10">
+<div class="flex gap-5">
+<div class="bg-[#e6fbf4] dark:bg-primary/20 text-primary flex items-center justify-center rounded-2xl size-16 md:size-20 shrink-0">
+<span class="material-symbols-outlined text-4xl">shopping_cart</span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<h2 class="text-xl md:text-2xl font-bold text-text-main dark:text-white">Supermercado Semanal</h2>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300">
+                                            Ativo
+                                        </span>
+</div>
+<p class="text-text-secondary text-sm font-medium">Próximo vencimento: <span class="text-text-main dark:text-white font-semibold">15 de Outubro</span></p>
+<div class="mt-2">
+<span class="text-4xl md:text-5xl font-black text-text-main dark:text-white tracking-tight">€ 450,00</span>
+<span class="text-text-secondary text-base font-normal ml-1">/ semana</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3 w-full md:w-auto mt-4 md:mt-0">
+<button class="flex-1 md:flex-none h-11 px-5 rounded-xl bg-background-light dark:bg-[#1e3b32] text-text-main dark:text-white font-bold text-sm hover:bg-gray-200 dark:hover:bg-[#2a4d42] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span>Editar Evento</span>
+</button>
+<button class="flex-1 md:flex-none h-11 px-5 rounded-xl bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 font-bold text-sm hover:bg-red-100 dark:hover:bg-red-900/30 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+<span>Excluir Evento</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="bg-white dark:bg-[#152a24] rounded-2xl border border-gray-100 dark:border-[#1e3b32] shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-gray-100 dark:border-[#1e3b32] flex justify-between items-center">
+<h3 class="font-bold text-lg text-text-main dark:text-white">Informações Detalhadas</h3>
+</div>
+<div class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
+<div class="flex flex-col gap-1">
+<p class="text-text-secondary text-sm">Categoria</p>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-orange-400"></span>
+<p class="text-text-main dark:text-white font-semibold">Alimentação</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-text-secondary text-sm">Recorrência</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-secondary text-[18px]">repeat</span>
+<p class="text-text-main dark:text-white font-semibold">Toda Sexta-feira</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-text-secondary text-sm">Responsável</p>
+<div class="flex items-center gap-2">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full border-2 border-white dark:border-[#152a24] bg-gray-200 bg-cover" data-alt="Avatar of user A" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBjSizLsefwm3zqbXCodPrcGjsTaKzjTcinY8FQGzP7p3T11UAAeaOQg50VgmxrXlL92oPTyNI9qzdcSyD0YUFsxxuSwv-3BbAj-Co4m3kfpeCZ17bGyU0pp9mcor_t6Waf2-NkzCIYRHPuw3cAWA9GzvEm18tXDUbhb-dMKqCdtWdDsSuBJJUY2RwGKGfGNqy0LJPb77YVBBG8ErBSRLRG93QchQ9wwOJzHjO00W6MLTQfL4qJ-RsDHppsIgPXNeQKvF81vsmdfoo");'></div>
+<div class="size-6 rounded-full border-2 border-white dark:border-[#152a24] bg-gray-300 bg-cover" data-alt="Avatar of user B" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5zq4ZIaR-WWS3AARlyWUkouC-g_G4pQtDT0VV-swmdwmVyRY6W42ToSqalMcMwAxU4dUXCGfbUmyWLQVNZGaPY2jb73DxLZNOzllnCx4fGD4eCYkpqllej5GoFW8f3L29ijzTqagpMeXJbwLrHG0gheY8KfXd0DmU6nRewXFIh9p2LE_fjog4jNztVq07rrCMZjOASVnrgZtRLRLyHp95tU3MHpLUOQYIxANYRGR51b28bP-lb0tmV3EznYsgzdjwwloKDWPg4ME");'></div>
+</div>
+<p class="text-text-main dark:text-white font-semibold">Casal (50/50)</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-text-secondary text-sm">Método de Pagamento</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-text-secondary text-[18px]">credit_card</span>
+<p class="text-text-main dark:text-white font-semibold">Cartão XP Infinity</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#152a24] rounded-2xl border border-gray-100 dark:border-[#1e3b32] shadow-sm overflow-hidden flex-1">
+<div class="px-6 py-4 border-b border-gray-100 dark:border-[#1e3b32] flex justify-between items-center">
+<h3 class="font-bold text-lg text-text-main dark:text-white">Histórico de Ocorrências</h3>
+<button class="text-primary text-sm font-bold hover:text-primary/80 transition-colors">Ver tudo</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-gray-50 dark:bg-[#1e3b32]/50 text-xs uppercase text-text-secondary font-semibold">
+<tr>
+<th class="px-6 py-3 rounded-tl-lg">Data</th>
+<th class="px-6 py-3">Valor</th>
+<th class="px-6 py-3">Status</th>
+<th class="px-6 py-3 rounded-tr-lg text-right">Ação</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-100 dark:divide-[#1e3b32]">
+<tr class="hover:bg-gray-50/50 dark:hover:bg-[#1e3b32]/30 transition-colors">
+<td class="px-6 py-4 text-sm font-medium text-text-main dark:text-white">08 Out, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-text-main dark:text-white">€ 442,10</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-bold bg-[#e6fbf4] text-[#0d9468] dark:bg-green-900/30 dark:text-green-400 gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                                        Pago
+                                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-text-main transition-colors"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50/50 dark:hover:bg-[#1e3b32]/30 transition-colors">
+<td class="px-6 py-4 text-sm font-medium text-text-main dark:text-white">01 Out, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-text-main dark:text-white">€ 460,00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-bold bg-[#e6fbf4] text-[#0d9468] dark:bg-green-900/30 dark:text-green-400 gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                                        Pago
+                                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-text-main transition-colors"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</td>
+</tr>
+<tr class="hover:bg-gray-50/50 dark:hover:bg-[#1e3b32]/30 transition-colors">
+<td class="px-6 py-4 text-sm font-medium text-text-main dark:text-white">24 Set, 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-text-main dark:text-white">€ 435,50</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-bold bg-[#e6fbf4] text-[#0d9468] dark:bg-green-900/30 dark:text-green-400 gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                                                        Pago
+                                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-text-secondary hover:text-text-main transition-colors"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-gradient-to-br from-[#13eca4] to-[#0ea878] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+<div class="absolute -right-4 -top-4 text-white opacity-20 transform rotate-12">
+<span class="material-symbols-outlined text-[120px]">trending_up</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined material-symbols-filled">lightbulb</span>
+<p class="font-bold text-sm uppercase tracking-wide opacity-90">Insights Relacionados</p>
+</div>
+<p class="font-bold text-xl leading-snug mb-2">Gasto acima da média</p>
+<p class="text-sm opacity-90 leading-relaxed">
+                                        Este evento representou <span class="font-black bg-white/20 px-1 rounded">12%</span> dos gastos totais do casal no último mês. Considere revisar a lista de compras.
+                                    </p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#152a24] rounded-2xl border border-gray-100 dark:border-[#1e3b32] shadow-sm p-6">
+<h3 class="font-bold text-lg text-text-main dark:text-white mb-6">Tendência de Gastos</h3>
+<div class="flex items-end justify-between h-32 gap-2 mt-2">
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-gray-100 dark:bg-gray-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary/60 transition-all duration-300 h-[60%] rounded-t-sm" title="€ 410"></div>
+</div>
+<span class="text-xs text-text-secondary font-medium">Mai</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-gray-100 dark:bg-gray-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary/60 transition-all duration-300 h-[55%] rounded-t-sm" title="€ 390"></div>
+</div>
+<span class="text-xs text-text-secondary font-medium">Jun</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-gray-100 dark:bg-gray-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary/60 transition-all duration-300 h-[70%] rounded-t-sm" title="€ 450"></div>
+</div>
+<span class="text-xs text-text-secondary font-medium">Jul</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-gray-100 dark:bg-gray-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary/60 transition-all duration-300 h-[65%] rounded-t-sm" title="€ 420"></div>
+</div>
+<span class="text-xs text-text-secondary font-medium">Ago</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-gray-100 dark:bg-gray-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary/40 group-hover:bg-primary/60 transition-all duration-300 h-[80%] rounded-t-sm" title="€ 480"></div>
+</div>
+<span class="text-xs text-text-secondary font-medium">Set</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-gray-100 dark:bg-gray-700 rounded-t-sm h-full relative overflow-hidden">
+<div class="absolute bottom-0 w-full bg-primary group-hover:bg-primary transition-all duration-300 h-[75%] rounded-t-sm shadow-[0_0_10px_rgba(19,236,164,0.4)]" title="€ 450 (Atual)"></div>
+</div>
+<span class="text-xs text-text-main dark:text-white font-bold">Out</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="h-20 lg:hidden"></div>
+</div>
+</div>
+</main>
+<div class="lg:hidden fixed bottom-0 w-full bg-white dark:bg-[#152a24] border-t border-gray-100 dark:border-[#1e3b32] flex justify-between px-6 py-3 z-30">
+<a class="flex flex-col items-center gap-1 text-text-secondary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined material-symbols-filled">calendar_month</span>
+<span class="text-[10px] font-bold">Agenda</span>
+</a>
+<div class="relative -top-8">
+<button class="bg-primary text-text-main rounded-full size-14 flex items-center justify-center shadow-lg shadow-primary/40">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-text-secondary" href="#">
+<span class="material-symbols-outlined">track_changes</span>
+<span class="text-[10px] font-medium">Metas</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-secondary" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Perfil</span>
+</a>
+</div>
+</div>
+
+</body></html>

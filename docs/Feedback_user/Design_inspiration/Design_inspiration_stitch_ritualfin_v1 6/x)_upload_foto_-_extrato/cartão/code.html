@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Importar por Foto</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162b24",
+                        "text-main": "#111816",
+                        "text-secondary": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#f0f4f3] dark:border-[#1e3a32] bg-surface-light dark:bg-surface-dark px-6 py-3 lg:px-10">
+<div class="flex items-center gap-4 text-text-main dark:text-white">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div>
+<h2 class="text-text-main dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">CasalFin</h2>
+<p class="hidden md:block text-xs font-medium text-text-secondary dark:text-[#8aaeb5]">Finanças claras, riqueza a dois</p>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8 items-center">
+<div class="hidden md:flex items-center gap-6 lg:gap-9">
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Transações</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Orçamento</a>
+<a class="text-text-main dark:text-gray-200 text-sm font-medium hover:text-primary transition-colors" href="#">Objetivos</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#10221c] text-sm font-bold shadow-sm hover:bg-[#0fd693] transition-colors">
+<span class="mr-2 material-symbols-outlined text-[20px]">add</span>
+<span class="truncate">Novo Upload</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 ring-2 ring-white dark:ring-[#1e3a32]" data-alt="Avatar de usuário, casal sorrindo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7PikKS6p2QkY9xjhuJsXCnnJQHzGoyXHcZmLJEDvxu8W7AAoV_-kPmT4qqbbXPInd8WN2NWgnhTWHqf-WBbDsphNfIdIpM8c98uvAbiZR5CxOR1PHZpO4ngjs1icsPPCwqEbbOFy3B-_vYnh-7sZKwXcl54sTPFXbGQyoa5u1Trj8gq_9Inm5CZa9ohK1HJalGraY731j1xszilHZq-9EogYd3nPBjk5lb45nsbVahV9bWnAiLrBlVNsmCHsorcGmNA96YdIWvv8");'></div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex justify-center py-8 px-4 lg:px-8">
+<div class="flex flex-col max-w-[1100px] w-full gap-8">
+<!-- Page Heading -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary mb-1">
+<span class="material-symbols-outlined text-xl">document_scanner</span>
+<span class="text-sm font-bold uppercase tracking-wider">OCR Inteligente</span>
+</div>
+<h1 class="text-text-main dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Importar por Foto</h1>
+<p class="text-text-secondary dark:text-gray-400 text-base md:text-lg max-w-2xl">
+                        Tire uma foto do seu extrato ou fatura. Nossa IA vai ler os detalhes para você!
+                    </p>
+</div>
+<!-- Two Column Layout: Preview (Left) & Actions (Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Image Preview / Upload Area -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<!-- Image Container -->
+<div class="relative group w-full bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-[#dbe6e2] dark:border-[#2a453b] overflow-hidden">
+<!-- Toolbar Overlay -->
+<div class="absolute top-4 right-4 z-10 flex gap-2">
+<button class="bg-white/90 dark:bg-black/60 backdrop-blur text-text-main dark:text-white p-2 rounded-lg hover:bg-white dark:hover:bg-black transition-all shadow-sm" title="Expandir">
+<span class="material-symbols-outlined text-[20px]">fullscreen</span>
+</button>
+<button class="bg-white/90 dark:bg-black/60 backdrop-blur text-red-500 p-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/30 transition-all shadow-sm" title="Remover imagem">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<!-- The Document Image -->
+<div class="aspect-[3/4] md:aspect-[4/3] w-full bg-gray-100 dark:bg-[#0d1814] flex items-center justify-center relative">
+<!-- Mockup of a receipt/statement -->
+<div class="w-full h-full bg-center bg-contain bg-no-repeat opacity-90 transition-opacity group-hover:opacity-100" data-alt="Preview da foto do extrato bancário com texto legível" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAjRgDad2dPUJKUyCASu0de13QNpaBNp2Jpjoe4FuJUQT4A5DCaxkgAJEGPCE4dqRzQPEpXiykZ91I2SyXDndBrSXwYgIpWgB3BxrnkkUXO57EL4ZIj1hihfsUl1YqCos5yZqxiQgDWUWwTzZA0QUH2oSW2_vMR5PBoMrr9fslOAt5gvdJ5i1AkV1DHPk8azfgeLTZ9PRbb0tnms9NB4BqXBLZiakIO_eQHVgoSVzZGfzcBd5kTUt7BrWo_9w96K3Q1EIHMoomoDcU");'>
+</div>
+<!-- Crop Overlay Simulation -->
+<div class="absolute inset-10 border-2 border-primary border-dashed pointer-events-none hidden group-hover:block">
+<div class="absolute -top-1 -left-1 size-3 bg-primary"></div>
+<div class="absolute -top-1 -right-1 size-3 bg-primary"></div>
+<div class="absolute -bottom-1 -left-1 size-3 bg-primary"></div>
+<div class="absolute -bottom-1 -right-1 size-3 bg-primary"></div>
+<div class="absolute top-2 right-2 bg-primary text-[#10221c] text-xs font-bold px-2 py-1 rounded">Área de Leitura</div>
+</div>
+</div>
+</div>
+<!-- Re-upload / Status -->
+<div class="flex items-center justify-between px-2">
+<span class="flex items-center gap-2 text-sm text-text-secondary dark:text-gray-400">
+<span class="material-symbols-outlined text-[18px] text-green-500">check_circle</span>
+                                Arquivo carregado com sucesso (IMG_4821.jpg)
+                            </span>
+<button class="text-sm font-semibold text-primary hover:text-[#0fd693] underline decoration-2 underline-offset-4">
+                                Trocar foto
+                            </button>
+</div>
+</div>
+<!-- Right Column: Context & Actions -->
+<div class="lg:col-span-5 flex flex-col gap-5">
+<!-- Action Card: Crop -->
+<div class="flex flex-col p-5 bg-surface-light dark:bg-surface-dark rounded-xl border border-[#dbe6e2] dark:border-[#2a453b] shadow-sm">
+<div class="flex items-start justify-between gap-4">
+<div class="flex gap-3">
+<div class="p-2 bg-[#f0f4f3] dark:bg-[#1e3a32] rounded-lg h-fit text-text-main dark:text-white">
+<span class="material-symbols-outlined">crop</span>
+</div>
+<div class="flex flex-col">
+<p class="text-text-main dark:text-white text-base font-bold leading-tight">Recortar Imagem</p>
+<p class="text-text-secondary dark:text-gray-400 text-sm mt-1">Ajuste a área para focar apenas nos dados importantes.</p>
+</div>
+</div>
+</div>
+<button class="mt-4 w-full flex cursor-pointer items-center justify-center rounded-lg h-9 px-4 border border-[#dbe6e2] dark:border-[#2a453b] bg-transparent hover:bg-gray-50 dark:hover:bg-[#1e3a32] text-text-main dark:text-white text-sm font-bold transition-colors">
+                                Ajustar Recorte
+                            </button>
+</div>
+<!-- Smart Feedback: Bank Detection -->
+<div class="flex flex-col p-5 bg-gradient-to-br from-[#f0fdf9] to-white dark:from-[#13251f] dark:to-[#10221c] rounded-xl border border-primary/30 shadow-md relative overflow-hidden">
+<!-- Decorative bg element -->
+<div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-primary/10 rounded-full blur-2xl"></div>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_awesome</span>
+<span class="text-xs font-bold uppercase tracking-wider text-primary">IA Detectou</span>
+</div>
+<h3 class="text-text-main dark:text-white text-lg font-bold leading-tight mb-2">
+                                Acho que é <span class="text-primary underline decoration-2 underline-offset-2">Millennium BCP</span>.
+                            </h3>
+<p class="text-text-secondary dark:text-gray-400 text-sm mb-4">
+                                Reconhecemos o layout do extrato. Confirmar esta instituição?
+                            </p>
+<div class="flex flex-col gap-3">
+<div class="flex gap-3">
+<button class="flex-1 flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary text-[#10221c] text-sm font-bold shadow-sm hover:bg-[#0fd693] transition-colors">
+<span class="material-symbols-outlined text-[18px]">check</span>
+                                        Confirmar
+                                    </button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 border border-[#dbe6e2] dark:border-[#2a453b] bg-white dark:bg-[#162b24] text-text-main dark:text-white hover:bg-gray-50 dark:hover:bg-[#1e3a32] transition-colors" title="Editar manualmente">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+<!-- Manual Selection Fallback (Visually distinct but subtle) -->
+<div class="relative group mt-1">
+<select class="appearance-none w-full bg-white dark:bg-[#162b24] border border-[#dbe6e2] dark:border-[#2a453b] text-text-main dark:text-white text-sm rounded-lg py-2 px-3 pr-8 focus:outline-none focus:ring-2 focus:ring-primary/50 cursor-pointer">
+<option>Selecionar outro banco manualmente...</option>
+<option>Caixa Geral de Depósitos</option>
+<option>Banco BPI</option>
+<option>Novo Banco</option>
+<option>Santander Totta</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-text-secondary dark:text-gray-400">
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</div>
+<p class="text-xs text-text-secondary dark:text-gray-500 mt-1 italic">
+                                    Vamos lembrar disso para suas próximas importações.
+                                </p>
+</div>
+</div>
+<hr class="border-[#f0f4f3] dark:border-[#2a453b] my-1"/>
+<!-- Final CTA -->
+<div class="flex flex-col gap-3">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-[#10221c] dark:bg-primary text-white dark:text-[#10221c] text-base font-bold shadow-lg shadow-primary/10 hover:shadow-primary/20 hover:-translate-y-0.5 transition-all">
+<span>Processar Foto</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<div class="flex justify-center items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-[16px] text-[#61897c]">lock</span>
+<p class="text-xs text-[#61897c] font-medium">Processamento seguro e criptografado</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer / Simple Branding -->
+<footer class="py-6 flex justify-center border-t border-[#f0f4f3] dark:border-[#1e3a32] mt-8 bg-surface-light dark:bg-surface-dark">
+<p class="text-xs text-text-secondary dark:text-gray-500">
+                 © 2024 CasalFin. Finanças claras, riqueza a dois.
+             </p>
+</footer>
+</div>
+</body></html>

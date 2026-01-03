@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalhe Upload - Couple Budget Coach</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-hover": "#0fd693",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1c2e28",
+                        "text-main": "#111816",
+                        "text-secondary": "#61897c",
+                        "border-color": "#dbe6e2",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dbe6e2; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #61897c; 
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-main dark:text-white overflow-hidden h-screen flex">
+<!-- Sidebar -->
+<aside class="w-[280px] bg-surface-light dark:bg-surface-dark border-r border-border-color dark:border-[#2a4038] flex flex-col h-full shrink-0 hidden lg:flex z-20">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shadow-sm" data-alt="Couple Budget Logo placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6yPu33a-UQCVioRKJBQ42YLO2qu65jdzqbXj1atO3VmJoU9uuOymU-7Ny0VzT5YM5ZF37h1Ku1nyY1NydfYuDimSnVIGOUfRh7Nli4_2whmglYmOOfFQ3BzkduHfig0FkHItFUO3q8WzdMvcuP18Ym7yFmiGkqBW9gy1AMXk7YuyxXI_lNRko5MtwW37f1t6bFTC9LhPCN0rDE09WBWBf1Rk7pQ5E9jBJTJSH-fRrxx7wH1ZsaifX10-Cn1b3Zwnp6k0xzVeUWtA");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-main dark:text-white text-base font-bold leading-normal">Couple Budget</h1>
+<p class="text-text-secondary text-sm font-normal leading-normal">Coach Financeiro</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main dark:text-white hover:bg-background-light dark:hover:bg-background-dark transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors">pie_chart</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main dark:text-white hover:bg-background-light dark:hover:bg-background-dark transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors">currency_exchange</span>
+<p class="text-sm font-medium leading-normal">Transações</p>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 dark:bg-primary/10 text-text-main dark:text-white" href="#">
+<span class="material-symbols-outlined text-primary fill-1">cloud_upload</span>
+<p class="text-sm font-bold leading-normal">Uploads</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main dark:text-white hover:bg-background-light dark:hover:bg-background-dark transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors">track_changes</span>
+<p class="text-sm font-medium leading-normal">Metas</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-text-main dark:text-white hover:bg-background-light dark:hover:bg-background-dark transition-colors group" href="#">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-primary transition-colors">settings</span>
+<p class="text-sm font-medium leading-normal">Configurações</p>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<button class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-11 px-4 bg-primary hover:bg-primary-hover text-[#111816] transition-colors shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span class="text-sm font-bold leading-normal tracking-[0.015em]">Novo Upload</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<!-- Top Scrollable Area -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-10 scroll-smooth">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-8">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-sm">
+<a class="text-text-secondary hover:text-primary transition-colors font-medium" href="#">Uploads</a>
+<span class="material-symbols-outlined text-text-secondary text-[16px]">chevron_right</span>
+<span class="text-text-main dark:text-white font-bold">Extrato_Nubank_06_23.pdf</span>
+</nav>
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 pb-2 border-b border-border-color dark:border-white/10">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-red-500 text-[32px] md:text-[40px]">picture_as_pdf</span>
+<h1 class="text-text-main dark:text-white text-2xl md:text-4xl font-black leading-tight tracking-[-0.033em]">Extrato_Nubank_06_23.pdf</h1>
+</div>
+<p class="text-text-secondary text-base font-normal leading-normal flex items-center gap-2">
+<span class="inline-block size-2 rounded-full bg-green-500"></span>
+                            Processado em 15/06/2023 • 34 Transações
+                        </p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 border border-border-color bg-surface-light hover:bg-background-light text-text-main text-sm font-bold transition-colors">
+<span class="material-symbols-outlined text-[18px]">ios_share</span>
+                            Exportar
+                        </button>
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-6 bg-primary hover:bg-primary-hover text-text-main text-sm font-bold transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">done_all</span>
+                            Aprovar Todas
+                        </button>
+</div>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Total -->
+<div class="flex flex-col gap-1 rounded-xl p-6 bg-surface-light dark:bg-surface-dark border border-border-color dark:border-white/10 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-text-main dark:text-white">receipt_long</span>
+</div>
+<p class="text-text-secondary text-sm font-medium uppercase tracking-wider">Total de Transações</p>
+<p class="text-text-main dark:text-white text-3xl font-black leading-tight">34</p>
+<p class="text-green-600 text-xs font-bold mt-1">+2 novas hoje</p>
+</div>
+<!-- Value -->
+<div class="flex flex-col gap-1 rounded-xl p-6 bg-surface-light dark:bg-surface-dark border border-border-color dark:border-white/10 relative overflow-hidden group">
+<div class="absolute right-0 top-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[64px] text-text-main dark:text-white">payments</span>
+</div>
+<p class="text-text-secondary text-sm font-medium uppercase tracking-wider">Valor Total Extraído</p>
+<p class="text-text-main dark:text-white text-3xl font-black leading-tight">R$ 4.250,00</p>
+<p class="text-text-secondary text-xs font-medium mt-1">Média de R$ 125,00 / item</p>
+</div>
+<!-- Warning -->
+<div class="flex flex-col gap-1 rounded-xl p-6 bg-gradient-to-br from-amber-50 to-white dark:from-amber-900/20 dark:to-surface-dark border border-amber-200 dark:border-amber-800/50 relative overflow-hidden">
+<div class="absolute right-0 top-0 p-4 opacity-20">
+<span class="material-symbols-outlined text-[64px] text-amber-600">warning</span>
+</div>
+<p class="text-amber-800 dark:text-amber-400 text-sm font-bold uppercase tracking-wider">Revisão Necessária</p>
+<p class="text-text-main dark:text-white text-3xl font-black leading-tight">3 itens</p>
+<p class="text-amber-700 dark:text-amber-500 text-xs font-medium mt-1">Baixa confiança detectada</p>
+</div>
+</div>
+<!-- Filters & Search Bar -->
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 bg-surface-light dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-border-color dark:border-white/10">
+<div class="w-full lg:w-auto flex-1 max-w-lg">
+<label class="flex items-center w-full h-11 bg-background-light dark:bg-black/20 rounded-lg px-3 gap-2 border border-transparent focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-text-secondary">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-text-main dark:text-white placeholder-text-secondary text-sm" placeholder="Buscar por estabelecimento, valor ou categoria..." type="text"/>
+</label>
+</div>
+<div class="flex flex-wrap gap-2 w-full lg:w-auto">
+<div class="relative group">
+<select class="appearance-none h-11 pl-4 pr-10 rounded-lg bg-surface-light dark:bg-surface-dark border border-border-color dark:border-white/20 text-text-main dark:text-white text-sm font-medium focus:border-primary focus:ring-0 cursor-pointer">
+<option>Todas Categorias</option>
+<option>Alimentação</option>
+<option>Transporte</option>
+<option>Lazer</option>
+<option>Contas</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-text-secondary pointer-events-none text-[20px]">expand_more</span>
+</div>
+<div class="relative group">
+<select class="appearance-none h-11 pl-4 pr-10 rounded-lg bg-surface-light dark:bg-surface-dark border border-border-color dark:border-white/20 text-text-main dark:text-white text-sm font-medium focus:border-primary focus:ring-0 cursor-pointer">
+<option>Todos Status</option>
+<option>Alta Confiança</option>
+<option>Revisão Necessária</option>
+<option>Confirmados</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-text-secondary pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Transactions Table -->
+<div class="bg-surface-light dark:bg-surface-dark border border-border-color dark:border-white/10 rounded-xl overflow-hidden shadow-sm mb-10">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-background-light dark:bg-black/20 border-b border-border-color dark:border-white/10">
+<th class="p-4 w-12">
+<input class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+</th>
+<th class="p-4 text-xs font-bold text-text-secondary uppercase tracking-wider">Data</th>
+<th class="p-4 text-xs font-bold text-text-secondary uppercase tracking-wider">Estabelecimento</th>
+<th class="p-4 text-xs font-bold text-text-secondary uppercase tracking-wider">Valor</th>
+<th class="p-4 text-xs font-bold text-text-secondary uppercase tracking-wider">Categoria Sugerida</th>
+<th class="p-4 text-xs font-bold text-text-secondary uppercase tracking-wider">Score AI</th>
+<th class="p-4 text-xs font-bold text-text-secondary uppercase tracking-wider text-right">Ações</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-color dark:divide-white/10">
+<!-- Row 1: High Confidence -->
+<tr class="group hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="p-4">
+<input class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+</td>
+<td class="p-4 text-sm text-text-main dark:text-white font-medium">12/06/2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main dark:text-white">Uber *Trip</span>
+<span class="text-xs text-text-secondary">São Paulo, BR</span>
+</div>
+</td>
+<td class="p-4 text-sm font-bold text-text-main dark:text-white">R$ 24,90</td>
+<td class="p-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold hover:bg-blue-100 transition-colors">
+<span class="material-symbols-outlined text-[16px]">directions_car</span>
+                                            Transporte
+                                            <span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full max-w-[80px] h-1.5 bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[98%]"></div>
+</div>
+<span class="text-xs font-bold text-green-600">98%</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-text-secondary hover:text-red-500 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+<button class="p-1.5 rounded-lg bg-primary hover:bg-primary-hover text-text-main transition-colors" title="Confirmar">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Medium Confidence -->
+<tr class="group hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="p-4">
+<input class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+</td>
+<td class="p-4 text-sm text-text-main dark:text-white font-medium">14/06/2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main dark:text-white">Padaria Doce Vida</span>
+<span class="text-xs text-text-secondary">Compra Presencial</span>
+</div>
+</td>
+<td class="p-4 text-sm font-bold text-text-main dark:text-white">R$ 15,50</td>
+<td class="p-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs font-bold hover:bg-orange-100 transition-colors">
+<span class="material-symbols-outlined text-[16px]">restaurant</span>
+                                            Alimentação
+                                            <span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full max-w-[80px] h-1.5 bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-yellow-400 w-[85%]"></div>
+</div>
+<span class="text-xs font-bold text-yellow-600">85%</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-text-secondary hover:text-red-500 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+<button class="p-1.5 rounded-lg bg-primary hover:bg-primary-hover text-text-main transition-colors" title="Confirmar">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Low Confidence (Highlighted) -->
+<tr class="bg-red-50/50 dark:bg-red-900/10 group hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors border-l-4 border-l-red-400">
+<td class="p-4">
+<input class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+</td>
+<td class="p-4 text-sm text-text-main dark:text-white font-medium">15/06/2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main dark:text-white">PGTO*ELETRIC*</span>
+<span class="text-xs text-text-secondary">Pagamento Online</span>
+</div>
+</td>
+<td class="p-4 text-sm font-bold text-text-main dark:text-white">R$ 120,00</td>
+<td class="p-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/20 text-gray-700 dark:text-gray-300 text-xs font-bold hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-[16px]">help</span>
+                                            Contas (?)
+                                            <span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full max-w-[80px] h-1.5 bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-[40%]"></div>
+</div>
+<span class="text-xs font-bold text-red-600">40%</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-text-secondary hover:text-red-500 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+<button class="p-1.5 rounded-lg bg-surface-light border border-border-color shadow-sm hover:bg-primary hover:border-primary text-text-main transition-colors" title="Confirmar">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: High Confidence -->
+<tr class="group hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="p-4">
+<input class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+</td>
+<td class="p-4 text-sm text-text-main dark:text-white font-medium">16/06/2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main dark:text-white">Netflix.com</span>
+<span class="text-xs text-text-secondary">Assinatura</span>
+</div>
+</td>
+<td class="p-4 text-sm font-bold text-text-main dark:text-white">R$ 55,90</td>
+<td class="p-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold hover:bg-purple-100 transition-colors">
+<span class="material-symbols-outlined text-[16px]">movie</span>
+                                            Lazer
+                                            <span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full max-w-[80px] h-1.5 bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[99%]"></div>
+</div>
+<span class="text-xs font-bold text-green-600">99%</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-text-secondary hover:text-red-500 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+<button class="p-1.5 rounded-lg bg-primary hover:bg-primary-hover text-text-main transition-colors" title="Confirmar">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: High Confidence -->
+<tr class="group hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="p-4">
+<input class="rounded border-gray-300 text-primary focus:ring-primary w-4 h-4" type="checkbox"/>
+</td>
+<td class="p-4 text-sm text-text-main dark:text-white font-medium">16/06/2023</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-text-main dark:text-white">Amazon Marketplace</span>
+<span class="text-xs text-text-secondary">Compras</span>
+</div>
+</td>
+<td class="p-4 text-sm font-bold text-text-main dark:text-white">R$ 189,90</td>
+<td class="p-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-bold hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-[16px]">shopping_bag</span>
+                                            Compras
+                                            <span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<div class="w-full max-w-[80px] h-1.5 bg-gray-200 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[92%]"></div>
+</div>
+<span class="text-xs font-bold text-green-600">92%</span>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 text-text-secondary hover:text-red-500 transition-colors" title="Excluir">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+<button class="p-1.5 rounded-lg bg-primary hover:bg-primary-hover text-text-main transition-colors" title="Confirmar">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Bulk Action Bar (Fixed Bottom) -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 w-[90%] md:w-auto md:min-w-[400px] z-30">
+<div class="bg-text-main text-white px-6 py-3 rounded-full shadow-2xl flex items-center justify-between gap-6 animate-fade-in-up">
+<div class="flex items-center gap-3">
+<span class="bg-white/20 rounded-full size-6 flex items-center justify-center text-xs font-bold">2</span>
+<span class="text-sm font-medium">Itens selecionados</span>
+</div>
+<div class="h-6 w-px bg-white/20"></div>
+<div class="flex items-center gap-2">
+<button class="text-xs font-bold hover:text-primary transition-colors uppercase tracking-wide">Editar Categoria</button>
+<span class="text-white/40">•</span>
+<button class="text-xs font-bold hover:text-primary transition-colors uppercase tracking-wide">Excluir</button>
+<span class="text-white/40">•</span>
+<button class="bg-primary hover:bg-primary-hover text-text-main px-3 py-1 rounded-full text-xs font-bold transition-colors">Aprovar Seleção</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

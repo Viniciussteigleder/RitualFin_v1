@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Seu Mês em Foco</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-dark": "#0eac77",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "premium-gradient-start": "#13eca4",
+                        "premium-gradient-end": "#0fb880",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    animation: {
+                        'fill-bar': 'fillBar 1.5s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fillBar: {
+                            '0%': { width: '0%' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+        }
+        .progress-bar-fill {
+            transition: width 300ms ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111816] antialiased overflow-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="hidden md:flex w-72 flex-col justify-between bg-white dark:bg-[#1a2c26] border-r border-gray-100 dark:border-gray-800 p-6 h-full shrink-0 z-20">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-4">
+<div class="relative bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shadow-sm ring-2 ring-primary/20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxf6DL-7C71LwglbBjLwiqkODpE29KtST7m9l3RAaCmHQqiGK_zkgsCltnbaJ-NmnKNVt9Qm5CUdPMkcdmVwX0Z8C5KSEW9wMW6ezLfDRzKeW00QsXxnl1sNZXGaTOmaHEOKy7b3D-SWy6C1OQeltbJOLoDGrWwa3R8S_T9VucdFEYLOTxKK3TbDF17ubx5OVssVGq0NrllFAK4Oy97TWyoyakqPrna-uPDjwljjX4e1HBhPEw2YdVEu7MMLbDY8AwlAkZRBTBLm0");'>
+<span class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-primary border-2 border-white"></span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#111816] dark:text-white text-xl font-bold leading-tight">CasalFin</h1>
+<p class="text-gray-500 dark:text-gray-400 text-[10px] font-medium uppercase tracking-wide leading-tight">Finanças claras, riqueza a dois</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary-dark dark:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">dashboard</span>
+<span class="text-sm font-bold">Painel Geral</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">receipt_long</span>
+<span class="text-sm font-medium">Transações</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">track_changes</span>
+<span class="text-sm font-medium">Metas</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">pie_chart</span>
+<span class="text-sm font-medium">Relatórios</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">credit_card</span>
+<span class="text-sm font-medium">Cartões</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-sm font-medium">Configurações</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">logout</span>
+<span class="text-sm font-medium">Sair</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<div class="md:hidden flex items-center justify-between p-4 bg-white dark:bg-[#1a2c26] border-b border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">savings</span>
+<span class="font-bold text-lg dark:text-white">CasalFin</span>
+</div>
+<button class="text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-10 scroll-smooth">
+<div class="max-w-7xl mx-auto flex flex-col gap-6 pb-20">
+<div class="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6">
+<div class="flex flex-col gap-1">
+<h2 class="text-2xl md:text-3xl font-extrabold text-[#111816] dark:text-white tracking-tight">Seu Mês em Foco</h2>
+<p class="text-sm text-gray-500 dark:text-gray-400 font-medium">Uma visão clara do seu orçamento. Sempre atualizada.</p>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full xl:w-auto">
+<div class="bg-gray-100 dark:bg-[#10221c] p-1 rounded-full flex items-center shadow-inner w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-4 py-2 rounded-full bg-white dark:bg-[#253832] text-[#111816] dark:text-white text-xs font-bold shadow-sm transition-all">Minha visão</button>
+<button class="flex-1 sm:flex-none px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 text-xs font-medium hover:text-[#111816] dark:hover:text-white transition-all">Visão do casal</button>
+</div>
+<div class="flex items-center bg-white dark:bg-[#1a2c26] rounded-full shadow-sm p-1.5 border border-gray-100 dark:border-gray-800 w-full sm:w-auto justify-between sm:justify-start">
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full text-gray-600 dark:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center justify-center gap-2 px-6">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<span class="text-base font-bold text-[#111816] dark:text-white whitespace-nowrap">Outubro 2023</span>
+</div>
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full text-gray-600 dark:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between bg-white dark:bg-[#1a2c26] p-4 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined animate-pulse-slow">sync</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Status do Último Importe</span>
+<div class="flex items-center gap-2">
+<span class="text-sm font-semibold text-[#111816] dark:text-white">Atualizado hoje às 14:00</span>
+<a class="text-xs font-bold text-primary hover:underline" href="#">Ver detalhes</a>
+</div>
+</div>
+</div>
+<button class="flex items-center justify-center gap-2 bg-[#111816] dark:bg-primary hover:bg-black dark:hover:bg-primary-dark text-white dark:text-[#10221c] px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-gray-200 dark:shadow-none group">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500">rate_review</span>
+                        Revisar Transações
+                        <span class="flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white text-[10px] font-bold">3</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="relative overflow-hidden rounded-2xl p-6 shadow-sm group bg-white dark:bg-[#1a2c26] border border-gray-100 dark:border-gray-800">
+<div class="absolute inset-0 bg-gradient-to-br from-[#13eca4]/10 via-transparent to-transparent opacity-100 transition-opacity"></div>
+<div class="absolute -right-10 -top-10 w-60 h-60 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-6">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 font-bold text-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+                                        Projeção do mês
+                                    </div>
+<p class="text-4xl lg:text-5xl font-extrabold text-[#111816] dark:text-white tracking-tight mt-2">€ 4.250,00</p>
+</div>
+<div class="bg-primary/20 p-2.5 rounded-xl backdrop-blur-sm text-primary-dark dark:text-primary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100 dark:border-white/10">
+<div class="p-3 rounded-xl bg-emerald-50/80 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/20">
+<p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1 uppercase">Restante do mês</p>
+<p class="text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1 text-xl">
+<span class="material-symbols-outlined text-[20px]">arrow_upward</span>
+                                        € 10k
+                                    </p>
+</div>
+<div class="p-3 rounded-xl bg-rose-50/80 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-900/20">
+<p class="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-1 uppercase">Já comprometido</p>
+<p class="text-rose-600 dark:text-rose-400 font-bold flex items-center gap-1 text-xl">
+<span class="material-symbols-outlined text-[20px]">arrow_downward</span>
+                                        € 5.75k
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-2xl bg-white dark:bg-[#1e332d] p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="absolute inset-0 bg-gradient-to-bl from-rose-50/80 to-transparent dark:from-rose-900/10 dark:to-transparent opacity-60"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-6">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-rose-700 dark:text-rose-400 font-bold text-sm uppercase tracking-wide">
+<span class="material-symbols-outlined text-[20px]">event_busy</span>
+                                        Compromissos Restantes
+                                    </div>
+<p class="text-4xl lg:text-5xl font-extrabold text-[#111816] dark:text-white tracking-tight mt-2">€ 1.200,00</p>
+</div>
+<div class="bg-rose-50 dark:bg-rose-900/20 p-2.5 rounded-xl text-rose-500">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+</div>
+<div class="bg-white/60 dark:bg-black/20 rounded-xl p-4 backdrop-blur-sm border border-white/40 dark:border-white/5">
+<div class="flex items-center justify-between mb-3">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center border-2 border-white dark:border-[#1e332d] text-xs font-bold text-gray-600 shadow-sm">N</div>
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center border-2 border-white dark:border-[#1e332d] text-xs font-bold text-blue-600 shadow-sm">C</div>
+<div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center border-2 border-white dark:border-[#1e332d] text-xs font-bold text-orange-600 shadow-sm">L</div>
+</div>
+<span class="text-xs font-bold text-rose-600 dark:text-rose-400 bg-rose-100 dark:bg-rose-900/40 px-2 py-1 rounded-md">Vence em 7 dias</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-white/10 rounded-full h-2 overflow-hidden">
+<div class="bg-gradient-to-r from-rose-400 to-rose-600 h-2 rounded-full animate-fill-bar" style="width: 65%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="bg-gradient-to-r from-[#4f46e5] to-[#7c3aed] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+<div class="absolute right-0 top-0 w-40 h-40 bg-white/10 rounded-full -mr-10 -mt-10 blur-xl"></div>
+<div class="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-2 opacity-90">
+<span class="material-symbols-outlined text-[18px]">lightbulb</span>
+<span class="text-xs font-bold uppercase tracking-wider">Insight Semanal</span>
+</div>
+<p class="text-lg font-medium leading-snug">Vocês economizaram <span class="font-bold text-[#13eca4]">15% em delivery</span> comparado à semana passada. 👏</p>
+</div>
+<button class="shrink-0 text-xs font-bold bg-white/20 hover:bg-white/30 px-4 py-2.5 rounded-lg transition-colors inline-flex items-center gap-1 backdrop-blur-sm">
+                                    Ver detalhes <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2c26] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row gap-8">
+<div class="flex-1">
+<h3 class="text-lg font-bold text-[#111816] dark:text-white mb-6">Gastos por Categoria</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-3">
+<div class="p-2.5 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-orange-500">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-2">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Alimentação</span>
+<span class="text-sm font-bold text-orange-500">35%</span>
+</div>
+<div class="w-full h-3.5 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-orange-400 to-orange-500 rounded-full progress-bar-fill animate-fill-bar shadow-sm" style="width: 35%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-500">
+<span class="material-symbols-outlined text-[20px]">home</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-2">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Moradia</span>
+<span class="text-sm font-bold text-blue-500">42%</span>
+</div>
+<div class="w-full h-3.5 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-blue-400 to-blue-600 rounded-full progress-bar-fill animate-fill-bar shadow-sm" style="width: 42%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="p-2.5 rounded-xl bg-purple-50 dark:bg-purple-900/20 text-purple-500">
+<span class="material-symbols-outlined text-[20px]">directions_car</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-2">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Transporte</span>
+<span class="text-sm font-bold text-purple-500">15%</span>
+</div>
+<div class="w-full h-3.5 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-purple-400 to-purple-600 rounded-full progress-bar-fill animate-fill-bar shadow-sm" style="width: 15%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full sm:w-56 h-56 relative flex items-center justify-center shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-gray-100 dark:text-gray-700" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="2.5"></path>
+<path class="text-blue-500" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="42, 100" stroke-linecap="round" stroke-width="2.5"></path>
+<path class="text-orange-400" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="35, 100" stroke-dashoffset="-42" stroke-linecap="round" stroke-width="2.5"></path>
+<path class="text-purple-500" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="15, 100" stroke-dashoffset="-77" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-3xl font-extrabold text-[#111816] dark:text-white">€ 5.7k</span>
+<span class="text-xs font-semibold text-gray-400 uppercase tracking-wide">Total gasto</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2c26] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-[#111816] dark:text-white">Ciclo dos Cartões</h3>
+<button class="text-sm text-primary font-bold hover:underline">Ver faturas</button>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row gap-4 items-center">
+<div class="flex items-center gap-3 w-full sm:w-48">
+<div class="w-10 h-6 bg-[#820ad1] rounded-md shadow-sm"></div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Nubank</span>
+<span class="text-xs text-gray-500">Final 8832</span>
+</div>
+</div>
+<div class="flex-1 w-full flex flex-col gap-2">
+<div class="flex justify-between text-xs font-medium text-gray-500">
+<span>Aberto</span>
+<span>Fecha dia 05</span>
+</div>
+<div class="relative w-full h-2.5 bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+<div class="absolute left-0 top-0 h-full bg-[#820ad1] rounded-full animate-fill-bar" style="width: 85%"></div>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-[#111816] dark:text-white font-bold">€ 3.450,20</span>
+<span class="text-gray-400">Limite: € 5k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2c26] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 flex-1 flex flex-col h-full">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-[#111816] dark:text-white">Atividade Recente</h3>
+<button class="p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full text-gray-400">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex flex-col gap-5 flex-1">
+<div class="flex items-center justify-between group cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 p-2 rounded-xl -mx-2 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-100 to-red-50 dark:from-red-900/40 dark:to-red-800/20 flex items-center justify-center text-red-500 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">local_taxi</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Uber</span>
+<span class="text-xs text-gray-500">Hoje, 14:30</span>
+</div>
+</div>
+<span class="text-sm font-bold text-red-500">- € 24,90</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 p-2 rounded-xl -mx-2 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-100 to-green-50 dark:from-green-900/40 dark:to-green-800/20 flex items-center justify-center text-green-600 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Pix Recebido</span>
+<span class="text-xs text-gray-500">Ontem, 09:15</span>
+</div>
+</div>
+<span class="text-sm font-bold text-green-600">+ € 150,00</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 p-2 rounded-xl -mx-2 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-100 to-red-50 dark:from-red-900/40 dark:to-red-800/20 flex items-center justify-center text-red-500 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Supermercado</span>
+<span class="text-xs text-gray-500">Ontem, 18:40</span>
+</div>
+</div>
+<span class="text-sm font-bold text-red-500">- € 482,15</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 p-2 rounded-xl -mx-2 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-100 to-red-50 dark:from-red-900/40 dark:to-red-800/20 flex items-center justify-center text-red-500 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">movie</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Netflix</span>
+<span class="text-xs text-gray-500">02/10/2023</span>
+</div>
+</div>
+<span class="text-sm font-bold text-red-500">- € 55,90</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer hover:bg-gray-50 dark:hover:bg-white/5 p-2 rounded-xl -mx-2 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-100 to-green-50 dark:from-green-900/40 dark:to-green-800/20 flex items-center justify-center text-green-600 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">work</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Salário (Parte 1)</span>
+<span class="text-xs text-gray-500">01/10/2023</span>
+</div>
+</div>
+<span class="text-sm font-bold text-green-600">+ € 5.000,00</span>
+</div>
+</div>
+<button class="w-full mt-6 py-3 text-sm font-bold text-primary border border-primary/20 hover:bg-primary/5 rounded-xl transition-colors">
+                            Ver todas as transações
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<div class="md:hidden bg-white dark:bg-[#1a2c26] border-t border-gray-100 dark:border-gray-800 p-2 flex justify-around items-center absolute bottom-0 w-full z-20">
+<a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Painel</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">Transações</span>
+</a>
+<div class="relative -top-5">
+<button class="w-12 h-12 rounded-full bg-primary shadow-lg shadow-primary/40 flex items-center justify-center text-[#111816]">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">track_changes</span>
+<span class="text-[10px] font-medium">Metas</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</div>
+</main>
+</div>
+
+</body></html>

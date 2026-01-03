@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Couple Budget Coach - Painel Mensal</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "premium-gradient-start": "#13eca4",
+                        "premium-gradient-end": "#0fb880",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111816] antialiased overflow-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<aside class="hidden md:flex w-72 flex-col justify-between bg-white dark:bg-[#1a2c26] border-r border-gray-100 dark:border-gray-800 p-6 h-full shrink-0 z-20">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-4">
+<div class="relative bg-center bg-no-repeat bg-cover rounded-full h-12 w-12 shadow-sm ring-2 ring-primary/20" data-alt="Profile picture of a smiling couple" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxf6DL-7C71LwglbBjLwiqkODpE29KtST7m9l3RAaCmHQqiGK_zkgsCltnbaJ-NmnKNVt9Qm5CUdPMkcdmVwX0Z8C5KSEW9wMW6ezLfDRzKeW00QsXxnl1sNZXGaTOmaHEOKy7b3D-SWy6C1OQeltbJOLoDGrWwa3R8S_T9VucdFEYLOTxKK3TbDF17ubx5OVssVGq0NrllFAK4Oy97TWyoyakqPrna-uPDjwljjX4e1HBhPEw2YdVEu7MMLbDY8AwlAkZRBTBLm0");'>
+<span class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-primary border-2 border-white"></span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#111816] dark:text-white text-lg font-bold leading-tight">Couple Budget</h1>
+<p class="text-gray-500 dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Plano Premium</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary-dark dark:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">dashboard</span>
+<span class="text-sm font-bold">Painel Geral</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">receipt_long</span>
+<span class="text-sm font-medium">Transações</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">track_changes</span>
+<span class="text-sm font-medium">Metas</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">pie_chart</span>
+<span class="text-sm font-medium">Relatórios</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">credit_card</span>
+<span class="text-sm font-medium">Cartões</span>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-sm font-medium">Configurações</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">logout</span>
+<span class="text-sm font-medium">Sair</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-hidden relative">
+<div class="md:hidden flex items-center justify-between p-4 bg-white dark:bg-[#1a2c26] border-b border-gray-100 dark:border-gray-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">savings</span>
+<span class="font-bold text-lg dark:text-white">Couple Budget</span>
+</div>
+<button class="text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-12 scroll-smooth">
+<div class="max-w-6xl mx-auto flex flex-col gap-8 pb-20">
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+<div>
+<h2 class="text-2xl font-bold text-[#111816] dark:text-white">Painel Mensal</h2>
+<p class="text-sm text-gray-500 dark:text-gray-400">Visão geral das finanças do casal</p>
+</div>
+<div class="flex items-center bg-white dark:bg-[#1a2c26] rounded-full shadow-sm p-1 border border-gray-100 dark:border-gray-800">
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full text-gray-600 dark:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-2 px-6">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<span class="text-lg font-bold text-[#111816] dark:text-white min-w-[140px] text-center">Outubro 2023</span>
+</div>
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full text-gray-600 dark:text-gray-300 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="relative overflow-hidden rounded-2xl p-6 shadow-sm group">
+<div class="absolute inset-0 bg-gradient-to-br from-[#13eca4] to-[#0d9488] opacity-10 dark:opacity-20 transition-opacity"></div>
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-6">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-gray-600 dark:text-gray-300 font-medium text-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+                                        Saldo Projetado
+                                    </div>
+<p class="text-4xl font-extrabold text-[#111816] dark:text-white tracking-tight">R$ 0,00</p>
+</div>
+<div class="bg-white/60 dark:bg-black/20 p-2 rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary-dark dark:text-primary">account_balance_wallet</span>
+</div>
+</div>
+<div class="pt-4 border-t border-gray-200/50 dark:border-white/10">
+<p class="text-sm font-medium text-emerald-800 dark:text-emerald-200 bg-emerald-50 dark:bg-emerald-900/20 p-3 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                                    Comece a importar para ver sua projeção
+                                </p>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-2xl bg-white dark:bg-[#1e332d] p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="absolute inset-0 bg-gradient-to-bl from-rose-50 to-transparent dark:from-rose-900/10 dark:to-transparent opacity-50"></div>
+<div class="relative z-10 flex flex-col h-full justify-between gap-6">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-gray-600 dark:text-gray-300 font-medium text-sm">
+<span class="material-symbols-outlined text-[18px]">event_busy</span>
+                                        Compromissos Restantes
+                                    </div>
+<p class="text-4xl font-extrabold text-[#111816] dark:text-white tracking-tight">R$ 0,00</p>
+</div>
+<div class="bg-rose-50 dark:bg-rose-900/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-rose-500">notifications_active</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-sm font-medium text-rose-800 dark:text-rose-200 bg-rose-50 dark:bg-rose-900/20 p-3 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+                                    Nenhum compromisso futuro detectado. Adicione um!
+                                </p>
+<div class="w-full bg-gray-100 dark:bg-white/10 rounded-full h-2 mt-auto">
+<div class="bg-rose-500 h-2 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 flex flex-col gap-6">
+<div class="bg-white dark:bg-[#1a2c26] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-[#111816] dark:text-white">Ciclo dos Cartões</h3>
+<button class="text-sm text-primary font-bold hover:underline">Ver faturas</button>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row gap-4 items-center">
+<div class="flex items-center gap-3 w-full sm:w-48">
+<div class="w-10 h-6 bg-[#820ad1] rounded-md shadow-sm"></div> 
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111816] dark:text-white">Nubank</span>
+<span class="text-xs text-gray-500">Final 8832</span>
+</div>
+</div>
+<div class="flex-1 w-full flex flex-col gap-2">
+<div class="flex justify-between text-xs font-medium text-gray-500">
+<span>Aberto</span>
+<span>Fecha dia 05</span>
+</div>
+<div class="relative w-full h-2 bg-gray-100 dark:bg-white/10 rounded-full">
+<div class="absolute left-0 top-0 h-full bg-[#820ad1] rounded-full" style="width: 0%"></div>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-[#111816] dark:text-white font-bold">R$ 0,00</span>
+<span class="text-gray-400">Limite: R$ 5k</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end min-w-[80px]">
+<span class="px-2 py-1 bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400 rounded-md text-xs font-bold">Sem uso</span>
+</div>
+</div>
+<div class="h-px bg-gray-100 dark:bg-white/5 w-full"></div>
+<div class="flex flex-col sm:flex-row gap-4 items-center">
+<div class="flex items-center gap-3 w-full sm:w-48">
+<div class="w-10 h-6 bg-[#1a1a1a] rounded-md shadow-sm"></div> 
+<div class="flex flex-col">
+<span class="text-sm font-bold text-[#111816] dark:text-white">XP Visa</span>
+<span class="text-xs text-gray-500">Final 1029</span>
+</div>
+</div>
+<div class="flex-1 w-full flex flex-col gap-2">
+<div class="flex justify-between text-xs font-medium text-gray-500">
+<span>Melhor dia de compra</span>
+<span>Fecha dia 20</span>
+</div>
+<div class="relative w-full h-2 bg-gray-100 dark:bg-white/10 rounded-full">
+<div class="absolute left-0 top-0 h-full bg-[#111816] dark:bg-gray-400 rounded-full" style="width: 0%"></div>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-[#111816] dark:text-white font-bold">R$ 0,00</span>
+<span class="text-gray-400">Limite: R$ 12k</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end min-w-[80px]">
+<span class="px-2 py-1 bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400 rounded-md text-xs font-bold">Sem uso</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2c26] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col sm:flex-row gap-8">
+<div class="flex-1">
+<h3 class="text-lg font-bold text-[#111816] dark:text-white mb-6">Gastos por Categoria</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-orange-50 text-orange-500">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-medium text-[#111816] dark:text-white">Alimentação</span>
+<span class="text-sm font-bold">0%</span>
+</div>
+<div class="w-full h-1.5 bg-gray-100 dark:bg-white/10 rounded-full">
+<div class="h-1.5 bg-orange-400 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-blue-50 text-blue-500">
+<span class="material-symbols-outlined text-[20px]">home</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-medium text-[#111816] dark:text-white">Moradia</span>
+<span class="text-sm font-bold">0%</span>
+</div>
+<div class="w-full h-1.5 bg-gray-100 dark:bg-white/10 rounded-full">
+<div class="h-1.5 bg-blue-500 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-purple-50 text-purple-500">
+<span class="material-symbols-outlined text-[20px]">directions_car</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-medium text-[#111816] dark:text-white">Transporte</span>
+<span class="text-sm font-bold">0%</span>
+</div>
+<div class="w-full h-1.5 bg-gray-100 dark:bg-white/10 rounded-full">
+<div class="h-1.5 bg-purple-500 rounded-full" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full sm:w-48 h-48 relative flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-gray-100 dark:text-gray-700" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-2xl font-bold text-[#111816] dark:text-white">R$ 0,00</span>
+<span class="text-xs text-gray-500">Total</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+<div class="absolute right-0 top-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-3 opacity-90">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+<span class="text-xs font-bold uppercase tracking-wider">Insight Semanal</span>
+</div>
+<p class="text-lg font-medium leading-snug mb-4">Comece a gastar para gerar insights.</p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2c26] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 flex-1">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-[#111816] dark:text-white">Atividade Recente</h3>
+<button class="p-1 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full text-gray-400">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex flex-col items-center justify-center py-8 text-center gap-4">
+<div class="w-16 h-16 rounded-full bg-gray-50 dark:bg-white/5 flex items-center justify-center text-gray-300 dark:text-gray-600">
+<span class="material-symbols-outlined text-3xl">receipt_long</span>
+</div>
+<div>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Nenhuma atividade recente</p>
+<p class="text-xs text-gray-400 dark:text-gray-500 mt-1">Suas transações aparecerão aqui.</p>
+</div>
+</div>
+<button class="w-full mt-6 py-3 text-sm font-bold text-gray-400 border border-gray-200 dark:border-gray-700 rounded-xl cursor-not-allowed opacity-50">
+                                Ver todas as transações
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md:hidden bg-white dark:bg-[#1a2c26] border-t border-gray-100 dark:border-gray-800 p-2 flex justify-around items-center absolute bottom-0 w-full z-20">
+<a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Painel</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">Transações</span>
+</a>
+<div class="relative -top-5">
+<button class="w-12 h-12 rounded-full bg-primary shadow-lg shadow-primary/40 flex items-center justify-center text-[#111816]">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">track_changes</span>
+<span class="text-[10px] font-medium">Metas</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Ajustes</span>
+</a>
+</div>
+</main>
+</div>
+
+</body></html>

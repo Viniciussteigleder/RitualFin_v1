@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Central de Notificações</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "primary-dark": "#0FB880",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1A2C26",
+                        "text-main": "#111816",
+                        "text-muted": "#61897c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-[#f0f4f3] dark:border-[#1F332C] bg-white dark:bg-background-dark px-6 py-3 lg:px-10">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-text-main dark:text-white">
+<div class="size-8 flex items-center justify-center rounded-lg bg-primary/20 text-primary-dark">
+<span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">CasalFin</h2>
+</div>
+</div>
+<!-- Desktop Nav -->
+<div class="hidden flex-1 justify-end gap-8 md:flex">
+<nav class="flex items-center gap-8">
+<a class="text-sm font-medium leading-normal text-text-muted hover:text-primary-dark dark:text-gray-400 dark:hover:text-primary transition-colors" href="#">Visão Geral</a>
+<a class="text-sm font-medium leading-normal text-text-muted hover:text-primary-dark dark:text-gray-400 dark:hover:text-primary transition-colors" href="#">Transações</a>
+<a class="text-sm font-medium leading-normal text-text-muted hover:text-primary-dark dark:text-gray-400 dark:hover:text-primary transition-colors" href="#">Metas</a>
+<a class="text-sm font-bold leading-normal text-text-main dark:text-white border-b-2 border-primary py-1" href="#">Notificações</a>
+<a class="text-sm font-medium leading-normal text-text-muted hover:text-primary-dark dark:text-gray-400 dark:hover:text-primary transition-colors" href="#">Perfil</a>
+</nav>
+<div class="flex items-center gap-3 border-l border-[#f0f4f3] dark:border-[#1F332C] pl-6">
+<div class="flex gap-2">
+<button class="flex size-10 cursor-pointer items-center justify-center rounded-lg bg-[#f0f4f3] dark:bg-[#1F332C] text-text-main dark:text-white hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-white dark:border-[#1F332C] shadow-sm" data-alt="Portrait of a smiling woman user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAP74DZz1pXUgsXdnnJvQ4w-kc5K2X4LhAB2lSJOZXciXcdjYCddLb3-75QXvELBk4a5L1wDyhKxbmBB-EwNHmIHpd8jQwtAShxw_bxwi2aoiwqUF3_UXN0V-mAC0rW_mfZ5-gLkHaWKfAHoMGMWO2u91sFD6UFAHjbA9PxQhgE0WPN6jfAq65cMqA-loDwh_8SEjvavJbQROXvbRDBsaD5WmNYCcSJ-WSQ7g9USJJZQKF5sSfUY6D5gJyVE1QYh18FdFOxRC1RkmA");'></div>
+</div>
+</div>
+<!-- Mobile Menu Icon (Placeholder) -->
+<button class="md:hidden p-2 text-text-main dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex flex-1 justify-center px-4 py-8 md:px-10 lg:px-20">
+<div class="flex w-full max-w-[960px] flex-col gap-6">
+<!-- Page Heading -->
+<div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+<div class="flex flex-col gap-2">
+<h1 class="text-3xl font-black leading-tight tracking-[-0.033em] text-text-main dark:text-white md:text-4xl">Suas Notificações</h1>
+<p class="text-base font-normal leading-normal text-text-muted dark:text-gray-400 max-w-xl">
+                            Fique por dentro do que importa para suas finanças. Sem barulho, só o essencial.
+                        </p>
+</div>
+<button class="group flex items-center gap-2 text-sm font-medium text-text-muted hover:text-primary-dark dark:text-gray-400 dark:hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">done_all</span>
+<span>Marcar todas como lidas</span>
+</button>
+</div>
+<!-- Filters / Tabs -->
+<div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#f0f4f3] dark:border-[#1F332C] pb-4">
+<div class="flex flex-wrap gap-2">
+<button class="rounded-lg bg-text-main px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-opacity-90 dark:bg-white dark:text-background-dark">
+                            Todas
+                        </button>
+<button class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-text-muted shadow-sm hover:bg-gray-50 dark:bg-[#1F332C] dark:text-gray-300 dark:hover:bg-[#2A443B] transition-colors">
+                            Importantes
+                        </button>
+<button class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-text-muted shadow-sm hover:bg-gray-50 dark:bg-[#1F332C] dark:text-gray-300 dark:hover:bg-[#2A443B] transition-colors">
+                            Metas
+                        </button>
+<button class="rounded-lg bg-white px-4 py-2 text-sm font-medium text-text-muted shadow-sm hover:bg-gray-50 dark:bg-[#1F332C] dark:text-gray-300 dark:hover:bg-[#2A443B] transition-colors">
+                            Sistema
+                        </button>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium uppercase tracking-wider text-text-muted dark:text-gray-500">Filtrar por data:</span>
+<select class="rounded-lg border-0 bg-white py-1.5 pl-3 pr-8 text-sm font-medium text-text-main shadow-sm focus:ring-2 focus:ring-primary dark:bg-[#1F332C] dark:text-white">
+<option>Mais recentes</option>
+<option>Não lidas</option>
+<option>Antigas</option>
+</select>
+</div>
+</div>
+<!-- Notifications List -->
+<div class="flex flex-col gap-8">
+<!-- Group: Hoje -->
+<section>
+<h3 class="mb-4 px-1 text-sm font-bold uppercase tracking-wider text-text-muted dark:text-gray-500">Hoje</h3>
+<div class="flex flex-col gap-3">
+<!-- Card 1: Success/Sync -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] dark:bg-card-dark md:flex-row md:items-center">
+<div class="absolute right-4 top-4 flex gap-2 md:hidden">
+<span class="text-xs text-text-muted">2h atrás</span>
+</div>
+<!-- Icon -->
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary-dark dark:bg-primary/20 dark:text-primary">
+<span class="material-symbols-outlined icon-filled">sync_alt</span>
+</div>
+<!-- Content -->
+<div class="flex flex-1 flex-col justify-center gap-1">
+<div class="flex items-center gap-2">
+<h4 class="text-base font-bold text-text-main dark:text-white">Importe Concluído</h4>
+<span class="flex size-2 rounded-full bg-primary"></span>
+</div>
+<p class="text-sm text-text-muted dark:text-gray-300">Suas transações do Banco Inter foram sincronizadas com sucesso. 12 novos lançamentos encontrados.</p>
+</div>
+<!-- Action -->
+<div class="flex flex-wrap items-center gap-4 md:flex-nowrap md:justify-end">
+<button class="inline-flex h-9 cursor-pointer items-center justify-center whitespace-nowrap rounded-lg bg-primary px-4 text-sm font-bold text-background-dark transition-colors hover:bg-primary-dark hover:text-white">
+                                        Ver Novas Transações
+                                    </button>
+<div class="hidden flex-col items-end gap-1 md:flex">
+<span class="text-xs text-text-muted dark:text-gray-500">2h atrás</span>
+<button class="opacity-0 transition-opacity group-hover:opacity-100 text-text-muted hover:text-red-500 dark:text-gray-500">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Warning/Action Required -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] dark:bg-card-dark md:flex-row md:items-center">
+<div class="absolute right-4 top-4 flex gap-2 md:hidden">
+<span class="text-xs text-text-muted">4h atrás</span>
+</div>
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">
+<span class="material-symbols-outlined icon-filled">rate_review</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<div class="flex items-center gap-2">
+<h4 class="text-base font-bold text-text-main dark:text-white">Pendências na Fila de Revisão</h4>
+<span class="flex size-2 rounded-full bg-orange-500"></span>
+</div>
+<p class="text-sm text-text-muted dark:text-gray-300">Há 3 transações de alto valor aguardando sua categorização no Espaço Casal.</p>
+</div>
+<div class="flex flex-wrap items-center gap-4 md:flex-nowrap md:justify-end">
+<button class="inline-flex h-9 cursor-pointer items-center justify-center whitespace-nowrap rounded-lg border border-orange-200 bg-orange-50 px-4 text-sm font-bold text-orange-700 transition-colors hover:bg-orange-100 dark:border-orange-900 dark:bg-orange-900/20 dark:text-orange-400 dark:hover:bg-orange-900/40">
+                                        Revisar (3)
+                                    </button>
+<div class="hidden flex-col items-end gap-1 md:flex">
+<span class="text-xs text-text-muted dark:text-gray-500">4h atrás</span>
+<button class="opacity-0 transition-opacity group-hover:opacity-100 text-text-muted hover:text-red-500 dark:text-gray-500">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Group: Esta Semana -->
+<section>
+<h3 class="mb-4 px-1 text-sm font-bold uppercase tracking-wider text-text-muted dark:text-gray-500">Esta Semana</h3>
+<div class="flex flex-col gap-3">
+<!-- Card 3: Goal/Achievement -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] dark:bg-card-dark md:flex-row md:items-center">
+<div class="absolute right-4 top-4 flex gap-2 md:hidden">
+<span class="text-xs text-text-muted">Ontem</span>
+</div>
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">
+<span class="material-symbols-outlined icon-filled">flag</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<div class="flex items-center gap-2">
+<h4 class="text-base font-bold text-text-main dark:text-white">Meta Quase Atingida</h4>
+</div>
+<p class="text-sm text-text-muted dark:text-gray-300">Faltam apenas € 150,00 para completar a meta "Viagem para Itália". Continue assim!</p>
+</div>
+<div class="flex flex-wrap items-center gap-4 md:flex-nowrap md:justify-end">
+<button class="inline-flex h-9 cursor-pointer items-center justify-center whitespace-nowrap rounded-lg bg-[#f0f4f3] px-4 text-sm font-bold text-text-main hover:bg-gray-200 dark:bg-[#2A443B] dark:text-white dark:hover:bg-[#36574B] transition-colors">
+                                        Ver Meta
+                                    </button>
+<div class="hidden flex-col items-end gap-1 md:flex">
+<span class="text-xs text-text-muted dark:text-gray-500">Ontem</span>
+<button class="opacity-0 transition-opacity group-hover:opacity-100 text-text-muted hover:text-red-500 dark:text-gray-500">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4: System -->
+<div class="group relative flex flex-col gap-4 rounded-xl bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.04)] transition-all hover:shadow-[0_4px_12px_rgba(0,0,0,0.08)] dark:bg-card-dark md:flex-row md:items-center opacity-70 hover:opacity-100 transition-opacity">
+<div class="absolute right-4 top-4 flex gap-2 md:hidden">
+<span class="text-xs text-text-muted">3 dias atrás</span>
+</div>
+<div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div class="flex flex-1 flex-col justify-center gap-1">
+<div class="flex items-center gap-2">
+<h4 class="text-base font-bold text-text-main dark:text-white">Novo Dispositivo Detectado</h4>
+</div>
+<p class="text-sm text-text-muted dark:text-gray-300">Um login foi realizado através de um iPhone 14 em Lisboa, PT.</p>
+</div>
+<div class="flex flex-wrap items-center gap-4 md:flex-nowrap md:justify-end">
+<button class="inline-flex h-9 cursor-pointer items-center justify-center whitespace-nowrap rounded-lg bg-transparent px-4 text-sm font-bold text-text-muted hover:bg-gray-50 hover:text-text-main dark:text-gray-400 dark:hover:bg-[#2A443B] dark:hover:text-white transition-colors">
+                                        Não fui eu
+                                    </button>
+<div class="hidden flex-col items-end gap-1 md:flex">
+<span class="text-xs text-text-muted dark:text-gray-500">3 dias atrás</span>
+<button class="opacity-0 transition-opacity group-hover:opacity-100 text-text-muted hover:text-red-500 dark:text-gray-500">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer / Empty Space -->
+<div class="flex justify-center py-8">
+<p class="text-xs font-medium text-text-muted dark:text-gray-600">Fim das notificações</p>
+</div>
+</div>
+</main>
+</div>
+</body></html>

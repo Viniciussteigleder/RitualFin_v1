@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Traga Seus Dados</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #e2e8f0;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden">
+<div class="flex h-screen w-full">
+<aside class="hidden lg:flex w-72 flex-col justify-between border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-[#152a24] p-6 h-full transition-opacity duration-300">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shadow-sm" data-alt="CasalFin App Logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAt1WVijpgsAgozUrKmFWevUgpvcZhw7Vmho4VpkBNFb7HSoFdZ6Iixa4GAfXxPE3LzNbrmajB-i4W9tJ_58okc5HSrmPEx-rkUKX86vhd7PEe6_u2uO-Ee0b-tbq9sEEUPF8u2DHlFPpG278InZ-uXXQes_biUsIsSUwhIuVG8GJHgDvR6-cN3upOIYAgQK_iPyLOQNL7VrLQufDhpow3IcVnrp1F0WhjfjdX9bbpBKKPf3UvHXvTEsyJUzxCy7mb3MaXvPl3hHaE");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-none">CasalFin</h1>
+<p class="text-slate-500 text-[10px] font-medium leading-normal mt-1">Finanças claras</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 opacity-40 pointer-events-none select-none grayscale">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-background-light dark:bg-white/5">
+<span class="material-symbols-outlined text-slate-900 dark:text-white">dashboard</span>
+<p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Visão Geral</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">receipt_long</span>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Transações</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">pie_chart</span>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Orçamento</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400">track_changes</span>
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Metas</p>
+</div>
+</nav>
+</div>
+<div class="flex items-center gap-3 px-2 opacity-40 grayscale">
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBx-fDTNDcfZ050gz5AU8yLlF4fkwwcJo_6Mdfqec3l-L-l2tOBiTDoZzIRR__D7LtxaH1_lTm-g8RKgNbRaihhD49kIcoyzIF29hbNE17JVTYhW03E8DHY4x9ookugzsVQg43Uhdeo3wBc8_p8P37LyxvSkQG09_PEDLUifAPxBQpaHTf4CJMwKqh4hW4FI3IdfYyAgx0ddkZj10TQNoEOBlucM_sxN0Uy5BWlqj8I9VvGpTGuhuYYO9VWVzAe-k8hxpBfzz0AiA"/>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-slate-900 dark:text-white">João &amp; Maria</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Espaço Casal</p>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full overflow-y-auto relative z-10">
+<div class="lg:hidden flex items-center justify-between p-4 bg-white dark:bg-[#152a24] border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<div class="size-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">CF</div>
+<span class="font-bold text-slate-900 dark:text-white">CasalFin</span>
+</div>
+<span class="text-xs font-medium text-slate-500">Passo 5/5</span>
+</div>
+<div class="w-full max-w-[1200px] mx-auto p-6 lg:p-12 flex flex-col gap-8">
+<div class="flex flex-col gap-3 max-w-3xl">
+<div class="flex justify-between items-end">
+<p class="text-primary text-sm font-bold uppercase tracking-wider">Passo 5 de 5</p>
+<p class="text-slate-400 text-xs hidden sm:block">Riqueza a dois começa com organização</p>
+</div>
+<div class="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full rounded-full animate-pulse"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3 max-w-2xl">
+<h1 class="text-slate-900 dark:text-white text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight">
+                        Traga Seus Dados para o CasalFin
+                    </h1>
+<p class="text-slate-500 dark:text-slate-400 text-base lg:text-lg leading-relaxed">
+                        Conecte, importe ou registre suas transações para começar a ter clareza. Nossa IA cuida da organização para o casal.
+                    </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-2">
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<button class="group flex flex-col items-start gap-4 p-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#152a24] hover:border-primary dark:hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all text-left relative overflow-hidden">
+<div class="size-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400 group-hover:text-primary text-2xl">description</span>
+</div>
+<div class="flex flex-col gap-1 z-10">
+<h3 class="font-bold text-slate-900 dark:text-white text-lg">Importar CSV</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Extratos bancários ou planilhas antigas. Wizard guiado.</p>
+</div>
+<div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</button>
+<button class="group flex flex-col items-start gap-4 p-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#152a24] hover:border-primary dark:hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all text-left relative overflow-hidden">
+<div class="size-12 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-purple-600 dark:text-purple-400 group-hover:text-primary text-2xl">add_a_photo</span>
+</div>
+<div class="flex flex-col gap-1 z-10">
+<h3 class="font-bold text-slate-900 dark:text-white text-lg">Importar por Foto</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Digitalize recibos e notas fiscais com OCR.</p>
+</div>
+<div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</button>
+<button class="group flex flex-col items-start gap-4 p-6 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#152a24] hover:border-primary dark:hover:border-primary hover:shadow-lg hover:shadow-primary/5 transition-all text-left relative overflow-hidden">
+<div class="size-12 rounded-full bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 group-hover:text-primary text-2xl">edit_note</span>
+</div>
+<div class="flex flex-col gap-1 z-10">
+<h3 class="font-bold text-slate-900 dark:text-white text-lg">Adicionar Manual</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Registre transações pontuais rapidamente.</p>
+</div>
+<div class="absolute right-4 top-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary">arrow_forward</span>
+</div>
+</button>
+<button class="group flex flex-col items-start gap-4 p-6 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-white/5 cursor-not-allowed opacity-80 text-left relative overflow-hidden">
+<div class="flex justify-between w-full">
+<div class="size-12 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500 dark:text-slate-400 text-2xl">account_balance</span>
+</div>
+<span class="px-2 py-1 h-fit rounded text-[10px] font-bold bg-slate-200 dark:bg-slate-700 text-slate-500 uppercase tracking-wider">Em breve</span>
+</div>
+<div class="flex flex-col gap-1 z-10">
+<h3 class="font-bold text-slate-500 dark:text-slate-400 text-lg">Conectar Banco</h3>
+<p class="text-xs text-slate-400 dark:text-slate-500 font-medium">Sincronização automática via Open Finance.</p>
+</div>
+</button>
+</div>
+<div class="flex items-center gap-6 pt-2 pl-1">
+<div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-lg">auto_fix_high</span>
+<span>Categorização IA</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-primary text-lg">verified_user</span>
+<span>Ambiente Seguro</span>
+</div>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-slate-100 dark:border-slate-800">
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-medium transition-colors">
+                                Pular por enquanto
+                            </button>
+<div class="flex items-center gap-1.5 text-xs text-slate-400">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>Criptografia de ponta a ponta</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative group mt-4 lg:mt-0">
+<div class="hidden lg:block absolute top-20 -left-8 w-8 h-[2px] border-t-2 border-dashed border-slate-300 dark:border-slate-700"></div>
+<div class="relative bg-gradient-to-br from-white to-[#13eca4]/5 dark:from-[#152a24] dark:to-[#13eca4]/5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xl overflow-hidden p-6 flex flex-col gap-6">
+<div class="flex justify-between items-center pb-4 border-b border-slate-100 dark:border-slate-700/50">
+<span class="text-xs font-bold uppercase tracking-wider text-slate-400">Preview do Painel</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-emerald-700 dark:text-primary">DADOS EXEMPLO</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-black/20 p-3 rounded-lg border border-slate-100 dark:border-slate-700/50">
+<p class="text-xs text-slate-500 mb-1">Entradas</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">€ 5.250,00</p>
+</div>
+<div class="bg-white dark:bg-black/20 p-3 rounded-lg border border-slate-100 dark:border-slate-700/50">
+<p class="text-xs text-slate-500 mb-1">Saídas</p>
+<p class="text-sm font-bold text-red-500">- € 3.120,40</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<p class="text-xs font-semibold text-slate-900 dark:text-white">Fluxo Mensal (EUR)</p>
+<div class="h-24 w-full flex items-end justify-between gap-2 px-2">
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm h-[40%]"></div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm h-[70%]"></div>
+<div class="w-full bg-primary/60 rounded-t-sm h-[50%] animate-pulse"></div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm h-[80%]"></div>
+<div class="w-full bg-slate-100 dark:bg-slate-700 rounded-t-sm h-[60%]"></div>
+</div>
+</div>
+<div class="flex flex-col gap-3 relative">
+<p class="text-xs font-semibold text-slate-900 dark:text-white">Últimas Transações</p>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-default">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+<span class="material-symbols-outlined text-sm">movie</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-900 dark:text-white">Netflix</span>
+<span class="text-[10px] text-slate-500">Entretenimento</span>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-900 dark:text-white">- € 15,90</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-default">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined text-sm">shopping_cart</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-900 dark:text-white">Mercadona</span>
+<span class="text-[10px] text-slate-500">Alimentação</span>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-900 dark:text-white">- € 120,15</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-white dark:from-[#172e27] to-transparent pointer-events-none rounded-b-xl"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

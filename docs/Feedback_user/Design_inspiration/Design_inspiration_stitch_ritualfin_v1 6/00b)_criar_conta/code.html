@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CasalFin - Criar Conta</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13eca4",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#10221c",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#162e26",
+                        "text-main-light": "#111816",
+                        "text-main-dark": "#ffffff",
+                        "text-sec-light": "#61897c",
+                        "text-sec-dark": "#8baeb3",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom radio card logic */
+        .radio-card-input:checked + .radio-card {
+            border-color: #13eca4;
+            background-color: rgba(19, 236, 164, 0.05);
+            box-shadow: 0 0 0 2px #13eca4;
+        }
+        .radio-card-input:checked + .radio-card .radio-icon {
+            color: #13eca4;
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Smooth transitions */
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 200ms;
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark min-h-screen flex flex-col text-text-main-light dark:text-text-main-dark antialiased selection:bg-primary selection:text-black">
+<!-- Header -->
+<header class="flex items-center justify-between border-b border-gray-200 dark:border-gray-800 bg-surface-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-4 sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary flex items-center justify-center bg-background-dark rounded-lg">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<h2 class="text-xl font-bold tracking-tight">CasalFin</h2>
+</div>
+<button class="group flex cursor-pointer items-center justify-center rounded-lg px-4 py-2 text-sm font-bold transition-colors hover:bg-gray-100 dark:hover:bg-surface-dark text-text-main-light dark:text-text-main-dark">
+<span class="mr-2">Já tem uma conta?</span>
+<span class="text-primary group-hover:underline">Entrar</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex items-center justify-center py-10 px-4 sm:px-6">
+<div class="w-full max-w-[560px] flex flex-col gap-8">
+<!-- Page Heading -->
+<div class="text-center space-y-2">
+<h1 class="text-3xl md:text-4xl font-black leading-tight tracking-tight">Comece sua jornada financeira</h1>
+<p class="text-text-sec-light dark:text-text-sec-dark text-lg">Finanças claras, riqueza a dois.</p>
+</div>
+<!-- Mode Selector (Radio Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Option 1: Individual -->
+<label class="cursor-pointer relative group">
+<input checked="" class="radio-card-input sr-only" name="account_type" type="radio" value="individual"/>
+<div class="radio-card h-full p-5 rounded-2xl border border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-surface-dark hover:border-primary/50 transition-all flex flex-col items-center text-center gap-3">
+<span class="radio-icon material-symbols-outlined text-4xl text-gray-400 dark:text-gray-500 transition-colors">person</span>
+<div>
+<span class="block text-base font-bold">Para mim (Individual)</span>
+<span class="block text-sm text-text-sec-light dark:text-text-sec-dark mt-1 leading-snug">Controle seus gastos e investimentos sozinho.</span>
+</div>
+</div>
+</label>
+<!-- Option 2: Couple -->
+<label class="cursor-pointer relative group">
+<input class="radio-card-input sr-only" name="account_type" type="radio" value="couple"/>
+<div class="radio-card h-full p-5 rounded-2xl border border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-surface-dark hover:border-primary/50 transition-all flex flex-col items-center text-center gap-3">
+<span class="radio-icon material-symbols-outlined text-4xl text-gray-400 dark:text-gray-500 transition-colors">group</span>
+<div>
+<span class="block text-base font-bold">Para nós (Casal)</span>
+<span class="block text-sm text-text-sec-light dark:text-text-sec-dark mt-1 leading-snug">Gestão compartilhada, objetivos e riqueza unificada.</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Social Logins -->
+<div class="flex flex-col gap-3">
+<button class="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-surface-dark px-5 py-3.5 text-base font-bold text-text-main-light dark:text-text-main-dark transition-transform active:scale-[0.98] hover:bg-gray-50 dark:hover:bg-gray-800/50">
+<img alt="Google Logo" class="size-5" data-alt="Google G Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ZdFAiqojjNbQ6mG1NRvx9Cbl4gzx7370pXzoFNvMJj4gEjD-fYDg8e3fWT1Bh7ScmBGc-woKL6-1MVW8n8hrn35gFTHLxxA4ye8Gk6Uka6t-PbnEsMXg0eJQaUH9YfdzOEkkpxLB1YN0Dzb1w_GgbXFQUE5ZDTDzXR0tDJLksoOFXiWhhW3GvvoLP_ItsmHvOvBOM_dwYTlXdqygjmHmdCUqUoQwQYNNNlgZ5_DvvBh3CdOEIwp6aZPwm7GijoHvaD9IiAHY6ow"/>
+<span>Continuar com Google</span>
+</button>
+<button class="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-surface-dark px-5 py-3.5 text-base font-bold text-text-main-light dark:text-text-main-dark transition-transform active:scale-[0.98] hover:bg-gray-50 dark:hover:bg-gray-800/50">
+<svg class="size-5 text-current" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.05 20.28C16.5 21.08 15.86 22 14.96 22C14.09 22 13.8 21.43 12.78 21.43C11.73 21.43 11.41 22 10.59 22C9.71 22 8.97 21.01 8.41 20.21C7.26 18.55 6.38 15.52 7.56 13.48C8.15 12.46 9.2 11.81 10.37 11.81C11.45 11.81 12.18 12.53 12.82 12.53C13.44 12.53 14.39 11.81 15.42 11.81C15.86 11.81 17.07 11.97 17.86 13.13C17.79 13.17 16.57 13.88 16.58 15.48C16.58 17.38 18.25 18.28 18.33 18.33C18.27 18.5 18.04 19.16 17.68 19.68L17.05 20.28ZM15.02 9.57C15.5 8.99 15.83 8.18 15.74 7.37C15.02 7.4 14.15 7.85 13.62 8.46C13.14 9.01 12.72 9.84 12.83 10.63C13.63 10.69 14.48 10.15 15.02 9.57Z"></path>
+</svg>
+<span>Continuar com Apple</span>
+</button>
+</div>
+<!-- Divider -->
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-gray-200 dark:border-gray-700"></div>
+<span class="flex-shrink-0 mx-4 text-xs font-semibold uppercase tracking-wider text-text-sec-light dark:text-text-sec-dark">Ou cadastre-se com email</span>
+<div class="flex-grow border-t border-gray-200 dark:border-gray-700"></div>
+</div>
+<!-- Email Form -->
+<form class="space-y-5" onsubmit="event.preventDefault();">
+<!-- Name Field -->
+<div class="space-y-1.5">
+<label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark" for="name">Nome completo</label>
+<div class="relative">
+<input class="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-surface-dark px-4 py-3.5 text-text-main-light dark:text-text-main-dark placeholder:text-gray-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="name" placeholder="Como você quer ser chamado?" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">badge</span>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-1.5">
+<label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark" for="email">Email</label>
+<div class="relative">
+<input class="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-surface-dark px-4 py-3.5 text-text-main-light dark:text-text-main-dark placeholder:text-gray-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="email" placeholder="seu@email.com" type="email"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">mail</span>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-1.5">
+<label class="block text-sm font-semibold text-text-main-light dark:text-text-main-dark" for="password">Senha</label>
+<div class="relative group/pass">
+<input class="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-surface-dark px-4 py-3.5 text-text-main-light dark:text-text-main-dark placeholder:text-gray-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all pr-12" id="password" placeholder="Mínimo 8 caracteres" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-400 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px] block">visibility</span>
+</button>
+</div>
+</div>
+<!-- Legal Checkbox -->
+<div class="flex items-start gap-3 pt-2">
+<div class="relative flex h-6 items-center">
+<input class="h-5 w-5 rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary dark:bg-surface-dark cursor-pointer" id="terms" name="terms" type="checkbox"/>
+</div>
+<div class="text-sm leading-6">
+<label class="font-medium text-text-sec-light dark:text-text-sec-dark cursor-pointer select-none" for="terms">
+                            Li e aceito os <a class="font-bold text-text-main-light dark:text-text-main-dark underline decoration-2 decoration-primary/30 hover:decoration-primary transition-all" href="#">Termos de Uso</a> e a <a class="font-bold text-text-main-light dark:text-text-main-dark underline decoration-2 decoration-primary/30 hover:decoration-primary transition-all" href="#">Política de Privacidade</a> do CasalFin.
+                        </label>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full rounded-xl bg-primary px-8 py-4 text-base font-bold text-[#10221c] shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all" type="submit">
+                    Criar conta gratuita
+                </button>
+</form>
+<!-- Trust Indicators (Optional Polish) -->
+<div class="flex justify-center gap-6 pt-4 grayscale opacity-60 dark:opacity-40">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">lock</span>
+<span class="text-xs font-semibold">Criptografia SSL</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">verified_user</span>
+<span class="text-xs font-semibold">Dados Seguros</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Background Decoration for Desktop -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute -top-[20%] -right-[10%] size-[600px] rounded-full bg-primary/5 dark:bg-primary/10 blur-[100px]"></div>
+<div class="absolute top-[40%] -left-[10%] size-[400px] rounded-full bg-blue-400/5 dark:bg-blue-400/10 blur-[100px]"></div>
+</div>
+</body></html>
