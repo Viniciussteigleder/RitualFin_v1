@@ -83,11 +83,11 @@ export default function UploadsPage() {
       console.log('[Upload] Has access token:', !!accessToken);
       console.log('[Upload] Token preview:', accessToken.substring(0, 20) + '...');
 
-      // Use direct fetch instead of supabase.functions.invoke
-      const functionUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/functions/v1/mm-import`;
-      console.log('[Upload] Function URL:', functionUrl);
+      // Use Next.js API route instead of Supabase Edge Function
+      const apiUrl = '/api/mm-import';
+      console.log('[Upload] API URL:', apiUrl);
 
-      const response = await fetch(functionUrl, {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
